@@ -14,25 +14,33 @@
   <Group Byte="0">Effect</Group>
   <Capability Min="0" Max="9">Valor numérico de los millares</Capability>
   <Capability Min="10" Max="19">Punto + Valor numérico de los millares</Capability>
-  <Capability Min="20" Max="27">Segmentos Individuales</Capability>
+  <Capability Min="20" Max="26">Segmentos individuales A–G</Capability>
+  <Capability Min="27" Max="33">Segmentos individuales A–G con punto decimal</Capability>
+  <Capability Min="34" Max="34">Apagado (todos los segmentos y punto decimal)</Capability>
  </Channel>
  <Channel Name="Centenas">
   <Group Byte="0">Effect</Group>
   <Capability Min="0" Max="9">Valor numérico de las centenas</Capability>
   <Capability Min="10" Max="19">Punto + Valor numérico de las centenas</Capability>
-  <Capability Min="20" Max="27">Segmentos Individuales</Capability>
+  <Capability Min="20" Max="26">Segmentos individuales A–G</Capability>
+  <Capability Min="27" Max="33">Segmentos individuales A–G con punto decimal</Capability>
+  <Capability Min="34" Max="34">Apagado (todos los segmentos y punto decimal)</Capability>
  </Channel>
  <Channel Name="Decenas">
   <Group Byte="0">Effect</Group>
   <Capability Min="0" Max="9">Valor numérico de las decenas</Capability>
   <Capability Min="10" Max="19">Punto + Valor numérico de las decenas</Capability>
-  <Capability Min="20" Max="27">Segmentos individuales</Capability>
+  <Capability Min="20" Max="26">Segmentos individuales A–G</Capability>
+  <Capability Min="27" Max="33">Segmentos individuales A–G con punto decimal</Capability>
+  <Capability Min="34" Max="34">Apagado (todos los segmentos y punto decimal)</Capability>
  </Channel>
  <Channel Name="Unidades">
   <Group Byte="0">Effect</Group>
   <Capability Min="0" Max="9">Valor numérico de las unidades</Capability>
   <Capability Min="10" Max="19">Punto + Valor numérico de las unidades</Capability>
-  <Capability Min="20" Max="27">Segmentos Individuales</Capability>
+  <Capability Min="20" Max="26">Segmentos individuales A–G</Capability>
+  <Capability Min="27" Max="33">Segmentos individuales A–G con punto decimal</Capability>
+  <Capability Min="34" Max="34">Apagado (todos los segmentos y punto decimal)</Capability>
  </Channel>
  <Channel Name="Barra LED R" Preset="IntensityRed"/>
  <Channel Name="Barra LED G" Preset="IntensityGreen"/>

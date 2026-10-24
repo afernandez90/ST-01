@@ -52,6 +52,7 @@ Los canales de visualizador usan estos valores:
 | 10–19 | Muestra el dígito `valor - 10` con punto decimal |
 | 20–26 | Muestra el segmento individual A–G |
 | 27–33 | Muestra el segmento individual A–G con punto decimal |
+| 34 | Apaga todos los segmentos, incluido el punto decimal |
 
 En v0.0.1, el valor de modo `0` significa color RGB fijo. Se asignarán modos adicionales solo después de que el firmware de Arduino los implemente y se prueben.
 

@@ -45,6 +45,7 @@ Cada uno de los cuatro canales de dígito admite los siguientes valores:
 | 10–19 | Muestra el número indicado con punto decimal |
 | 20–26 | Muestra únicamente los segmentos A–G |
 | 27–33 | Muestra los segmentos A–G con punto decimal |
+| 34 | Apaga todos los segmentos, incluido el punto decimal |
 
 El orden de los segmentos es: A, B, C, D, E, F y G.
 

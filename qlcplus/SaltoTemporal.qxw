@@ -121,7 +121,7 @@
      <Font>Ubuntu,16,-1,5,50,0,0,0,0,0</Font>
     </Appearance>
     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
-    <Level LowLimit="0" HighLimit="27" Value="1">
+    <Level LowLimit="0" HighLimit="34" Value="1">
      <Channel Fixture="0">1</Channel>
     </Level>
     <Playback>
@@ -138,7 +138,7 @@
      <Font>Ubuntu,16,-1,5,50,0,0,0,0,0</Font>
     </Appearance>
     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
-    <Level LowLimit="0" HighLimit="27" Value="14">
+    <Level LowLimit="0" HighLimit="34" Value="14">
      <Channel Fixture="0">2</Channel>
     </Level>
     <Playback>
@@ -155,7 +155,7 @@
      <Font>Ubuntu,16,-1,5,50,0,0,0,0,0</Font>
     </Appearance>
     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
-    <Level LowLimit="0" HighLimit="27" Value="10">
+    <Level LowLimit="0" HighLimit="34" Value="10">
      <Channel Fixture="0">3</Channel>
     </Level>
     <Playback>
@@ -172,7 +172,7 @@
      <Font>Ubuntu,16,-1,5,50,0,0,0,0,0</Font>
     </Appearance>
     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
-    <Level LowLimit="0" HighLimit="27" Value="7">
+    <Level LowLimit="0" HighLimit="34" Value="7">
      <Channel Fixture="0">4</Channel>
     </Level>
     <Playback>

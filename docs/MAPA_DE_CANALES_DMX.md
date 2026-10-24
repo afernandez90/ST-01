@@ -9,10 +9,10 @@ El modo `.qxf` de QLC+ utiliza atributos `Number` que empiezan en cero. El firmw
 | Desplazamiento | Nombre en QLC+ | Símbolo en código | Valores |
 |---:|---|---|---|
 | 1 | Master Dimmer | `CH_MASTER_DIMMER` | 0–255 |
-| 2 | Millares | `CH_DIGIT_THOUSANDS` | 0–33 |
-| 3 | Centenas | `CH_DIGIT_HUNDREDS` | 0–33 |
-| 4 | Decenas | `CH_DIGIT_TENS` | 0–33 |
-| 5 | Unidades | `CH_DIGIT_UNITS` | 0–33 |
+| 2 | Millares | `CH_DIGIT_THOUSANDS` | 0–34 |
+| 3 | Centenas | `CH_DIGIT_HUNDREDS` | 0–34 |
+| 4 | Decenas | `CH_DIGIT_TENS` | 0–34 |
+| 5 | Unidades | `CH_DIGIT_UNITS` | 0–34 |
 | 6 | Barra LED R | `CH_BAR_R` | 0–255 |
 | 7 | Barra LED G | `CH_BAR_G` | 0–255 |
 | 8 | Barra LED B | `CH_BAR_B` | 0–255 |
@@ -37,5 +37,6 @@ El modo `.qxf` de QLC+ utiliza atributos `Number` que empiezan en cero. El firmw
 | 10–19 | Dígito decimal 0–9 con punto decimal |
 | 20–26 | Segmentos A, B, C, D, E, F, G respectivamente |
 | 27–33 | Segmentos A, B, C, D, E, F, G respectivamente, con punto decimal |
+| 34 | Apaga todos los segmentos, incluido el punto decimal |
 
 Para una dirección DMX base `direccionBase`, lea el primer canal en `direccionBase` y el último en `direccionBase + 19`.
