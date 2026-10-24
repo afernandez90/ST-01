@@ -61,3 +61,5 @@ En v0.0.1, el valor de modo `0` significa color RGB fijo. Se asignarán modos ad
 La personalidad de QLC+ y la Consola Virtual están definidas. Quedan por implementar y probar el firmware de Arduino, el cableado del receptor DMX, el recuento de píxeles de las tiras, el sistema de alimentación y los circuitos de salida.
 
 Consulte la [guía de usuario](docs/MANUAL_DE_USUARIO.md) y el [mapa de canales para firmware](docs/MAPA_DE_CANALES_DMX.md).
+
+Las próximas pruebas y el cambio futuro a MacBook están anotados en [continuidad del proyecto](docs/CONTINUIDAD.md).
