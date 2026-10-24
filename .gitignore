@@ -1,0 +1,19 @@
+# Arduino build output
+*.elf
+*.hex
+*.eep
+*.bin
+build/
+
+# Editor and operating-system files
+.DS_Store
+*~
+*.swp
+
+# Local QLC+ backups and logs
+*.qxw~
+QLC+.log
+
+# Configuración local de VS Code
+.vscode/
+*.code-workspace

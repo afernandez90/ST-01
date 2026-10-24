@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE FixtureDefinition>
+<FixtureDefinition xmlns="http://www.qlcplus.org/FixtureDefinition">
+ <Creator>
+  <Name>Q Light Controller Plus</Name>
+  <Version>4.12.7</Version>
+  <Author>Alejandro Fernández Suárez</Author>
+ </Creator>
+ <Manufacturer>Salto Temporal</Manufacturer>
+ <Model>ST-01</Model>
+ <Type>Other</Type>
+ <Channel Name="Master Dimmer" Preset="IntensityMasterDimmer"/>
+ <Channel Name="Millares">
+  <Group Byte="0">Effect</Group>
+  <Capability Min="0" Max="9">Valor numérico de los millares</Capability>
+  <Capability Min="10" Max="19">Punto + Valor numérico de los millares</Capability>
+  <Capability Min="20" Max="27">Segmentos Individuales</Capability>
+ </Channel>
+ <Channel Name="Centenas">
+  <Group Byte="0">Effect</Group>
+  <Capability Min="0" Max="9">Valor numérico de las centenas</Capability>
+  <Capability Min="10" Max="19">Punto + Valor numérico de las centenas</Capability>
+  <Capability Min="20" Max="27">Segmentos Individuales</Capability>
+ </Channel>
+ <Channel Name="Decenas">
+  <Group Byte="0">Effect</Group>
+  <Capability Min="0" Max="9">Valor numérico de las decenas</Capability>
+  <Capability Min="10" Max="19">Punto + Valor numérico de las decenas</Capability>
+  <Capability Min="20" Max="27">Segmentos individuales</Capability>
+ </Channel>
+ <Channel Name="Unidades">
+  <Group Byte="0">Effect</Group>
+  <Capability Min="0" Max="9">Valor numérico de las unidades</Capability>
+  <Capability Min="10" Max="19">Punto + Valor numérico de las unidades</Capability>
+  <Capability Min="20" Max="27">Segmentos Individuales</Capability>
+ </Channel>
+ <Channel Name="Barra LED R" Preset="IntensityRed"/>
+ <Channel Name="Barra LED G" Preset="IntensityGreen"/>
+ <Channel Name="Barra LED B" Preset="IntensityBlue"/>
+ <Channel Name="Modo Barra LED">
+  <Group Byte="0">Effect</Group>
+  <Capability Min="0" Max="0">Color Fijo</Capability>
+ </Channel>
+ <Channel Name="LED Azul" Preset="IntensityBlue"/>
+ <Channel Name="LED Verde" Preset="IntensityGreen"/>
+ <Channel Name="LED Naranja (A)" Preset="IntensityAmber"/>
+ <Channel Name="LED Rojo" Preset="IntensityRed"/>
+ <Channel Name="LED Naranja (B)" Preset="IntensityAmber"/>
+ <Channel Name="LED Blanco Izquierdo" Preset="IntensityWhite"/>
+ <Channel Name="LED Blanco Derecho" Preset="IntensityWhite"/>
+ <Channel Name="Tira LED R" Preset="IntensityRed"/>
+ <Channel Name="Tira LED G" Preset="IntensityGreen"/>
+ <Channel Name="Tira LED B" Preset="IntensityBlue"/>
+ <Channel Name="Modo Tira LED">
+  <Group Byte="0">Effect</Group>
+  <Capability Min="0" Max="0">Color Fijo</Capability>
+ </Channel>
+ <Mode Name="v0.0.1">
+  <Channel Number="0" ActsOn="0">Master Dimmer</Channel>
+  <Channel Number="1" ActsOn="1">Millares</Channel>
+  <Channel Number="2" ActsOn="2">Centenas</Channel>
+  <Channel Number="3" ActsOn="3">Decenas</Channel>
+  <Channel Number="4" ActsOn="4">Unidades</Channel>
+  <Channel Number="5" ActsOn="5">Barra LED R</Channel>
+  <Channel Number="6" ActsOn="6">Barra LED G</Channel>
+  <Channel Number="7" ActsOn="7">Barra LED B</Channel>
+  <Channel Number="8" ActsOn="8">Modo Barra LED</Channel>
+  <Channel Number="9" ActsOn="9">LED Azul</Channel>
+  <Channel Number="10" ActsOn="10">LED Verde</Channel>
+  <Channel Number="11" ActsOn="11">LED Naranja (A)</Channel>
+  <Channel Number="12" ActsOn="12">LED Rojo</Channel>
+  <Channel Number="13" ActsOn="13">LED Naranja (B)</Channel>
+  <Channel Number="14" ActsOn="14">LED Blanco Izquierdo</Channel>
+  <Channel Number="15" ActsOn="15">LED Blanco Derecho</Channel>
+  <Channel Number="16" ActsOn="16">Tira LED R</Channel>
+  <Channel Number="17" ActsOn="17">Tira LED G</Channel>
+  <Channel Number="18" ActsOn="18">Tira LED B</Channel>
+  <Channel Number="19" ActsOn="19">Modo Tira LED</Channel>
+ </Mode>
+ <Physical>
+  <Bulb Type="LED" Lumens="0" ColourTemperature="0"/>
+  <Dimensions Weight="0" Width="0" Height="0" Depth="0"/>
+  <Lens Name="Other" DegreesMin="0" DegreesMax="0"/>
+  <Focus Type="Fixed" PanMax="0" TiltMax="0"/>
+  <Technical PowerConsumption="0" DmxConnector="3-pin"/>
+ </Physical>
+</FixtureDefinition>
