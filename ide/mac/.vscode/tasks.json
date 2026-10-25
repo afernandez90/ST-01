@@ -1,0 +1,293 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Arduino: compilar prueba DMX",
+      "type": "process",
+      "command": "/opt/homebrew/bin/arduino-cli",
+      "args": [
+        "compile",
+        "--fqbn",
+        "arduino:avr:mega:cpu=atmega2560",
+        "--build-path",
+        "${workspaceFolder}/build/recepcion_dmx",
+        "${workspaceFolder}/arduino/pruebas/recepcion_dmx"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Arduino: compilar sketch activo",
+      "type": "process",
+      "command": "/bin/sh",
+      "args": [
+        "${workspaceFolder}/.vscode/arduino-run.sh"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "ST01_ACTION": "compile",
+          "ST01_SKETCH_DIR": "${fileDirname}"
+        }
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build"
+    },
+    {
+      "label": "Arduino: listar placas",
+      "type": "process",
+      "command": "/opt/homebrew/bin/arduino-cli",
+      "args": [
+        "board",
+        "list"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ]
+    },
+    {
+      "label": "Arduino: cargar sketch activo y monitor USB",
+      "type": "process",
+      "command": "/bin/sh",
+      "args": [
+        "${workspaceFolder}/.vscode/arduino-run.sh"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "ST01_ACTION": "upload",
+          "ST01_SKETCH_DIR": "${fileDirname}"
+        }
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "Arduino: monitor serie",
+      "type": "process",
+      "command": "/bin/sh",
+      "args": [
+        "${workspaceFolder}/.vscode/arduino-run.sh"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "ST01_ACTION": "monitor"
+        }
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "RDM: todas las pruebas sin placa",
+      "type": "process",
+      "command": "/bin/sh",
+      "args": [
+        "${workspaceFolder}/.vscode/rdm-test.sh",
+        "todas"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "RDM: tramas y respondedor",
+      "type": "process",
+      "command": "/bin/sh",
+      "args": [
+        "${workspaceFolder}/.vscode/rdm-test.sh",
+        "rdm"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "RDM: UART, EEPROM, LCD y salidas",
+      "type": "process",
+      "command": "/bin/sh",
+      "args": [
+        "${workspaceFolder}/.vscode/rdm-test.sh",
+        "recepcion"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "RDM: receptor FTC",
+      "type": "process",
+      "command": "/bin/sh",
+      "args": [
+        "${workspaceFolder}/.vscode/rdm-test.sh",
+        "ftc"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "RDM: herramienta de carga FTC",
+      "type": "process",
+      "command": "/bin/sh",
+      "args": [
+        "${workspaceFolder}/.vscode/rdm-test.sh",
+        "firmware"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "RDM: traza UART",
+      "type": "process",
+      "command": "/bin/sh",
+      "args": [
+        "${workspaceFolder}/.vscode/rdm-test.sh",
+        "traza"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "RDM: placa - descubrimiento y consultas",
+      "type": "process",
+      "command": "/bin/sh",
+      "args": [
+        "${workspaceFolder}/.vscode/rdm-test.sh",
+        "fisica"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "RDM: placa - GET y SET con restauracion",
+      "type": "process",
+      "command": "/bin/sh",
+      "args": [
+        "${workspaceFolder}/.vscode/rdm-test.sh",
+        "fisica-completa"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "RDM: placa - completa y reinicio USB",
+      "type": "process",
+      "command": "/bin/sh",
+      "args": [
+        "${workspaceFolder}/.vscode/rdm-test.sh",
+        "fisica-persistencia"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    }
+  ]
+}

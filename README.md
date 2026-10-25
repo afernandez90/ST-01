@@ -48,6 +48,7 @@ Si la dirección base es **B**, los canales utilizados van de **B** a **B + 18**
 | `qlcplus/SaltoTemporal.qxw` | Espacio de trabajo y Consola Virtual; configurar la salida del universo según el equipo disponible. |
 | `qlcplus/models/` | Maqueta 3D provisional, materiales, vista previa y generador. |
 | `docs/` | Documentación de usuario, diseño, validación y continuidad. |
+| `ide/` | Configuraciones de desarrollo organizadas por plataforma, con instrucciones de uso en cada carpeta. |
 
 Para preparar el entorno y compilar, consulte las [pruebas de hardware](arduino/pruebas/LEEME.md) y el [manual del cargador](arduino/arranque_rdm/LEEME.md). La suite sin placa se ejecuta desde la raíz con `sh pruebas/rdm.sh`; requiere un shell compatible, compilador C++ con sanitizadores y Python 3.
 

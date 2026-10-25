@@ -15,9 +15,10 @@ build/
 *.autosave.qxw
 QLC+.log
 
-# Configuración local de VS Code
-.vscode/
+# Configuración activa local; las plantillas de ide/ sí se versionan
+/.vscode/
 *.code-workspace
+!/ide/mac/*.code-workspace
 
 # Caché local de las herramientas Python
 __pycache__/

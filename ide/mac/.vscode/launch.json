@@ -1,0 +1,190 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Arduino: ejecutar DMX (cargar y monitor USB)",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "/bin/sh \"${workspaceFolder}/.vscode/arduino-run.sh\"",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "ST01_ACTION": "upload",
+        "ST01_SKETCH": "recepcion_dmx"
+      },
+      "presentation": {
+        "group": "Arduino",
+        "order": 1
+      }
+    },
+    {
+      "name": "Arduino: compilar",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "/bin/sh \"${workspaceFolder}/.vscode/arduino-run.sh\"",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "ST01_ACTION": "compile",
+        "ST01_SKETCH": "${input:pruebaArduino}"
+      },
+      "presentation": {
+        "group": "Arduino",
+        "order": 3
+      }
+    },
+    {
+      "name": "Arduino: cargar prueba y monitor USB",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "/bin/sh \"${workspaceFolder}/.vscode/arduino-run.sh\"",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "ST01_ACTION": "upload",
+        "ST01_SKETCH": "${input:pruebaArduino}"
+      },
+      "presentation": {
+        "group": "Arduino",
+        "order": 4
+      }
+    },
+    {
+      "name": "Arduino: listar placas",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "/bin/sh \"${workspaceFolder}/.vscode/arduino-run.sh\"",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "ST01_ACTION": "list"
+      },
+      "presentation": {
+        "group": "Arduino",
+        "order": 5
+      }
+    },
+    {
+      "name": "Arduino: escuchar USB (sin compilar ni cargar)",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "/bin/sh \"${workspaceFolder}/.vscode/arduino-run.sh\"",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "ST01_ACTION": "monitor"
+      },
+      "presentation": {
+        "group": "Arduino",
+        "order": 2
+      }
+    },
+    {
+      "name": "RDM: todas las pruebas sin placa",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "/bin/sh \"${workspaceFolder}/.vscode/rdm-test.sh\" todas",
+      "cwd": "${workspaceFolder}",
+      "presentation": {
+        "group": "RDM",
+        "order": 1
+      }
+    },
+    {
+      "name": "RDM: tramas y respondedor",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "/bin/sh \"${workspaceFolder}/.vscode/rdm-test.sh\" rdm",
+      "cwd": "${workspaceFolder}",
+      "presentation": {
+        "group": "RDM",
+        "order": 2
+      }
+    },
+    {
+      "name": "RDM: UART, EEPROM, LCD y salidas",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "/bin/sh \"${workspaceFolder}/.vscode/rdm-test.sh\" recepcion",
+      "cwd": "${workspaceFolder}",
+      "presentation": {
+        "group": "RDM",
+        "order": 3
+      }
+    },
+    {
+      "name": "RDM: receptor FTC",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "/bin/sh \"${workspaceFolder}/.vscode/rdm-test.sh\" ftc",
+      "cwd": "${workspaceFolder}",
+      "presentation": {
+        "group": "RDM",
+        "order": 4
+      }
+    },
+    {
+      "name": "RDM: herramienta de carga FTC",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "/bin/sh \"${workspaceFolder}/.vscode/rdm-test.sh\" firmware",
+      "cwd": "${workspaceFolder}",
+      "presentation": {
+        "group": "RDM",
+        "order": 5
+      }
+    },
+    {
+      "name": "RDM: traza UART",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "/bin/sh \"${workspaceFolder}/.vscode/rdm-test.sh\" traza",
+      "cwd": "${workspaceFolder}",
+      "presentation": {
+        "group": "RDM",
+        "order": 6
+      }
+    },
+    {
+      "name": "RDM: placa - descubrimiento y consultas",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "/bin/sh \"${workspaceFolder}/.vscode/rdm-test.sh\" fisica",
+      "cwd": "${workspaceFolder}",
+      "presentation": {
+        "group": "RDM",
+        "order": 7
+      }
+    },
+    {
+      "name": "RDM: placa - GET y SET con restauracion",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "/bin/sh \"${workspaceFolder}/.vscode/rdm-test.sh\" fisica-completa",
+      "cwd": "${workspaceFolder}",
+      "presentation": {
+        "group": "RDM",
+        "order": 8
+      }
+    },
+    {
+      "name": "RDM: placa - completa y reinicio USB",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "/bin/sh \"${workspaceFolder}/.vscode/rdm-test.sh\" fisica-persistencia",
+      "cwd": "${workspaceFolder}",
+      "presentation": {
+        "group": "RDM",
+        "order": 9
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "pruebaArduino",
+      "type": "pickString",
+      "description": "Prueba Arduino que quieres compilar o cargar",
+      "options": [
+        "recepcion_dmx",
+        "escaner_i2c",
+        "parpadeo"
+      ],
+      "default": "recepcion_dmx"
+    }
+  ]
+}

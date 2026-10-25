@@ -66,7 +66,7 @@ La configuración del entorno de desarrollo está completada. Se utilizan Arduin
 
 El proyecto de QLC+ 5.3.0 está en `qlcplus/SaltoTemporal.qxw` y la definición del fixture en `qlcplus/fixtures/ST-01.qxf`. Configure la salida del universo según la interfaz o red disponible.
 
-Los archivos locales de VS Code están ignorados. Las tareas de carga y monitor deben detectar el puerto del Mega mediante Arduino CLI; no fijar nombres de puerto de un equipo concreto. Si no hay ningún Mega o hay varios, detenerse con un aviso.
+La configuración activa `.vscode/` de la raíz está ignorada; las plantillas compartidas se versionan bajo `ide/`, organizadas por plataforma y con sus instrucciones de uso. Las tareas de carga y monitor deben detectar el puerto del Mega mediante Arduino CLI; no fijar nombres de puerto de un equipo concreto. Si no hay ningún Mega o hay varios, detenerse con un aviso.
 
 Conservar los metadatos Creator originales hasta que QLC+ vuelva a guardar los archivos; no sustituirlos manualmente por una versión que no los haya guardado.
 

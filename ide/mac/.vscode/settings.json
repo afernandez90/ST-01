@@ -1,0 +1,11 @@
+{
+  "files.associations": {
+    "*.ino": "cpp",
+    "*.qxf": "xml",
+    "*.qxw": "xml"
+  },
+  "C_Cpp.default.configurationProvider": "",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "debug.hideLauncherWhileDebugging": false
+}
