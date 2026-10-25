@@ -5,7 +5,7 @@ ST-01 es un dispositivo DMX512 personalizado, basado en un Arduino Mega 2560. Co
 ## Contenido del repositorio
 
 ```text
-arduino/controlador/      Firmware para Arduino (se añadirá durante el prototipado)
+arduino/controlador/     Firmware para Arduino (se añadirá durante el prototipado)
 docs/                    Personalidad DMX y documentación de usuario
 qlcplus/                 Definición de fixture y espacio de trabajo de QLC+
 ```
