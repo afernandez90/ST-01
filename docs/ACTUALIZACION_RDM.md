@@ -2,7 +2,7 @@
 
 ## Decisión de interoperabilidad
 
-Se utiliza **FTC 1.00, ANSI E1.37-4-2026**, con PIDs publicados **0x1200–0x1203**. Es un protocolo entre el controlador y ST-01. El cargador se instala en el Mega2560 y no depende de que el adaptador USB sea ENTTEC, DMXking u otra marca; el controlador/interfaz debe poder transportar RDM y ejecutar esta versión de FTC.
+Se utiliza **FTC 1.00, ANSI E1.37-4-2026**, con PIDs publicados **0x1200–0x1203**. Es un protocolo entre el controlador y ST-01. El cargador se instala en el Mega2560 y no depende de la marca ni del modelo del controlador o interfaz; el controlador/interfaz debe poder transportar RDM y ejecutar esta versión de FTC.
 
 No existe una justificación para instalar un cargador distinto en el Arduino por cada fabricante de consola. Sí se necesitan controladores de transporte diferentes en la aplicación del ordenador para interfaces USB con API distintas.
 
@@ -16,7 +16,7 @@ Comprobación documental del 25 de octubre de 2026:
 | ETC | UpdaterAtor actualiza sus equipos mediante RDM y archivos del fabricante | No implica que acepte archivos de ST-01 ni FTC actual |
 | MA grandMA3 | Gestión RDM de propiedades documentada | No se ha confirmado un actualizador FTC genérico compatible con ST-01 |
 | QLC+ 5.3.0 | Transporte RDM en su complemento, sin un flujo FTC de interfaz verificado | Usar un controlador FTC compatible o la herramienta del proyecto |
-| Herramienta ST-01 | Controlador FTC 1.00 con transporte serie ENTTEC Pro RDM | Transporte RDM básico probado físicamente; transferencia FTC completa probada solo en simulación |
+| Herramienta ST-01 | Controlador FTC 1.00 con un transporte serie específico de interfaz | Transporte RDM básico probado físicamente; transferencia FTC completa probada solo en simulación |
 
 No se añaden alias de los PIDs antiguos sin verificar sus campos y revisión del protocolo. El nuevo cargador no modifica ni actualiza el firmware de ningún equipo externo.
 
@@ -40,7 +40,7 @@ La tabla de FTC_INITIATE rotula PDL 0x22, pero la suma de los campos publicados 
 
 ```sh
 arduino-cli compile --fqbn arduino:avr:mega:cpu=atmega2560 --build-path build/recepcion_dmx arduino/pruebas/recepcion_dmx
-/usr/bin/python3 herramientas/firmware_rdm.py empaquetar build/recepcion_dmx/recepcion_dmx.ino.hex build/recepcion_dmx/ST-01.st01
+python3 herramientas/firmware_rdm.py empaquetar build/recepcion_dmx/recepcion_dmx.ino.hex build/recepcion_dmx/ST-01.st01
 sh arduino/arranque_rdm/compilar.sh
 sh pruebas/rdm.sh
 ```
@@ -49,13 +49,13 @@ El paquete ST01 contiene una cabecera propia de 16 bytes (modelo, objetivo Mega2
 
 ## Carga por RDM, después de instalar y validar el cargador
 
-Cerrar QLC+, EMU y otras aplicaciones que usen la interfaz. Conectar TX1 (18) y RX1 (19) al adaptador bidireccional correctamente. El ENTTEC debe tener firmware RDM, ya confirmado como 2.4 en este equipo.
+Cerrar las aplicaciones que usen la interfaz. Conectar TX1 (18) y RX1 (19) al adaptador bidireccional correctamente. El controlador y el enlace deben admitir RDM y FTC 1.00.
 
 ```sh
-/usr/bin/python3 herramientas/firmware_rdm.py cargar build/recepcion_dmx/ST-01.st01 --uid 7ff0:66601337 --puerto /dev/cu.usbserial-EN530811
+python3 herramientas/firmware_rdm.py cargar build/recepcion_dmx/ST-01.st01 --uid 7ff0:66601337 --puerto PUERTO_RDM
 ```
 
-La herramienta usa únicamente Python estándar. No se ha ejecutado esta carga sobre la placa real. El puerto se autodetecta si existe una única interfaz `/dev/cu.usbserial-*`; especificarlo si hay varias. La API de transporte incluida es la de ENTTEC Pro, no una API USB universal.
+La herramienta usa únicamente Python estándar. No se ha ejecutado esta carga sobre la placa real. Sustituya `PUERTO_RDM` por el puerto de su interfaz. El transporte serie incluido utiliza una API de interfaz concreta, con paquetes delimitados por `0x7E`/`0xE7` y etiquetas de comando; no es una API USB universal. Compruebe su compatibilidad con la interfaz y el acceso serie del equipo. Para otros emisores, utilice un controlador FTC 1.00 compatible o implemente su transporte en la herramienta. Esta limitación de la utilidad de ordenador no condiciona el firmware del Mega.
 
 La secuencia negocia FTC, permite el cambio al cargador, transfiere bloques de 128 bytes con CRC16, respeta las demoras declaradas, comprueba el desplazamiento confirmado, verifica el CRC del archivo antes de FTC_COMMIT y consulta la versión tras reiniciar. Limita los reintentos de paquete. Una interrupción conserva el modo de recuperación; para reiniciar la transferencia se vuelve a ejecutar la carga completa.
 

@@ -60,9 +60,9 @@ qlcplus/fixtures/ST-01.qxf
 qlcplus/SaltoTemporal.qxw
 ```
 
-Para utilizarlo en Linux, copie `ST-01.qxf` en `~/.qlcplus/fixtures/`, reinicie QLC+ y abra `SaltoTemporal.qxw`.
+Importe `ST-01.qxf` en la biblioteca de fixtures de su instalación de QLC+, reinicie QLC+ y abra `SaltoTemporal.qxw`.
 
-El proyecto suministrado usa la salida **DMX USB** con una interfaz ENTTEC DMX USB Pro y sitúa ST-01 en el Universo 1, dirección 1. Cambie la dirección de la instancia desde el gestor de equipos si el diseño DMX requiere otra dirección.
+El proyecto sitúa ST-01 en el Universo 1, dirección 1. Configure la salida de ese universo para la interfaz o red DMX que utilice. El firmware recibe DMX512 sin depender de la marca o modelo del emisor. Cambie la dirección de la instancia desde el gestor de equipos si el diseño DMX requiere otra dirección.
 
 La Consola Virtual tiene dos páginas:
 

@@ -42,7 +42,7 @@ Cada RX y TX cuenta como un evento. La numeración también avanza para los even
 
 ## Comprobaciones realizadas
 
-25 de octubre de 2026, Mega2560 y ENTTEC Pro 2.4:
+25 de octubre de 2026, Mega2560 y controlador de pruebas DMX/RDM:
 
 - Prueba RDM completa con consultas espaciadas: captura de RX/TX, UIDs, descubrimiento codificado, silencio, ACK y NACK de dirección fuera de rango; sin eventos de traza omitidos.
 - Ráfaga de 24 lecturas de dirección: las 24 recibieron respuesta correcta; se observaron los avisos explícitos de saturación de la traza.

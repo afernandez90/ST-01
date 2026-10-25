@@ -1,6 +1,6 @@
 # Prueba física de RDM
 
-Fecha: 25 de octubre de 2026. Mega2560, adaptador DollaTek B07DJ4TGY3, RX1 en 19 y TX1 en 18; ENTTEC DMX USB Pro con firmware 2.4. Sketch cargado por USB con el cargador original.
+Fecha: 25 de octubre de 2026. Mega2560, adaptador DollaTek B07DJ4TGY3, RX1 en 19 y TX1 en 18; controlador de pruebas con interfaz DMX/RDM. Sketch cargado por USB con el cargador original.
 
 Identidad final comprobada: **7FF0:66601337**. El campo de dispositivo se interpreta en hexadecimal, según pidió el usuario. Firmware y personalidad reportados: **0.0.5**; modo de QLC+ en repositorio, espacio de trabajo e instalación local: **v0.0.5**. Ocupación: 19 canales.
 
@@ -23,7 +23,7 @@ La comprobación de IDENTIFY valida el intercambio RDM y el estado que acepta el
 
 ## Corrección del controlador de pruebas
 
-Los primeros intentos descubrían el dispositivo, pero no recibían respuestas normales. La herramienta enviaba peticiones con un UID de controlador genérico; el firmware ENTTEC filtra las respuestas por el UID de su propio widget. Ahora se obtiene el número de serie mediante la etiqueta 10 de su API, se invierten sus cuatro bytes y se antepone el fabricante 454E. En este ENTTEC el resultado leído es `454E:02350811`; el número de serie se obtiene en cada conexión, no está fijado para todos los equipos.
+Los primeros intentos descubrían el dispositivo, pero no recibían respuestas normales. La interfaz de pruebas filtraba las respuestas según su UID propio y la herramienta utilizaba un UID genérico. Se corrigió el transporte de la herramienta para consultar la identidad de la interfaz en cada conexión. Este requisito pertenece al protocolo serie de esa interfaz; no al firmware de ST-01.
 
 El Arduino nunca utiliza ese UID como destino fijo: copia el UID fuente de cada petición al UID destino de su respuesta y utiliza su propia identidad como fuente. La identidad ST-01 del respondedor y del cargador se define en `identidad.h`.
 
@@ -33,12 +33,14 @@ Los diagnósticos USB añadidos muestran bytes recibidos, breaks, inicios/tramas
 
 ## Repetir la prueba
 
-Cerrar QLC+ y EMU para liberar la interfaz. Conectar el Mega por USB y el enlace RS-485 bidireccional. Ejecutar:
+Cerrar las aplicaciones que utilicen la interfaz para liberar el puerto. Conectar el Mega por USB y el enlace RS-485 bidireccional. Ejecutar:
 
 ```sh
-/usr/bin/python3 herramientas/probar_rdm.py --puerto /dev/cu.usbserial-EN530811 --completo --mega /dev/cu.usbmodem101
+python3 herramientas/probar_rdm.py --puerto PUERTO_RDM --completo --mega PUERTO_MEGA
 ```
+
+Sustituya `PUERTO_RDM` y `PUERTO_MEGA` por los puertos detectados en su equipo. La utilidad requiere una interfaz compatible con el protocolo serie que implementa su transporte; para otros controladores, use sus herramientas RDM.
 
 `--completo` habilita los cambios temporales y su restauración; `--mega` permite verificar persistencia tras un reinicio USB. El guion usa la identidad ST-01 configurada por defecto; puede cambiarse con `--uid`. Sin `--completo` solo se leen parámetros y se comprueba descubrimiento/silencio.
 
-Esta prueba se realizó mediante la herramienta del proyecto y el ENTTEC, no mediante una interfaz de gestión RDM de QLC+.
+Esta prueba se realizó mediante la herramienta del proyecto y una interfaz DMX/RDM, no mediante una interfaz de gestión RDM de QLC+.

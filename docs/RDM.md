@@ -2,7 +2,7 @@
 
 El sketch `arduino/pruebas/recepcion_dmx/recepcion_dmx.ino` incorpora un respondedor RDM experimental. Conserva la personalidad `Control v0.0.6` de 19 canales, la dirección base 1–494, los botones, el LCD y la salida de prueba del piloto naranja B en el LED L.
 
-Estado: compilado y cargado en Mega2560; [RDM básico validado físicamente](PRUEBAS_RDM.md) con ENTTEC 2.4 y el DollaTek. También se conservan las pruebas de tramas y UART simuladas. No constituye una implementación certificada de E1.20. El nuevo cargador FTC sigue pendiente de instalación por ISP.
+Estado: compilado y cargado en Mega2560; [RDM básico validado físicamente](PRUEBAS_RDM.md) con un controlador RDM y el adaptador RS-485 del prototipo. También se conservan las pruebas de tramas y UART simuladas. No constituye una implementación certificada de E1.20. El nuevo cargador FTC sigue pendiente de instalación por ISP.
 
 ## Conexión de retorno
 
@@ -57,13 +57,13 @@ El guion usa el compilador C++ del sistema y sanitizadores de memoria/comportami
 Para ampliar o repetir la prueba física (la primera ronda está en [resultados](PRUEBAS_RDM.md)):
 
 1. Confirmar el conexionado de transmisión y cargar el sketch con la tarea habitual de VS Code; el monitor sigue a 115200 baudios.
-2. Usar un controlador RDM y ENTTEC con firmware DMX/RDM 2.4. Se ha confirmado por lectura directa el firmware 2.4 y se ha restaurado su frecuencia de salida de 1 a 40 paquetes/s. QLC+ 5.3.0 no ofrece un flujo de gestión RDM completo verificado en su interfaz actual.
+2. Usar un controlador y un enlace bidireccional compatibles con RDM. El firmware ST-01 no requiere una marca ni una interfaz USB concreta. QLC+ 5.3.0 no ofrece un flujo de gestión RDM completo verificado en su interfaz actual.
 3. Descubrir el UID y leer información, dirección y personalidad. Comprobar silencio y nuevo descubrimiento tras desilenciar.
 4. Cambiar la dirección, comprobar LCD/USB y el canal LNB en la nueva dirección; reiniciar y confirmar persistencia. Rechazar 0 y 495. Restaurar la dirección de trabajo.
 5. Activar/desactivar identificar; probar etiqueta y persistencia. Mantener DMX normal, apagar su envío y comprobar el apagado tras un segundo.
 6. Medir con osciloscopio/analizador la respuesta y liberación del bus, incluido descubrimiento. Si falla la dirección automática, emplear el transceptor manual descrito arriba.
 
-Referencias: [E1.20 publicado por ESTA](https://tsp.esta.org/tsp/documents/docs/E1-20RDM_2006.pdf), [identificadores de fabricante y rango experimental](https://tsp.esta.org/tsp/working_groups/CP/mfctrIDs.php), [API ENTTEC](https://cdn.enttec.com/pdf/assets/70304/70304_DMX_USB_PRO_API.pdf).
+Referencias: [E1.20 publicado por ESTA](https://tsp.esta.org/tsp/documents/docs/E1-20RDM_2006.pdf), [identificadores de fabricante y rango experimental](https://tsp.esta.org/tsp/working_groups/CP/mfctrIDs.php).
 
 ## Traza detallada por USB
 

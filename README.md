@@ -1,27 +1,10 @@
 # Controlador DMX ST-01
 
-ST-01 es un dispositivo DMX512 personalizado, basado en un Arduino Mega 2560. Controla cuatro visualizadores numéricos grandes, pilotos de panel y dos tiras LED RGB direccionables.
-
-## Contenido del repositorio
-
-```text
-arduino/controlador/     Firmware para Arduino (se añadirá durante el prototipado)
-docs/                    Personalidad DMX y documentación de usuario
-qlcplus/                 Definición de fixture y espacio de trabajo de QLC+
-```
-
-## Archivos de QLC+
-
-- `qlcplus/fixtures/ST-01.qxf` es la definición del fixture ST-01.
-- `qlcplus/SaltoTemporal.qxw` es el espacio de trabajo de QLC+, incluida la Consola Virtual.
-
-Para usar la definición del fixture en Linux, copie `ST-01.qxf` en `~/.qlcplus/fixtures/`, reinicie QLC+ y añada **Salto Temporal / ST-01** a un universo.
-
-El espacio de trabajo incluido está configurado para el Universo 1 mediante un ENTTEC DMX USB Pro. ST-01 ocupa 19 canales DMX consecutivos. La instancia suministrada empieza en la dirección DMX 1.
+ST-01 es un controlador DMX512 personalizado basado en Arduino Mega 2560, con gestión remota mediante RDM. Recibe las señales independientemente de la marca o modelo del emisor DMX.
 
 ## Personalidad DMX: Control v0.0.6
 
-La definición `.qxf` utiliza índices de canal internos que empiezan en cero. La siguiente tabla usa los desplazamientos DMX convencionales, que empiezan en uno.
+ST-01 ocupa 19 canales consecutivos. La tabla usa desplazamientos que empiezan en uno; los índices internos del fixture de QLC+ empiezan en cero.
 
 | Desplazamiento | Función |
 |---:|---|
@@ -41,29 +24,33 @@ La definición `.qxf` utiliza índices de canal internos que empiezan en cero. L
 | 16–18 | Tira LED: rojo, verde y azul |
 | 19 | Modo de Tira LED |
 
-Si la dirección base del fixture es **B**, el desplazamiento 1 corresponde al canal DMX **B** y el desplazamiento 19 corresponde al canal **B + 18**.
+Si la dirección base es **B**, los canales utilizados van de **B** a **B + 18**. La dirección base válida es 1–494. El dispositivo no tiene un canal maestro; el regulador del controlador debe actuar sobre las intensidades RGB y de pilotos, sin escalar los selectores de dígitos ni de modo.
 
-Los canales de visualizador usan estos valores:
+## Documentación de usuario
 
-| Valor | Resultado |
-|---:|---|
-| 0 | Apaga todos los segmentos, incluido el punto decimal |
-| 1–9 | Muestra el dígito indicado (1–9) |
-| 10 | Muestra el dígito 0 |
-| 11–20 | Muestra el dígito `valor - 11` con punto decimal (0–9) |
-| 21–27 | Muestra el segmento individual A–G |
-| 28–34 | Muestra el segmento individual A–G con punto decimal |
+- [Manual de usuario](docs/MANUAL_DE_USUARIO.md): conexión, dirección DMX, controles locales y uso con QLC+.
+- [Mapa de canales](docs/MAPA_DE_CANALES_DMX.md): valores y codificación de cada función.
+- [Efectos LED](docs/EFECTOS_LED.md): clases, rangos de modo, velocidades y progreso manual.
+- [Gestión RDM](docs/RDM.md): identificación, dirección, etiqueta y parámetros remotos.
+- [Actualización por RDM](docs/ACTUALIZACION_RDM.md): requisitos, procedimiento y límites de la actualización de firmware.
 
-El modo `0` conserva el color RGB fijo. Los canales de modo incluyen 24 animaciones con velocidades seleccionables; la Barra añade progreso manual de un píxel por valor. Consulte el [mapa de efectos](docs/EFECTOS_LED.md). Implementación probada en simulación; validación física pendiente.
+## Guía del repositorio para desarrollo
 
-El regulador maestro pertenece a QLC+ y no ocupa un canal del dispositivo. Debe actuar solo sobre las intensidades de RGB y pilotos; los dígitos se apagan con su valor 0.
+| Ruta | Contenido |
+|---|---|
+| `arduino/pruebas/recepcion_dmx/` | Firmware activo del prototipo: recepción DMX, RDM, efectos, salidas y controles locales. |
+| `arduino/pruebas/` | Pruebas de hardware, incluida recepción DMX, parpadeo y escáner I2C. |
+| `arduino/arranque_rdm/` | Cargador FTC para Mega2560, compilación e instrucciones de instalación. |
+| `arduino/controlador/` | Carpeta reservada para el firmware final tras validar el montaje. |
+| `herramientas/` | Utilidades de prueba RDM, empaquetado, transferencia y verificación del cargador. |
+| `pruebas/` | Pruebas automatizadas y simulación de Arduino para ejecutarlas sin placa. |
+| `qlcplus/fixtures/ST-01.qxf` | Definición del fixture y sus capacidades DMX. |
+| `qlcplus/SaltoTemporal.qxw` | Espacio de trabajo y Consola Virtual; configurar la salida del universo según el equipo disponible. |
+| `qlcplus/models/` | Maqueta 3D provisional, materiales, vista previa y generador. |
+| `docs/` | Documentación de usuario, diseño, validación y continuidad. |
 
-## Estado de desarrollo
+Para preparar el entorno y compilar, consulte las [pruebas de hardware](arduino/pruebas/LEEME.md) y el [manual del cargador](arduino/arranque_rdm/LEEME.md). La suite sin placa se ejecuta desde la raíz con `sh pruebas/rdm.sh`; requiere un shell compatible, compilador C++ con sanitizadores y Python 3.
 
-La personalidad de QLC+ y la Consola Virtual están definidas. La recepción DMX básica ya se ha probado. Las nuevas salidas físicas, el retorno RDM, el recuento de píxeles y los circuitos de potencia siguen pendientes de montaje y validación.
+El [cableado propuesto](docs/CABLEADO_PROPUESTO.md), las [pruebas físicas RDM](docs/PRUEBAS_RDM.md), la [depuración RDM](docs/DEPURACION_RDM.md) y la [continuidad del proyecto](docs/CONTINUIDAD.md) recogen las decisiones y tareas pendientes. DMX y RDM básico se han probado físicamente; el montaje completo de salidas y la instalación inicial del cargador FTC siguen pendientes de validación.
 
-La prueba `arduino/pruebas/recepcion_dmx` incluye un [respondedor RDM](docs/RDM.md), identificación conjunta de todas las salidas y [actualización FTC](docs/ACTUALIZACION_RDM.md) con cargador propio para Mega. Compilación y simulación verificadas, y [RDM básico probado físicamente](docs/PRUEBAS_RDM.md). El montaje completo de salidas y la instalación inicial del cargador por ISP siguen pendientes. Se ha definido el [cableado del prototipo](docs/CABLEADO_PROPUESTO.md).
-
-Consulte la [guía de usuario](docs/MANUAL_DE_USUARIO.md) y el [mapa de canales para firmware](docs/MAPA_DE_CANALES_DMX.md).
-
-Las próximas pruebas y el cambio futuro a MacBook están anotados en [continuidad del proyecto](docs/CONTINUIDAD.md).
+Al cambiar la personalidad, mantener alineados firmware, fixture, espacio de trabajo y documentación. La versión del firmware se define en `arduino/pruebas/recepcion_dmx/version.h`.

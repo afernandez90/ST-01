@@ -1,6 +1,6 @@
 # Cargador RDM del Arduino Mega 2560
 
-Cargador experimental de 8 KiB para ATmega2560 a 16 MHz. La misma imagen sirve independientemente de la marca del controlador RDM: el protocolo reside en el Arduino. No actualiza el firmware de ENTTEC, MA, ChamSys ni otros equipos externos.
+Cargador experimental de 8 KiB para ATmega2560 a 16 MHz. La misma imagen sirve independientemente de la marca del controlador RDM: el protocolo reside en el Arduino. No actualiza el firmware de consolas, interfaces ni otros equipos externos.
 
 **Estado: compilado y probado mediante simulación del receptor FTC; no instalado ni probado físicamente. El usuario no dispone actualmente de un programador ISP.** El manejo USB STK500v2 está implementado, pero su interoperabilidad con avrdude y el reinicio real siguen pendientes de prueba en placa.
 
