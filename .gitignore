@@ -1,19 +1,24 @@
-# Arduino build output
+# Archivos generados al compilar Arduino
 *.elf
 *.hex
 *.eep
 *.bin
 build/
 
-# Editor and operating-system files
+# Archivos del editor y del sistema operativo
 .DS_Store
 *~
 *.swp
 
-# Local QLC+ backups and logs
+# Copias de seguridad, autoguardados y registros locales de QLC+
 *.qxw~
+*.autosave.qxw
 QLC+.log
 
 # Configuración local de VS Code
 .vscode/
 *.code-workspace
+
+# Caché local de las herramientas Python
+__pycache__/
+*.pyc
