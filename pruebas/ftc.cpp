@@ -2,7 +2,7 @@
 #include <cassert>
 #include <vector>
 #include <iostream>
-#include "../arduino/pruebas/recepcion_dmx/ftc.h"
+#include "../arduino/controlador/ftc.h"
 struct Memoria {
   std::vector<uint8_t> flash=std::vector<uint8_t>(Ftc::LIMITE_FLASH,0xff);
   bool valida=true;unsigned escrituras=0;

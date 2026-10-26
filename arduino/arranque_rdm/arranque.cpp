@@ -7,8 +7,8 @@
 #include <avr/interrupt.h>
 #include <avr/wdt.h>
 #include <util/delay.h>
-#include "../pruebas/recepcion_dmx/rdm.h"
-#include "../pruebas/recepcion_dmx/ftc.h"
+#include "../controlador/rdm.h"
+#include "../controlador/ftc.h"
 
 void desactivarWatchdog() __attribute__((naked,section(".init3")));
 void desactivarWatchdog(){MCUSR=0;wdt_disable();}

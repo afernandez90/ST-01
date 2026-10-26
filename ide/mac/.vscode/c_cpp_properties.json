@@ -7,12 +7,18 @@
         "-mmcu=atmega2560"
       ],
       "includePath": [
+        "${workspaceFolder}/arduino/controlador",
         "${workspaceFolder}/arduino/**",
         "${userHome}/Library/Arduino15/packages/arduino/hardware/avr/1.8.8/cores/arduino",
         "${userHome}/Library/Arduino15/packages/arduino/hardware/avr/1.8.8/variants/mega",
-        "${userHome}/Library/Arduino15/packages/arduino/hardware/avr/1.8.8/libraries/**",
-        "${userHome}/Documents/Arduino/libraries/hd44780/**",
-        "${userHome}/Documents/Arduino/libraries/FastLED/src"
+        "${userHome}/Library/Arduino15/packages/arduino/hardware/avr/1.8.8/libraries/Wire/src",
+        "${userHome}/Library/Arduino15/packages/arduino/hardware/avr/1.8.8/libraries/EEPROM/src",
+        "${userHome}/Library/Arduino15/packages/arduino/hardware/avr/1.8.8/libraries/SPI/src",
+        "${userHome}/Documents/Arduino/libraries/hd44780",
+        "${userHome}/Documents/Arduino/libraries/FastLED/src",
+        "${userHome}/Library/Arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/avr/include",
+        "${userHome}/Library/Arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/lib/gcc/avr/7.3.0/include",
+        "${userHome}/Library/Arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/lib/gcc/avr/7.3.0/include-fixed"
       ],
       "forcedInclude": [
         "${userHome}/Library/Arduino15/packages/arduino/hardware/avr/1.8.8/cores/arduino/Arduino.h"
@@ -21,7 +27,9 @@
         "F_CPU=16000000L",
         "ARDUINO=10819",
         "ARDUINO_AVR_MEGA2560",
-        "ARDUINO_ARCH_AVR"
+        "ARDUINO_ARCH_AVR",
+        "__AVR__=1",
+        "__AVR_ATmega2560__=1"
       ],
       "cStandard": "gnu11",
       "cppStandard": "gnu++11",

@@ -1,6 +1,6 @@
 # Registro USB de tráfico RDM
 
-El sketch `recepcion_dmx` registra por USB a **115200 baudios** cada trama RDM recibida y cada respuesta cuya transmisión UART termina. La traza está activada por defecto. Se mantienen los mensajes de configuración y el informe periódico LNB/paquetes por segundo.
+El sketch `controlador` registra por USB a **115200 baudios** cada trama RDM recibida y cada respuesta cuya transmisión UART termina. La traza está activada por defecto. Se mantienen los mensajes de configuración y el informe periódico LNB/paquetes por segundo.
 
 ## Contenido de cada línea
 
@@ -53,4 +53,4 @@ Cada RX y TX cuenta como un evento. La numeración también avanza para los even
 
 Este registro textual pertenece al **sketch de aplicación**. El cargador FTC de 8 KiB conserva su interfaz USB binaria STK500v2 y su implementación actual no produce esta traza textual. Las solicitudes FTC que lleguen mientras se ejecuta la aplicación sí aparecen en el registro de la aplicación; antes de reiniciar se detiene la recepción y se vacía la traza pendiente de la última respuesta; después de cambiar al cargador, la observación corresponde al controlador de actualización.
 
-El código del registro está en `arduino/pruebas/recepcion_dmx/traza_rdm.h`. Las pruebas se ejecutan con `sh pruebas/rdm.sh`. El monitor habitual de VS Code continúa usando 115200 baudios.
+El código del registro está en `arduino/controlador/traza_rdm.h`. Las pruebas se ejecutan con `sh pruebas/rdm.sh`. El monitor habitual de VS Code continúa usando 115200 baudios.

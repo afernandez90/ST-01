@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Arduino: compilar prueba DMX",
+      "label": "Arduino: compilar controlador",
       "type": "process",
       "command": "/opt/homebrew/bin/arduino-cli",
       "args": [
@@ -10,8 +10,8 @@
         "--fqbn",
         "arduino:avr:mega:cpu=atmega2560",
         "--build-path",
-        "${workspaceFolder}/build/recepcion_dmx",
-        "${workspaceFolder}/arduino/pruebas/recepcion_dmx"
+        "${workspaceFolder}/build/controlador",
+        "${workspaceFolder}/arduino/controlador"
       ],
       "options": {
         "cwd": "${workspaceFolder}"

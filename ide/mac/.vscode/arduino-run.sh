@@ -1,11 +1,11 @@
 #!/bin/sh
-# Lanzador local de las pruebas del Mega desde VS Code.
+# Lanzador del controlador y las pruebas del Mega desde VS Code.
 set -eu
 raiz=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 cli=/opt/homebrew/bin/arduino-cli
 placa=arduino:avr:mega:cpu=atmega2560
 accion=${ST01_ACTION:-compile}
-prueba=${ST01_SKETCH:-recepcion_dmx}
+prueba=${ST01_SKETCH:-controlador}
 puerto=${ST01_PORT:-}
 
 case "$accion" in
@@ -18,10 +18,14 @@ if [ -n "${ST01_SKETCH_DIR:-}" ]; then
   prueba=$(basename -- "$carpeta")
 else
   case "$prueba" in
-    recepcion_dmx|escaner_i2c|parpadeo) ;;
+    controlador|escaner_i2c|parpadeo) ;;
     *) echo "Prueba desconocida: $prueba" >&2; exit 1 ;;
   esac
-  carpeta="$raiz/arduino/pruebas/$prueba"
+  if [ "$prueba" = controlador ]; then
+    carpeta="$raiz/arduino/controlador"
+  else
+    carpeta="$raiz/arduino/pruebas/$prueba"
+  fi
 fi
 if [ ! -f "$carpeta/$prueba.ino" ]; then
   echo "Abre un archivo .ino de un sketch Arduino antes de ejecutar esta tarea." >&2

@@ -51,90 +51,68 @@
  <Channel Name="Modo Barra LED">
   <Group Byte="0">Effect</Group>
   <Capability Min="0" Max="0">Luz fija</Capability>
-  <Capability Min="1" Max="1">Progreso: 1/60 píxeles</Capability>
-  <Capability Min="2" Max="2">Progreso: 2/60 píxeles</Capability>
-  <Capability Min="3" Max="3">Progreso: 3/60 píxeles</Capability>
-  <Capability Min="4" Max="4">Progreso: 4/60 píxeles</Capability>
-  <Capability Min="5" Max="5">Progreso: 5/60 píxeles</Capability>
-  <Capability Min="6" Max="6">Progreso: 6/60 píxeles</Capability>
-  <Capability Min="7" Max="7">Progreso: 7/60 píxeles</Capability>
-  <Capability Min="8" Max="8">Progreso: 8/60 píxeles</Capability>
-  <Capability Min="9" Max="9">Progreso: 9/60 píxeles</Capability>
-  <Capability Min="10" Max="10">Progreso: 10/60 píxeles</Capability>
-  <Capability Min="11" Max="11">Progreso: 11/60 píxeles</Capability>
-  <Capability Min="12" Max="12">Progreso: 12/60 píxeles</Capability>
-  <Capability Min="13" Max="13">Progreso: 13/60 píxeles</Capability>
-  <Capability Min="14" Max="14">Progreso: 14/60 píxeles</Capability>
-  <Capability Min="15" Max="15">Progreso: 15/60 píxeles</Capability>
-  <Capability Min="16" Max="16">Progreso: 16/60 píxeles</Capability>
-  <Capability Min="17" Max="17">Progreso: 17/60 píxeles</Capability>
-  <Capability Min="18" Max="18">Progreso: 18/60 píxeles</Capability>
-  <Capability Min="19" Max="19">Progreso: 19/60 píxeles</Capability>
-  <Capability Min="20" Max="20">Progreso: 20/60 píxeles</Capability>
-  <Capability Min="21" Max="21">Progreso: 21/60 píxeles</Capability>
-  <Capability Min="22" Max="22">Progreso: 22/60 píxeles</Capability>
-  <Capability Min="23" Max="23">Progreso: 23/60 píxeles</Capability>
-  <Capability Min="24" Max="24">Progreso: 24/60 píxeles</Capability>
-  <Capability Min="25" Max="25">Progreso: 25/60 píxeles</Capability>
-  <Capability Min="26" Max="26">Progreso: 26/60 píxeles</Capability>
-  <Capability Min="27" Max="27">Progreso: 27/60 píxeles</Capability>
-  <Capability Min="28" Max="28">Progreso: 28/60 píxeles</Capability>
-  <Capability Min="29" Max="29">Progreso: 29/60 píxeles</Capability>
-  <Capability Min="30" Max="30">Progreso: 30/60 píxeles</Capability>
-  <Capability Min="31" Max="31">Progreso: 31/60 píxeles</Capability>
-  <Capability Min="32" Max="32">Progreso: 32/60 píxeles</Capability>
-  <Capability Min="33" Max="33">Progreso: 33/60 píxeles</Capability>
-  <Capability Min="34" Max="34">Progreso: 34/60 píxeles</Capability>
-  <Capability Min="35" Max="35">Progreso: 35/60 píxeles</Capability>
-  <Capability Min="36" Max="36">Progreso: 36/60 píxeles</Capability>
-  <Capability Min="37" Max="37">Progreso: 37/60 píxeles</Capability>
-  <Capability Min="38" Max="38">Progreso: 38/60 píxeles</Capability>
-  <Capability Min="39" Max="39">Progreso: 39/60 píxeles</Capability>
-  <Capability Min="40" Max="40">Progreso: 40/60 píxeles</Capability>
-  <Capability Min="41" Max="41">Progreso: 41/60 píxeles</Capability>
-  <Capability Min="42" Max="42">Progreso: 42/60 píxeles</Capability>
-  <Capability Min="43" Max="43">Progreso: 43/60 píxeles</Capability>
-  <Capability Min="44" Max="44">Progreso: 44/60 píxeles</Capability>
-  <Capability Min="45" Max="45">Progreso: 45/60 píxeles</Capability>
-  <Capability Min="46" Max="46">Progreso: 46/60 píxeles</Capability>
-  <Capability Min="47" Max="47">Progreso: 47/60 píxeles</Capability>
-  <Capability Min="48" Max="48">Progreso: 48/60 píxeles</Capability>
-  <Capability Min="49" Max="49">Progreso: 49/60 píxeles</Capability>
-  <Capability Min="50" Max="50">Progreso: 50/60 píxeles</Capability>
-  <Capability Min="51" Max="51">Progreso: 51/60 píxeles</Capability>
-  <Capability Min="52" Max="52">Progreso: 52/60 píxeles</Capability>
-  <Capability Min="53" Max="53">Progreso: 53/60 píxeles</Capability>
-  <Capability Min="54" Max="54">Progreso: 54/60 píxeles</Capability>
-  <Capability Min="55" Max="55">Progreso: 55/60 píxeles</Capability>
-  <Capability Min="56" Max="56">Progreso: 56/60 píxeles</Capability>
-  <Capability Min="57" Max="57">Progreso: 57/60 píxeles</Capability>
-  <Capability Min="58" Max="58">Progreso: 58/60 píxeles</Capability>
-  <Capability Min="59" Max="59">Progreso: 59/60 píxeles</Capability>
-  <Capability Min="60" Max="60">Progreso: 60/60 píxeles</Capability>
-  <Capability Min="61" Max="68">Respiración suave (lento → rápido)</Capability>
-  <Capability Min="69" Max="76">Latido doble (lento → rápido)</Capability>
-  <Capability Min="77" Max="84">Parpadeo regular (lento → rápido)</Capability>
-  <Capability Min="85" Max="92">Estrobo (lento → rápido)</Capability>
-  <Capability Min="93" Max="100">Luz corredora hacia delante (lento → rápido)</Capability>
-  <Capability Min="101" Max="108">Luz corredora hacia atrás (lento → rápido)</Capability>
-  <Capability Min="109" Max="116">Cometa hacia delante (lento → rápido)</Capability>
-  <Capability Min="117" Max="125">Cometa hacia atrás (lento → rápido)</Capability>
-  <Capability Min="126" Max="133">Barrido de ida y vuelta (lento → rápido)</Capability>
-  <Capability Min="134" Max="141">Llenado y vaciado progresivo (lento → rápido)</Capability>
-  <Capability Min="142" Max="149">Expansión desde el centro (lento → rápido)</Capability>
-  <Capability Min="150" Max="157">Contracción hacia el centro (lento → rápido)</Capability>
-  <Capability Min="158" Max="165">Dos luces que se cruzan (lento → rápido)</Capability>
-  <Capability Min="166" Max="173">Tren de pulsos hacia delante (lento → rápido)</Capability>
-  <Capability Min="174" Max="181">Tren de pulsos hacia atrás (lento → rápido)</Capability>
-  <Capability Min="182" Max="190">Ondas de brillo (lento → rápido)</Capability>
-  <Capability Min="191" Max="198">Chispas aleatorias (lento → rápido)</Capability>
-  <Capability Min="199" Max="206">Parpadeo tipo llama (lento → rápido)</Capability>
-  <Capability Min="207" Max="214">Relámpagos (lento → rápido)</Capability>
-  <Capability Min="215" Max="222">Fallo eléctrico (lento → rápido)</Capability>
-  <Capability Min="223" Max="230">Acumulación y descarga (lento → rápido)</Capability>
-  <Capability Min="231" Max="238">Explosión desde el centro (lento → rápido)</Capability>
-  <Capability Min="239" Max="246">Alternancia de segmentos (lento → rápido)</Capability>
-  <Capability Min="247" Max="255">Aparición y desvanecimiento (lento → rápido)</Capability>
+  <Capability Min="1" Max="1">Progreso: 1/38 píxeles</Capability>
+  <Capability Min="2" Max="2">Progreso: 2/38 píxeles</Capability>
+  <Capability Min="3" Max="3">Progreso: 3/38 píxeles</Capability>
+  <Capability Min="4" Max="4">Progreso: 4/38 píxeles</Capability>
+  <Capability Min="5" Max="5">Progreso: 5/38 píxeles</Capability>
+  <Capability Min="6" Max="6">Progreso: 6/38 píxeles</Capability>
+  <Capability Min="7" Max="7">Progreso: 7/38 píxeles</Capability>
+  <Capability Min="8" Max="8">Progreso: 8/38 píxeles</Capability>
+  <Capability Min="9" Max="9">Progreso: 9/38 píxeles</Capability>
+  <Capability Min="10" Max="10">Progreso: 10/38 píxeles</Capability>
+  <Capability Min="11" Max="11">Progreso: 11/38 píxeles</Capability>
+  <Capability Min="12" Max="12">Progreso: 12/38 píxeles</Capability>
+  <Capability Min="13" Max="13">Progreso: 13/38 píxeles</Capability>
+  <Capability Min="14" Max="14">Progreso: 14/38 píxeles</Capability>
+  <Capability Min="15" Max="15">Progreso: 15/38 píxeles</Capability>
+  <Capability Min="16" Max="16">Progreso: 16/38 píxeles</Capability>
+  <Capability Min="17" Max="17">Progreso: 17/38 píxeles</Capability>
+  <Capability Min="18" Max="18">Progreso: 18/38 píxeles</Capability>
+  <Capability Min="19" Max="19">Progreso: 19/38 píxeles</Capability>
+  <Capability Min="20" Max="20">Progreso: 20/38 píxeles</Capability>
+  <Capability Min="21" Max="21">Progreso: 21/38 píxeles</Capability>
+  <Capability Min="22" Max="22">Progreso: 22/38 píxeles</Capability>
+  <Capability Min="23" Max="23">Progreso: 23/38 píxeles</Capability>
+  <Capability Min="24" Max="24">Progreso: 24/38 píxeles</Capability>
+  <Capability Min="25" Max="25">Progreso: 25/38 píxeles</Capability>
+  <Capability Min="26" Max="26">Progreso: 26/38 píxeles</Capability>
+  <Capability Min="27" Max="27">Progreso: 27/38 píxeles</Capability>
+  <Capability Min="28" Max="28">Progreso: 28/38 píxeles</Capability>
+  <Capability Min="29" Max="29">Progreso: 29/38 píxeles</Capability>
+  <Capability Min="30" Max="30">Progreso: 30/38 píxeles</Capability>
+  <Capability Min="31" Max="31">Progreso: 31/38 píxeles</Capability>
+  <Capability Min="32" Max="32">Progreso: 32/38 píxeles</Capability>
+  <Capability Min="33" Max="33">Progreso: 33/38 píxeles</Capability>
+  <Capability Min="34" Max="34">Progreso: 34/38 píxeles</Capability>
+  <Capability Min="35" Max="35">Progreso: 35/38 píxeles</Capability>
+  <Capability Min="36" Max="36">Progreso: 36/38 píxeles</Capability>
+  <Capability Min="37" Max="37">Progreso: 37/38 píxeles</Capability>
+  <Capability Min="38" Max="38">Progreso: 38/38 píxeles</Capability>
+  <Capability Min="39" Max="47">Respiración suave (lento → rápido)</Capability>
+  <Capability Min="48" Max="56">Latido doble (lento → rápido)</Capability>
+  <Capability Min="57" Max="65">Parpadeo regular (lento → rápido)</Capability>
+  <Capability Min="66" Max="74">Estrobo (lento → rápido)</Capability>
+  <Capability Min="75" Max="83">Luz corredora hacia delante (lento → rápido)</Capability>
+  <Capability Min="84" Max="92">Luz corredora hacia atrás (lento → rápido)</Capability>
+  <Capability Min="93" Max="101">Cometa hacia delante (lento → rápido)</Capability>
+  <Capability Min="102" Max="110">Cometa hacia atrás (lento → rápido)</Capability>
+  <Capability Min="111" Max="119">Barrido de ida y vuelta (lento → rápido)</Capability>
+  <Capability Min="120" Max="128">Llenado y vaciado progresivo (lento → rápido)</Capability>
+  <Capability Min="129" Max="137">Expansión desde el centro (lento → rápido)</Capability>
+  <Capability Min="138" Max="146">Contracción hacia el centro (lento → rápido)</Capability>
+  <Capability Min="147" Max="155">Dos luces que se cruzan (lento → rápido)</Capability>
+  <Capability Min="156" Max="164">Tren de pulsos hacia delante (lento → rápido)</Capability>
+  <Capability Min="165" Max="173">Tren de pulsos hacia atrás (lento → rápido)</Capability>
+  <Capability Min="174" Max="182">Ondas de brillo (lento → rápido)</Capability>
+  <Capability Min="183" Max="191">Chispas aleatorias (lento → rápido)</Capability>
+  <Capability Min="192" Max="200">Parpadeo tipo llama (lento → rápido)</Capability>
+  <Capability Min="201" Max="209">Relámpagos (lento → rápido)</Capability>
+  <Capability Min="210" Max="218">Fallo eléctrico (lento → rápido)</Capability>
+  <Capability Min="219" Max="227">Acumulación y descarga (lento → rápido)</Capability>
+  <Capability Min="228" Max="236">Explosión desde el centro (lento → rápido)</Capability>
+  <Capability Min="237" Max="245">Alternancia de segmentos (lento → rápido)</Capability>
+  <Capability Min="246" Max="255">Aparición y desvanecimiento (lento → rápido)</Capability>
  </Channel>
  <Channel Name="LED Azul" Preset="IntensityBlue"/>
  <Channel Name="LED Verde" Preset="IntensityGreen"/>
@@ -174,7 +152,7 @@
   <Capability Min="234" Max="244">Alternancia de segmentos (lento → rápido)</Capability>
   <Capability Min="245" Max="255">Aparición y desvanecimiento (lento → rápido)</Capability>
  </Channel>
- <Mode Name="v0.0.6">
+ <Mode Name="v0.0.7">
   <Channel Number="0" ActsOn="0">Millares</Channel>
   <Channel Number="1" ActsOn="1">Centenas</Channel>
   <Channel Number="2" ActsOn="2">Decenas</Channel>

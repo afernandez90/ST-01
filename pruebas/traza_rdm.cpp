@@ -2,7 +2,7 @@
 #include <cassert>
 #include <vector>
 #include <iostream>
-#include "../arduino/pruebas/recepcion_dmx/traza_rdm.h"
+#include "../arduino/controlador/traza_rdm.h"
 std::vector<uint8_t> trama(){
   const uint8_t propio[6]=ST01_UID_BYTES;
   std::vector<uint8_t> p(26);p[0]=0xcc;p[1]=1;p[2]=24;

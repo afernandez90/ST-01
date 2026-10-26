@@ -39,8 +39,8 @@ La tabla de FTC_INITIATE rotula PDL 0x22, pero la suma de los campos publicados 
 ## Preparación del firmware
 
 ```sh
-arduino-cli compile --fqbn arduino:avr:mega:cpu=atmega2560 --build-path build/recepcion_dmx arduino/pruebas/recepcion_dmx
-python3 herramientas/firmware_rdm.py empaquetar build/recepcion_dmx/recepcion_dmx.ino.hex build/recepcion_dmx/ST-01.st01
+arduino-cli compile --fqbn arduino:avr:mega:cpu=atmega2560 --build-path build/controlador arduino/controlador
+python3 herramientas/firmware_rdm.py empaquetar build/controlador/controlador.ino.hex build/controlador/ST-01.st01
 sh arduino/arranque_rdm/compilar.sh
 sh pruebas/rdm.sh
 ```
@@ -52,7 +52,7 @@ El paquete ST01 contiene una cabecera propia de 16 bytes (modelo, objetivo Mega2
 Cerrar las aplicaciones que usen la interfaz. Conectar TX1 (18) y RX1 (19) al adaptador bidireccional correctamente. El controlador y el enlace deben admitir RDM y FTC 1.00.
 
 ```sh
-python3 herramientas/firmware_rdm.py cargar build/recepcion_dmx/ST-01.st01 --uid 7ff0:66601337 --puerto PUERTO_RDM
+python3 herramientas/firmware_rdm.py cargar build/controlador/ST-01.st01 --uid 7ff0:66601337 --puerto PUERTO_RDM
 ```
 
 La herramienta usa únicamente Python estándar. No se ha ejecutado esta carga sobre la placa real. Sustituya `PUERTO_RDM` por el puerto de su interfaz. El transporte serie incluido utiliza una API de interfaz concreta, con paquetes delimitados por `0x7E`/`0xE7` y etiquetas de comando; no es una API USB universal. Compruebe su compatibilidad con la interfaz y el acceso serie del equipo. Para otros emisores, utilice un controlador FTC 1.00 compatible o implemente su transporte en la herramienta. Esta limitación de la utilidad de ordenador no condiciona el firmware del Mega.

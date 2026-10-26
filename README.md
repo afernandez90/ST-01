@@ -2,7 +2,7 @@
 
 ST-01 es un controlador DMX512 personalizado basado en Arduino Mega 2560, con gestión remota mediante RDM. Recibe las señales independientemente de la marca o modelo del emisor DMX.
 
-## Personalidad DMX: Control v0.0.6
+## Personalidad DMX: Control v0.0.7
 
 ST-01 ocupa 19 canales consecutivos. La tabla usa desplazamientos que empiezan en uno; los índices internos del fixture de QLC+ empiezan en cero.
 
@@ -38,10 +38,9 @@ Si la dirección base es **B**, los canales utilizados van de **B** a **B + 18**
 
 | Ruta | Contenido |
 |---|---|
-| `arduino/pruebas/recepcion_dmx/` | Firmware activo del prototipo: recepción DMX, RDM, efectos, salidas y controles locales. |
-| `arduino/pruebas/` | Pruebas de hardware, incluida recepción DMX, parpadeo y escáner I2C. |
+| `arduino/controlador/` | Firmware principal: recepción DMX, RDM, efectos, salidas y controles locales. |
+| `arduino/pruebas/` | Pruebas independientes de hardware: parpadeo y escáner I2C. |
 | `arduino/arranque_rdm/` | Cargador FTC para Mega2560, compilación e instrucciones de instalación. |
-| `arduino/controlador/` | Carpeta reservada para el firmware final tras validar el montaje. |
 | `herramientas/` | Utilidades de prueba RDM, empaquetado, transferencia y verificación del cargador. |
 | `pruebas/` | Pruebas automatizadas y simulación de Arduino para ejecutarlas sin placa. |
 | `qlcplus/fixtures/ST-01.qxf` | Definición del fixture y sus capacidades DMX. |
@@ -50,8 +49,8 @@ Si la dirección base es **B**, los canales utilizados van de **B** a **B + 18**
 | `docs/` | Documentación de usuario, diseño, validación y continuidad. |
 | `ide/` | Configuraciones de desarrollo organizadas por plataforma, con instrucciones de uso en cada carpeta. |
 
-Para preparar el entorno y compilar, consulte las [pruebas de hardware](arduino/pruebas/LEEME.md) y el [manual del cargador](arduino/arranque_rdm/LEEME.md). La suite sin placa se ejecuta desde la raíz con `sh pruebas/rdm.sh`; requiere un shell compatible, compilador C++ con sanitizadores y Python 3.
+Para preparar el entorno y compilar, consulte el [firmware principal](arduino/controlador/LEEME.md) y el [manual del cargador](arduino/arranque_rdm/LEEME.md). La suite sin placa se ejecuta desde la raíz con `sh pruebas/rdm.sh`; requiere un shell compatible, compilador C++ con sanitizadores y Python 3.
 
 El [cableado propuesto](docs/CABLEADO_PROPUESTO.md), las [pruebas físicas RDM](docs/PRUEBAS_RDM.md), la [depuración RDM](docs/DEPURACION_RDM.md) y la [continuidad del proyecto](docs/CONTINUIDAD.md) recogen las decisiones y tareas pendientes. DMX y RDM básico se han probado físicamente; el montaje completo de salidas y la instalación inicial del cargador FTC siguen pendientes de validación.
 
-Al cambiar la personalidad, mantener alineados firmware, fixture, espacio de trabajo y documentación. La versión del firmware se define en `arduino/pruebas/recepcion_dmx/version.h`.
+Al cambiar la personalidad, mantener alineados firmware, fixture, espacio de trabajo y documentación. La versión del firmware se define en `arduino/controlador/version.h`.

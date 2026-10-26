@@ -4,7 +4,7 @@
 
 ST-01 es un dispositivo DMX512 que controla cuatro dígitos numéricos, siete pilotos luminosos y dos tiras LED RGB direccionables. El dispositivo se integra en una línea DMX convencional y ocupa 19 canales consecutivos.
 
-Esta edición del manual corresponde a la personalidad **Control v0.0.6**.
+Esta edición del manual corresponde a la personalidad **Control v0.0.7**.
 
 ## 2. Conexión
 
@@ -32,7 +32,7 @@ Si la dirección base es **B**, ST-01 utiliza los canales desde **B** hasta **B 
 
 Los controles RGB aceptan valores de 0 a 255. El valor 0 apaga ese componente y 255 aplica la intensidad máxima.
 
-El valor 0 selecciona **Luz fija**. Ambos canales ofrecen 24 animaciones con velocidades seleccionables; la Barra también permite progreso manual de 1 a 60 píxeles. Consulte [rangos, velocidades y comportamiento de los efectos](EFECTOS_LED.md). La validación física de las animaciones sigue pendiente.
+El valor 0 selecciona **Luz fija**. Ambos canales ofrecen 24 animaciones con velocidades seleccionables; la Barra también permite progreso manual de 1 a 38 píxeles. Consulte [rangos, velocidades y comportamiento de los efectos](EFECTOS_LED.md). La validación física de las animaciones sigue pendiente.
 
 El dispositivo no tiene un canal maestro. El maestro de QLC+ debe configurarse para reducir o limitar únicamente los canales de intensidad (RGB y pilotos). Los canales de dígitos y modos son selectores y no deben escalarse. Un blackout de intensidad apaga RGB y pilotos, pero mantiene los dígitos; para apagar también los dígitos, use blackout de todos los canales, que envía 0 a sus selectores.
 

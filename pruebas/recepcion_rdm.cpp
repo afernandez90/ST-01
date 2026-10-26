@@ -3,7 +3,7 @@
 #include <cassert>
 #include <vector>
 #include <iostream>
-#include "../arduino/pruebas/recepcion_dmx/recepcion_dmx.ino"
+#include "../arduino/controlador/controlador.ino"
 void recibir(uint8_t b, uint8_t estado=0) { UCSR1A=estado; UDR1=b; USART1_RX_vect(); }
 void dmx(uint16_t objetivo, uint8_t valor) {
   recibir(0, _BV(FE1)); recibir(0);
@@ -90,16 +90,16 @@ int main() {
   for(uint16_t canal=1;canal<=512;++canal)
     recibir(canal>=494 ? trama[canal-494] : 0);
   reloj=1600;loop();
-  for(unsigned i=0;i<60;++i) {
+  for(unsigned i=0;i<38;++i) {
     assert(pixelesBarra[i].r==(i<30 ? 200 : 0));
     assert(pixelesBarra[i].g==(i<30 ? 100 : 0));
     assert(pixelesBarra[i].b==(i<30 ? 50 : 0));
   }
   for(auto pixel:pixelesTira)assert(pixel.r==40 && pixel.g==80 && pixel.b==120);
-  trama[7]=126; // KITT lento, comienza en el primer píxel.
+  trama[7]=111; // KITT lento, comienza en el primer píxel.
   reloj=1650;aplicarSalidasHardware(calcularSalidas(trama,true,false,reloj));
   assert(pixelesBarra[0].r==200 && pixelesBarra[1].r==120);
-  assert(pixelesBarra[2].r==0 && pixelesBarra[59].r==0);
+  assert(pixelesBarra[2].r==0 && pixelesBarra[37].r==0);
   trama[4]=100; // Cambiar RGB conserva el reloj del barrido.
   reloj=3150;aplicarSalidasHardware(calcularSalidas(trama,true,false,reloj));
   assert(pixelesBarra[0].r==0);

@@ -16,6 +16,7 @@ Las tareas y opciones de Ejecutar y depurar permiten compilar, cargar y monitori
 - Arduino CLI: `/opt/homebrew/bin/arduino-cli`.
 - Python: `/usr/bin/python3`.
 - IntelliSense: las rutas usan `${userHome}` para el directorio del usuario. Se espera Arduino AVR Boards 1.8.8, AVR GCC 7.3.0-atmel3.6.1-arduino7 y las bibliotecas en `Documents/Arduino/libraries`; adapte las rutas si su instalación es distinta.
+- IntelliSense incluye explícitamente las cabeceras de AVR y las bibliotecas Wire, EEPROM y SPI, además de la definición del ATmega2560. Si persiste un aviso de cabeceras tras actualizar la copia activa, ejecute `C/C++: Reset IntelliSense Database` y después `Developer: Reload Window` desde la paleta de comandos.
 - Las pruebas sin placa requieren el compilador C++ del sistema con sanitizadores.
 
 Los puertos del Mega se detectan mediante Arduino CLI. Si hay varios Mega conectados, seleccione el puerto mediante `ST01_PORT` o desconecte los demás. Las pruebas físicas RDM necesitan una interfaz compatible con el transporte serie de la herramienta; cierre las aplicaciones que ocupen sus puertos.

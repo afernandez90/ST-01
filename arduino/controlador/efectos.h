@@ -3,7 +3,7 @@
 
 // Motor sin memoria por píxel: apto para AVR y para pruebas en el ordenador.
 namespace Efectos {
-constexpr uint8_t PASOS_BARRA = 60;
+constexpr uint8_t PASOS_BARRA = 38;
 struct Modo { uint8_t efecto, paso, pasos; };
 // 0: fijo; 1: progreso manual; 2–25: las 24 animaciones.
 inline Modo decodificar(uint8_t valor, bool barra) {

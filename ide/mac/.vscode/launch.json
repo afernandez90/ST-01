@@ -2,14 +2,14 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Arduino: ejecutar DMX (cargar y monitor USB)",
+      "name": "Arduino: ejecutar controlador (cargar y monitor USB)",
       "type": "node-terminal",
       "request": "launch",
       "command": "/bin/sh \"${workspaceFolder}/.vscode/arduino-run.sh\"",
       "cwd": "${workspaceFolder}",
       "env": {
         "ST01_ACTION": "upload",
-        "ST01_SKETCH": "recepcion_dmx"
+        "ST01_SKETCH": "controlador"
       },
       "presentation": {
         "group": "Arduino",
@@ -180,11 +180,11 @@
       "type": "pickString",
       "description": "Prueba Arduino que quieres compilar o cargar",
       "options": [
-        "recepcion_dmx",
+        "controlador",
         "escaner_i2c",
         "parpadeo"
       ],
-      "default": "recepcion_dmx"
+      "default": "controlador"
     }
   ]
 }

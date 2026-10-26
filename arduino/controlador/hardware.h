@@ -10,8 +10,8 @@ constexpr uint8_t PIN_ESTADO = 9;
 constexpr uint8_t PIN_BARRA = 10, PIN_TIRA = 11;
 constexpr uint8_t PIN_DIGITOS_DATOS = 51, PIN_DIGITOS_RELOJ = 52;
 constexpr uint8_t PIN_DIGITOS_LATCH = 49, PIN_DIGITOS_HABILITAR = 48;
-// Cantidades de diseño provisionales: contar circuitos direccionables, no LED individuales.
-constexpr uint16_t PIXELES_BARRA = 60, PIXELES_TIRA = 300;
+// Barra: 38 píxeles comprobados. Tira: cantidad provisional; contar grupos direccionables.
+constexpr uint16_t PIXELES_BARRA = 38, PIXELES_TIRA = 300;
 constexpr uint8_t BRILLO_RGB_MAXIMO = 64;
 static_assert(PIXELES_BARRA == Efectos::PASOS_BARRA, "Actualizar mapa DMX de progreso al cambiar la barra");
 CRGB pixelesBarra[PIXELES_BARRA], pixelesTira[PIXELES_TIRA];

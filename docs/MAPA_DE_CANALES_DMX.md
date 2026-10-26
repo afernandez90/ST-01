@@ -1,6 +1,6 @@
 # Mapa de canales DMX de ST-01
 
-**Personalidad:** `Control v0.0.6`
+**Personalidad:** `Control v0.0.7`
 **Ocupación:** 19 canales DMX
 **Direccionamiento:** empieza en uno en este documento y en el firmware.
 

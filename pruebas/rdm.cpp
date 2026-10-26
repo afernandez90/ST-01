@@ -2,7 +2,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include <vector>
-#include "../arduino/pruebas/recepcion_dmx/rdm.h"
+#include "../arduino/controlador/rdm.h"
 using Trama = std::vector<uint8_t>;
 RespondedorRdm equipo;
 const uint8_t controlador[] = {0x12, 0x34, 0, 0, 0, 2};

@@ -19,7 +19,7 @@
   <Fixture>
    <Manufacturer>Salto Temporal</Manufacturer>
    <Model>ST-01</Model>
-   <Mode>v0.0.6</Mode>
+   <Mode>v0.0.7</Mode>
    <ID>0</ID>
    <Name>ST-01</Name>
    <Universe>0</Universe>
@@ -160,7 +160,7 @@
      <Font>Ubuntu,24,-1,5,400,0,0,0,0,0,0,0,0,0,0,1</Font>
     </Appearance>
     <SliderMode ValueDisplayStyle="Exact">Level</SliderMode>
-    <Level LowLimit="0" HighLimit="255" Value="163">
+    <Level LowLimit="0" HighLimit="255" Value="153">
      <Channel Fixture="0">7</Channel>
     </Level>
    </Slider>
