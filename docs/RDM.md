@@ -1,6 +1,6 @@
 # RDM en el prototipo ST-01
 
-El sketch `arduino/controlador/controlador.ino` incorpora un respondedor RDM experimental. Conserva la personalidad `Control v0.0.7` de 19 canales, la dirección base 1–494, los botones, el LCD y la salida de prueba del piloto naranja B en el LED L.
+El sketch `arduino/controlador/controlador.ino` incorpora un respondedor RDM experimental. Conserva la personalidad `Control v0.0.9` de 19 canales, la dirección base 1–494, los botones, el LCD y la salida de prueba del piloto naranja B en el LED L.
 
 Estado: compilado y cargado en Mega2560; [RDM básico validado físicamente](PRUEBAS_RDM.md) con un controlador RDM y el adaptador RS-485 del prototipo. También se conservan las pruebas de tramas y UART simuladas. No constituye una implementación certificada de E1.20. El nuevo cargador FTC sigue pendiente de instalación por ISP.
 
@@ -27,13 +27,13 @@ UID del prototipo único: **7FF0:66601337**, definido de forma común para el re
 | DISC_UNIQUE_BRANCH | Descubrimiento dentro de límites inclusivos |
 | DISC_MUTE / DISC_UN_MUTE | Silenciar/restablecer las respuestas de descubrimiento |
 | SUPPORTED_PARAMETERS | Parámetros adicionales admitidos |
-| DEVICE_INFO | Modelo 1, versión de protocolo 1.0, firmware 0.0.7, 19 canales, una personalidad, sin subdispositivos ni sensores |
-| DEVICE_MODEL_DESCRIPTION | ST-01 Control v0.0.7 |
+| DEVICE_INFO | Modelo 1, versión de protocolo 1.0, firmware 0.0.9, 19 canales, una personalidad, sin subdispositivos ni sensores |
+| DEVICE_MODEL_DESCRIPTION | ST-01 Control v0.0.9 |
 | MANUFACTURER_LABEL | Salto Temporal |
 | DEVICE_LABEL | GET/SET, hasta 32 bytes, persistente |
-| SOFTWARE_VERSION_LABEL | 0.0.7 RDM prototipo |
+| SOFTWARE_VERSION_LABEL | 0.0.9 RDM prototipo |
 | DMX_PERSONALITY | GET/SET; solo se admite personalidad 1 |
-| DMX_PERSONALITY_DESCRIPTION | Control v0.0.7, 19 canales |
+| DMX_PERSONALITY_DESCRIPTION | Control v0.0.9, 19 canales |
 | DMX_START_ADDRESS | GET/SET, 1–494, persistente |
 | IDENTIFY_DEVICE | GET/SET, 0/1; parpadeo conjunto de todas las salidas a 2 Hz |
 

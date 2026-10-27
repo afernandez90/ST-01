@@ -4,7 +4,7 @@
 
 ST-01 es un dispositivo DMX512 que controla cuatro dígitos numéricos, siete pilotos luminosos y dos tiras LED RGB direccionables. El dispositivo se integra en una línea DMX convencional y ocupa 19 canales consecutivos.
 
-Esta edición del manual corresponde a la personalidad **Control v0.0.7**.
+Esta edición del manual corresponde a la personalidad **Control v0.0.9**.
 
 ## 2. Conexión
 
@@ -48,6 +48,9 @@ Cada uno de los cuatro canales de dígito admite los siguientes valores:
 | 11–20 | Muestra el dígito `valor - 11` con punto decimal (0–9) |
 | 21–27 | Muestra el segmento individual A–G |
 | 28–34 | Muestra el segmento individual A–G con punto decimal |
+| 35–60 | Letras A–Z: `35 + posición de la letra` (A = 0) |
+| 61–86 | Letras a–z: `61 + posición de la letra` (a = 0) |
+| 87–255 | Sin asignar; apaga el visualizador |
 
 El orden de los segmentos es: A, B, C, D, E, F y G.
 
@@ -83,3 +86,5 @@ Ponga QLC+ en modo de operación para enviar los valores DMX.
 ## 8. Límites de esta versión
 
 Este manual describe la personalidad DMX ya definida en el proyecto. Las funciones físicas del controlador dependen de la versión de firmware instalada. Consulte la documentación de la versión de firmware entregada con el equipo para conocer las funciones de animación disponibles.
+
+Las letras son aproximaciones de siete segmentos: varias mayúsculas se representan con formas minúsculas y algunos caracteres comparten glifo. Los valores 35–86 no encienden el punto decimal. Consulte el [mapa de letras y segmentos](LETRAS_VISUALIZADORES.md).

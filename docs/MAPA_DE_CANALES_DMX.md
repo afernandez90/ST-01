@@ -1,6 +1,6 @@
 # Mapa de canales DMX de ST-01
 
-**Personalidad:** `Control v0.0.7`
+**Personalidad:** `Control v0.0.9`
 **Ocupación:** 19 canales DMX
 **Direccionamiento:** empieza en uno en este documento y en el firmware.
 
@@ -8,10 +8,10 @@ El modo `.qxf` de QLC+ utiliza atributos `Number` que empiezan en cero. El firmw
 
 | Desplazamiento | Nombre en QLC+ | Símbolo en código | Valores |
 |---:|---|---|---|
-| 1 | Millares | `CH_DIGIT_THOUSANDS` | 0–34 |
-| 2 | Centenas | `CH_DIGIT_HUNDREDS` | 0–34 |
-| 3 | Decenas | `CH_DIGIT_TENS` | 0–34 |
-| 4 | Unidades | `CH_DIGIT_UNITS` | 0–34 |
+| 1 | Millares | `CH_DIGIT_THOUSANDS` | 0–86 |
+| 2 | Centenas | `CH_DIGIT_HUNDREDS` | 0–86 |
+| 3 | Decenas | `CH_DIGIT_TENS` | 0–86 |
+| 4 | Unidades | `CH_DIGIT_UNITS` | 0–86 |
 | 5 | Barra LED R | `CH_BAR_R` | 0–255 |
 | 6 | Barra LED G | `CH_BAR_G` | 0–255 |
 | 7 | Barra LED B | `CH_BAR_B` | 0–255 |
@@ -38,5 +38,10 @@ El modo `.qxf` de QLC+ utiliza atributos `Number` que empiezan en cero. El firmw
 | 11–20 | Muestra el dígito `valor - 11` con punto decimal (0–9) |
 | 21–27 | Muestra el segmento individual A–G |
 | 28–34 | Muestra el segmento individual A–G con punto decimal |
+| 35–60 | Letras A–Z: `35 + posición de la letra` (A = 0) |
+| 61–86 | Letras a–z: `61 + posición de la letra` (a = 0) |
+| 87–255 | Sin asignar; apaga el visualizador |
 
 Para una dirección DMX base `direccionBase`, lea el primer canal en `direccionBase` y el último en `direccionBase + 18`.
+
+Las letras son aproximaciones de siete segmentos: varias mayúsculas se representan con formas minúsculas y algunos caracteres comparten glifo. Los valores 35–86 no encienden el punto decimal. Consulte el [mapa de letras y segmentos](LETRAS_VISUALIZADORES.md).

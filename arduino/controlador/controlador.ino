@@ -37,6 +37,9 @@ constexpr unsigned long TIEMPO_SIN_DMX_MS = 1000;
 // Dirección del adaptador PCF8574 comprobada con el escáner I2C.
 hd44780_I2Cexp pantalla(0x27);
 bool pantallaDisponible = false;
+// Dos destellos de 250 ms al iniciar, sin bloquear la recepción DMX/RDM.
+unsigned long inicioAutocomprobacion = 0;
+bool autocomprobacionPendiente = true;
 
 volatile uint8_t valorRecibido = 0;
 volatile uint8_t canalesRecibidos[CANALES_ST01] = {};
@@ -253,6 +256,8 @@ void setup() {
   Serial.println(actualizacion.disponible ? F("[FTC] Cargador RDM compatible disponible.")
                                          : F("[FTC] Falta instalar el cargador RDM mediante ISP."));
   informarEstado(false, 0, 0);
+  inicioAutocomprobacion = millis();
+  Serial.println(F("[INICIO] Autocomprobacion: dos destellos de todas las salidas."));
 }
 
 void loop() {
@@ -325,10 +330,19 @@ void loop() {
                           : F("[DMX] Senal perdida: un segundo sin datos. Salida apagada."));
     estadoAnterior = activo;
   }
-  const EstadoSalidas salidas = calcularSalidas(canales, activo, identificar, ahora);
+  const unsigned long tiempoAutocomprobacion = ahora - inicioAutocomprobacion;
+  if (autocomprobacionPendiente && tiempoAutocomprobacion >= 1000) {
+    autocomprobacionPendiente = false;
+    Serial.println(F("[INICIO] Autocomprobacion terminada."));
+  }
+  const bool pruebaSalidas = identificar || autocomprobacionPendiente;
+  // Reutilizar el patrón de identificación, empezando con un destello encendido.
+  const unsigned long relojSalidas = autocomprobacionPendiente
+      ? tiempoAutocomprobacion + 250 : ahora;
+  const EstadoSalidas salidas = calcularSalidas(canales, activo, pruebaSalidas, relojSalidas);
   aplicarSalidasHardware(salidas);
   static bool iluminacionAnterior=true;
-  const bool iluminacion=!identificar || salidas.pilotoEstado;
+  const bool iluminacion=!pruebaSalidas || salidas.pilotoEstado;
   if(pantallaDisponible && iluminacion!=iluminacionAnterior){
     if(iluminacion)pantalla.backlight();else pantalla.noBacklight();
     iluminacionAnterior=iluminacion;
@@ -341,7 +355,8 @@ void loop() {
     snprintf(linea, sizeof(linea), "ST-01 DMX: %03u %c", direccionPendiente,
              direccionDmx != direccionPendiente ? '*' : ' ');
     pantalla.setCursor(0, 0);
-    if (identificar) snprintf(linea, sizeof(linea), "IDENTIFICAR ST01");
+    if (autocomprobacionPendiente) snprintf(linea, sizeof(linea), "AUTOCOMPROBAR   ");
+    else if (identificar) snprintf(linea, sizeof(linea), "IDENTIFICAR ST01");
     pantalla.print(linea);
     snprintf(linea, sizeof(linea), activo ? "DMX OK  LNB:%3u " : "SIN DMX LNB:%3u ", valor);
     pantalla.setCursor(0, 1);

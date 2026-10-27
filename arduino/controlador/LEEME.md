@@ -1,6 +1,6 @@
 # Firmware Arduino de ST-01
 
-`controlador.ino` es el sketch principal para Arduino Mega 2560. Implementa la personalidad DMX de 19 canales `Control v0.0.7`, documentada en el [mapa de canales](../../docs/MAPA_DE_CANALES_DMX.md), con recepción DMX, gestión RDM, efectos LED, salidas y controles locales.
+`controlador.ino` es el sketch principal para Arduino Mega 2560. Implementa la personalidad DMX de 19 canales `Control v0.0.9`, documentada en el [mapa de canales](../../docs/MAPA_DE_CANALES_DMX.md), con recepción DMX, gestión RDM, efectos LED, salidas y controles locales.
 
 ## Compilación
 
@@ -72,3 +72,5 @@ Los avisos de inicio, EEPROM y LCD, los cambios de dirección pendiente o guarda
 ## Salidas y actualización
 
 El [cableado elegido](../../docs/CABLEADO_PROPUESTO.md) asigna los pines y cuatro TPIC6B595 a los números. Instalar también `arduino-cli lib install "FastLED@3.9.20"`. El firmware controla las 19 funciones; las cantidades de píxeles y el montaje son provisionales. La [actualización mediante FTC](../../docs/ACTUALIZACION_RDM.md) necesita instalar una vez el cargador mediante ISP; no está disponible con el cargador original. Las pruebas simuladas no sustituyen las pruebas eléctricas.
+
+Al arrancar o reiniciar, el controlador realiza una autocomprobación visual de un segundo: dos destellos de 250 ms separados por pausas de 250 ms, con el mismo patrón de todas las salidas que la identificación RDM (pilotos, segmentos incluido el punto, ambas tiras en blanco, LED de estado e iluminación del LCD). No requiere señal DMX ni una petición RDM. Durante la prueba sigue recibiendo DMX y respondiendo a RDM; al terminar aplica el estado DMX vigente, o apaga las salidas si no hay señal válida. La prueba no modifica el estado RDM de identificación. Es una comprobación visual, sin detección automática de averías.

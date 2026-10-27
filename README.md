@@ -2,7 +2,7 @@
 
 ST-01 es un controlador DMX512 personalizado basado en Arduino Mega 2560, con gestión remota mediante RDM. Recibe las señales independientemente de la marca o modelo del emisor DMX.
 
-## Personalidad DMX: Control v0.0.7
+## Personalidad DMX: Control v0.0.9
 
 ST-01 ocupa 19 canales consecutivos. La tabla usa desplazamientos que empiezan en uno; los índices internos del fixture de QLC+ empiezan en cero.
 

@@ -1,4 +1,4 @@
-# Efectos LED — Control v0.0.7
+# Efectos LED — Control v0.0.9
 
 Los desplazamientos 8 (Barra) y 19 (Tira) eligen el efecto y su velocidad. Los canales RGB conservan el color y la intensidad máxima: ningún efecto añade blanco ni cambia el tono. RGB = 0 apaga cualquier efecto. La ocupación sigue siendo de 19 canales; dirección base 1–494.
 
@@ -35,11 +35,13 @@ Los desplazamientos 8 (Barra) y 19 (Tira) eligen el efecto y su velocidad. Los c
 
 La Barra tiene **38 píxeles direccionables**, comprobados físicamente el 26 de octubre de 2026: con el firmware anterior, el último se encendió al seleccionar modo 38. Modo 1 enciende el primero; modo 2, los dos primeros; …; modo 38, los 38. Cada paso añade exactamente un píxel desde el extremo de entrada de datos. Para 0 píxeles, enviar RGB = 0. El progreso no avanza por tiempo: lo controla la sesión DMX. Se reservan 38 submodos; si cambia el recuento real, hay que revisar esta asignación, el fixture y la comprobación de compilación. Con más de 231 píxeles no cabe un paso por píxel junto a las 24 animaciones en un único canal de 8 bits.
 
-El barrido de ida y vuelta utiliza un píxel al 100 % y sus vecinos inmediatos al 60 %, cuando existen. Rebota en ambos extremos sin envolver los vecinos al otro extremo. El color depende del RGB; para el efecto KITT, seleccionar rojo. El ciclo es una ida y una vuelta completas.
+El barrido de ida y vuelta utiliza una cabeza al 100 %, un único píxel por delante al 60 % y nueve píxeles por detrás al 90, 80, 70, 60, 50, 40, 30, 20 y 10 %. Son diez posiciones desde la cabeza hasta el final de la cola, más el vecino delantero. Los porcentajes multiplican el RGB recibido, por lo que el maestro de intensidad sigue regulando el efecto. Al rebotar se invierte la dirección de la cola. En los extremos se recorta la parte que queda fuera de la tira, sin envolver al otro extremo. El color depende del RGB; para el efecto KITT, seleccionar rojo. El ciclo es una ida y una vuelta completas.
 
 ## Velocidades y tiempos
 
-Dentro de cada clase, el mínimo es la velocidad más lenta y el máximo la más rápida. Los valores intermedios interpolan linealmente la duración: `6000 − (5000 × paso / (pasos − 1))` ms, con división entera. Cada clase tiene 9–10 velocidades en la Barra y 10–11 en la Tira. El estrobo usa `500 − (400 × paso / (pasos − 1))` ms (2–10 Hz). Parpadeo y estrobo tienen ciclo de trabajo del 50 %.
+La revisión v0.0.9 duplica la velocidad general: los ciclos pasan de 6000–1000 ms a 3000–500 ms. El estrobo pasa de 500–100 ms a 250–100 ms; el máximo se mantiene en 10 Hz para conservar al menos dos refrescos por ciclo con el envío de 20 Hz.
+
+Dentro de cada clase, el mínimo es la velocidad más lenta y el máximo la más rápida. Los valores intermedios interpolan linealmente la duración: `3000 − (2500 × paso / (pasos − 1))` ms, con división entera. Cada clase tiene 9–10 velocidades en la Barra y 10–11 en la Tira. El estrobo usa `250 − (150 × paso / (pasos − 1))` ms (4–10 Hz). Parpadeo y estrobo tienen ciclo de trabajo del 50 %.
 
 El modo se reinicia al cambiar su valor; cambiar solo RGB conserva la fase. Cada tira mantiene su propio reloj. El inicio es el extremo de entrada de datos, no una orientación física ya verificada. Los efectos se calculan sin bloqueos ni memoria adicional por píxel. El refresco sigue siendo 20 Hz; la velocidad aparente depende del número real de píxeles y de la transmisión.
 
@@ -56,3 +58,7 @@ v0.0.7 conserva modo 0, RGB y todos los desplazamientos de canal de v0.0.6. El p
 Las pruebas automatizadas cubren asignación, progreso, barrido, límites y simulación de salidas. Se han comprobado RGB y el recuento de 38 píxeles de Barra. Falta validar el conjunto de animaciones, la Tira y su recuento, y la convivencia con DMX/RDM.
 
 El 26 de octubre de 2026 se cargó y verificó v0.0.7 por USB y se actualizó el fixture instalado. Reiniciar QLC+ y abrir el espacio de trabajo actualizado para refrescar la personalidad y las etiquetas de efectos.
+
+La revisión v0.0.8 añade letras a los canales de dígitos; los rangos de efectos de Barra y Tira de v0.0.7 se conservan íntegros.
+
+La revisión v0.0.9 amplía la cola KITT y acelera los efectos. No modifica los valores de selección, los canales DMX ni los códigos de letras. El cambio se aplica a Barra y Tira. Las escenas conservan su clase y paso, pero reproducen la nueva velocidad.

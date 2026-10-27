@@ -19,7 +19,7 @@
   <Fixture>
    <Manufacturer>Salto Temporal</Manufacturer>
    <Model>ST-01</Model>
-   <Mode>v0.0.7</Mode>
+   <Mode>v0.0.9</Mode>
    <ID>0</ID>
    <Name>ST-01</Name>
    <Universe>0</Universe>
@@ -80,7 +80,7 @@
      <Font>Ubuntu,24,-1,5,400,0,0,0,0,0,0,0,0,0,0,1</Font>
     </Appearance>
     <SliderMode ValueDisplayStyle="Exact">Level</SliderMode>
-    <Level LowLimit="0" HighLimit="34" Value="7">
+    <Level LowLimit="0" HighLimit="86" Value="7">
      <Channel Fixture="0">3</Channel>
     </Level>
    </Slider>
@@ -172,7 +172,7 @@
      <Font>Ubuntu,24,-1,5,400,0,0,0,0,0,0,0,0,0,0,1</Font>
     </Appearance>
     <SliderMode ValueDisplayStyle="Exact">Level</SliderMode>
-    <Level LowLimit="0" HighLimit="34" Value="11">
+    <Level LowLimit="0" HighLimit="86" Value="11">
      <Channel Fixture="0">2</Channel>
     </Level>
    </Slider>
@@ -219,7 +219,7 @@
      <Font>Ubuntu,24,-1,5,400,0,0,0,0,0,0,0,0,0,0,1</Font>
     </Appearance>
     <SliderMode ValueDisplayStyle="Exact">Level</SliderMode>
-    <Level LowLimit="0" HighLimit="34" Value="4">
+    <Level LowLimit="0" HighLimit="86" Value="4">
      <Channel Fixture="0">0</Channel>
     </Level>
    </Slider>
@@ -231,7 +231,7 @@
      <Font>Ubuntu,24,-1,5,400,0,0,0,0,0,0,0,0,0,0,1</Font>
     </Appearance>
     <SliderMode ValueDisplayStyle="Exact">Level</SliderMode>
-    <Level LowLimit="0" HighLimit="34" Value="15">
+    <Level LowLimit="0" HighLimit="86" Value="15">
      <Channel Fixture="0">1</Channel>
     </Level>
    </Slider>

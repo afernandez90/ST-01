@@ -19,9 +19,9 @@ inline Modo decodificar(uint8_t valor, bool barra) {
   return {0,0,1};
 }
 inline uint16_t periodo(Modo m) {
-  // Ciclo lento → rápido. Estrobo: 2–10 Hz; nunca más que el refresco de 20 Hz.
-  const uint16_t lento=m.efecto==5 ? 500 : 6000;
-  const uint16_t rapido=m.efecto==5 ? 100 : 1000;
+  // Ciclo lento → rápido. Estrobo: 4–10 Hz, hasta un ciclo por dos refrescos.
+  const uint16_t lento=m.efecto==5 ? 250 : 3000;
+  const uint16_t rapido=m.efecto==5 ? 100 : 500;
   return lento-uint32_t(lento-rapido)*m.paso/(m.pasos-1);
 }
 inline uint8_t ruido(uint32_t n) {
@@ -58,10 +58,16 @@ inline uint8_t intensidad(Modo m,uint16_t i,uint16_t n,uint32_t tiempo) {
       const uint16_t cola=(posicion+n-x)%n;
       return cola<ancho*3 ? 255-uint32_t(cola)*255/(ancho*3) : 0;
     }
-    case 10: { // KITT: un punto y los dos vecinos al 60 %.
-      const uint16_t p=uint32_t(fase<512 ? fase : 1023-fase)*(n-1)/511;
+    case 10: { // KITT: cabeza 100 %, avance 60 %, cola 90–10 %.
+      const bool adelante=fase<512;
+      const uint16_t p=uint32_t(adelante ? fase : 1023-fase)*(n-1)/511;
+      if(i==p)return 255;
+      const bool delante=adelante ? i>p : i<p;
       const uint16_t d=distancia(i,p);
-      return d==0 ? 255 : d==1 ? 153 : 0;
+      if(delante)return d==1 ? 153 : 0;
+      // Diez posiciones de cabeza a final de cola: 100, 90, …, 10 %.
+      // Recortar en los extremos; nunca envolver al extremo opuesto.
+      return d<10 ? uint16_t(10-d)*255/10 : 0;
     }
     case 11: {
       const uint16_t cantidad=uint32_t(fase<512 ? fase : 1023-fase)*n/511;

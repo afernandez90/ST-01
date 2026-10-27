@@ -38,29 +38,47 @@ void terminarRespuesta(bool descubrimiento=false) {
 }
 int main() {
   setup();
-  dmx(13,123); reloj=10; loop(); assert(salida==123);
+  // Arranque sin DMX: dos destellos completos y retorno automático a apagado.
+  for (unsigned paso=0; paso<4; ++paso) {
+    reloj=50+paso*250; loop();
+    const bool encendido=paso%2==0;
+    for(auto pin:PINES_PILOTOS)assert(pinesAnalogicos[pin]==(encendido ? 255 : 0));
+    assert(pinesDigitales[PIN_ESTADO]==encendido && pantalla.iluminada==encendido);
+    for(unsigned i=0;i<4;++i)
+      assert(desplazados[(cuantosDesplazados-1-i)%1024]==(encendido ? 0xff : 0));
+    for(auto pixel:pixelesBarra)assert(pixel.r==(encendido ? 255 : 0) && pixel.g==pixel.r && pixel.b==pixel.r);
+    for(auto pixel:pixelesTira)assert(pixel.r==(encendido ? 255 : 0) && pixel.g==pixel.r && pixel.b==pixel.r);
+    assert(!rdm.identificar); // La autocomprobación no modifica IDENTIFY_DEVICE.
+  }
+  // RDM continúa respondiendo durante la prueba y DMX queda listo para el final.
+  rdmRecibir(0x1000); terminarRespuesta(); assert(rdm.salida[24]==0);
+  dmx(13,42); reloj=1000; loop();
+  assert(!autocomprobacionPendiente && salida==42 && pantalla.iluminada);
+  esperaMicros=0;
+
+  dmx(13,123); reloj=1010; loop(); assert(salida==123);
   rdmRecibir(0x60); assert(esperaMicros==200); terminarRespuesta();
   assert(salida==123);  // Consultar RDM no interrumpe la salida DMX.
   rdmRecibir(0xf0,{1,238},true); // Dirección 494, último inicio permitido.
   assert(direccionDmx==494 && rdm.direccion==494); terminarRespuesta();
-  reloj=20;loop();assert(direccionPendiente==494 && salida==0);
+  reloj=1020;loop();assert(direccionPendiente==494 && salida==0);
   Configuracion config; EEPROM.get(0,config);assert(config.direccion==494);
-  dmx(506,177); reloj=300;loop(); assert(salida==177);
+  dmx(506,177); reloj=1300;loop(); assert(salida==177);
   assert(pantalla.lineas[0]=="ST-01 DMX: 494  ");
   assert(pantalla.lineas[1]=="DMX OK  LNB:177 ");
-  rdmRecibir(0x1000,{1},true);terminarRespuesta();reloj=550;loop();assert(salida==0);
+  rdmRecibir(0x1000,{1},true);terminarRespuesta();reloj=1550;loop();assert(salida==0);
   for(auto pin:PINES_PILOTOS)assert(pinesAnalogicos[pin]==0);
   assert(!pinesDigitales[PIN_ESTADO] && !pantalla.iluminada);
   for(unsigned i=0;i<4;++i)assert(desplazados[(cuantosDesplazados-1-i)%1024]==0);
   assert(pantalla.lineas[0]=="IDENTIFICAR ST01");
-  reloj=800;loop();assert(salida==255);
+  reloj=1800;loop();assert(salida==255);
   for(auto pin:PINES_PILOTOS)assert(pinesAnalogicos[pin]==255);
   assert(pinesDigitales[PIN_ESTADO] && pantalla.iluminada);
   for(unsigned i=0;i<4;++i)assert(desplazados[(cuantosDesplazados-1-i)%1024]==0xff);
   for(auto pixel:pixelesBarra)assert(pixel.r==255 && pixel.g==255 && pixel.b==255);
   for(auto pixel:pixelesTira)assert(pixel.r==255 && pixel.g==255 && pixel.b==255);
-  rdmRecibir(0x1000,{0},true);terminarRespuesta();reloj=850;loop();assert(salida==177);
-  reloj=1400;loop();assert(salida==0);
+  rdmRecibir(0x1000,{0},true);terminarRespuesta();reloj=1850;loop();assert(salida==177);
+  reloj=2400;loop();assert(salida==0);
   assert(pantalla.lineas[1]=="SIN DMX LNB:177 ");
   rdmRecibir(0x82,{'P','r','u','e','b','a'},true);terminarRespuesta();loop();
   assert(EEPROM.read(32)==0x52 && EEPROM.read(33)=='P');
@@ -89,7 +107,7 @@ int main() {
   recibir(0,_BV(FE1));recibir(0);
   for(uint16_t canal=1;canal<=512;++canal)
     recibir(canal>=494 ? trama[canal-494] : 0);
-  reloj=1600;loop();
+  reloj=2600;loop();
   for(unsigned i=0;i<38;++i) {
     assert(pixelesBarra[i].r==(i<30 ? 200 : 0));
     assert(pixelesBarra[i].g==(i<30 ? 100 : 0));
@@ -97,17 +115,27 @@ int main() {
   }
   for(auto pixel:pixelesTira)assert(pixel.r==40 && pixel.g==80 && pixel.b==120);
   trama[7]=111; // KITT lento, comienza en el primer píxel.
-  reloj=1650;aplicarSalidasHardware(calcularSalidas(trama,true,false,reloj));
+  reloj=2650;aplicarSalidasHardware(calcularSalidas(trama,true,false,reloj));
   assert(pixelesBarra[0].r==200 && pixelesBarra[1].r==120);
   assert(pixelesBarra[2].r==0 && pixelesBarra[37].r==0);
   trama[4]=100; // Cambiar RGB conserva el reloj del barrido.
-  reloj=3150;aplicarSalidasHardware(calcularSalidas(trama,true,false,reloj));
+  reloj=3400;aplicarSalidasHardware(calcularSalidas(trama,true,false,reloj));
   assert(pixelesBarra[0].r==0);
-  reloj=3200;aplicarSalidasHardware(calcularSalidas(trama,false,false,reloj));
+  assert(pixelesBarra[18].r==100);
+  assert(pixelesBarra[17].r==uint16_t(100)*229/255);
+  assert(pixelesBarra[19].r==60);
+  assert(pixelesBarra[9].r==uint16_t(100)*25/255);
+  assert(pixelesBarra[8].r==0);
+  reloj=4200;aplicarSalidasHardware(calcularSalidas(trama,false,false,reloj));
   for(auto pixel:pixelesBarra)assert(pixel.r==0 && pixel.g==0 && pixel.b==0);
   for(auto pixel:pixelesTira)assert(pixel.r==0 && pixel.g==0 && pixel.b==0);
-  reloj=3250;aplicarSalidasHardware(calcularSalidas(trama,false,true,reloj));
+  reloj=4250;aplicarSalidasHardware(calcularSalidas(trama,false,true,reloj));
   for(auto pixel:pixelesBarra)assert(pixel.r==255 && pixel.g==255 && pixel.b==255);
   for(auto pixel:pixelesTira)assert(pixel.r==255 && pixel.g==255 && pixel.b==255);
+  // Las letras llegan a los cuatro registros en el mismo orden que las cifras.
+  uint8_t letras[CANALES_ST01]={35,37,61,63}; // A, C, a, c
+  reloj+=50;aplicarSalidasHardware(calcularSalidas(letras,true,false,reloj));
+  const uint8_t patrones[]={0x77,0x39,0x5f,0x58};
+  for(unsigned i=0;i<4;++i)assert(desplazados[(cuantosDesplazados-1-i)%1024]==patrones[i]);
   std::cout<<"UART: break, datos, retorno RX, direccion, EEPROM, LCD, identificar y perdida DMX correctos.\n";
 }

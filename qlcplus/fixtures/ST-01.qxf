@@ -17,6 +17,59 @@
   <Capability Min="11" Max="20">Dígitos 0–9 con punto decimal (valor - 11)</Capability>
   <Capability Min="21" Max="27">Segmentos individuales A–G</Capability>
   <Capability Min="28" Max="34">Segmentos individuales A–G con punto decimal</Capability>
+  <Capability Min="35" Max="35">Letra A (aproximación)</Capability>
+  <Capability Min="36" Max="36">Letra B (aproximación)</Capability>
+  <Capability Min="37" Max="37">Letra C (aproximación)</Capability>
+  <Capability Min="38" Max="38">Letra D (aproximación)</Capability>
+  <Capability Min="39" Max="39">Letra E (aproximación)</Capability>
+  <Capability Min="40" Max="40">Letra F (aproximación)</Capability>
+  <Capability Min="41" Max="41">Letra G (aproximación)</Capability>
+  <Capability Min="42" Max="42">Letra H (aproximación)</Capability>
+  <Capability Min="43" Max="43">Letra I (aproximación)</Capability>
+  <Capability Min="44" Max="44">Letra J (aproximación)</Capability>
+  <Capability Min="45" Max="45">Letra K (aproximación)</Capability>
+  <Capability Min="46" Max="46">Letra L (aproximación)</Capability>
+  <Capability Min="47" Max="47">Letra M (aproximación)</Capability>
+  <Capability Min="48" Max="48">Letra N (aproximación)</Capability>
+  <Capability Min="49" Max="49">Letra O (aproximación)</Capability>
+  <Capability Min="50" Max="50">Letra P (aproximación)</Capability>
+  <Capability Min="51" Max="51">Letra Q (aproximación)</Capability>
+  <Capability Min="52" Max="52">Letra R (aproximación)</Capability>
+  <Capability Min="53" Max="53">Letra S (aproximación)</Capability>
+  <Capability Min="54" Max="54">Letra T (aproximación)</Capability>
+  <Capability Min="55" Max="55">Letra U (aproximación)</Capability>
+  <Capability Min="56" Max="56">Letra V (aproximación)</Capability>
+  <Capability Min="57" Max="57">Letra W (aproximación)</Capability>
+  <Capability Min="58" Max="58">Letra X (aproximación)</Capability>
+  <Capability Min="59" Max="59">Letra Y (aproximación)</Capability>
+  <Capability Min="60" Max="60">Letra Z (aproximación)</Capability>
+  <Capability Min="61" Max="61">Letra a (aproximación)</Capability>
+  <Capability Min="62" Max="62">Letra b (aproximación)</Capability>
+  <Capability Min="63" Max="63">Letra c (aproximación)</Capability>
+  <Capability Min="64" Max="64">Letra d (aproximación)</Capability>
+  <Capability Min="65" Max="65">Letra e (aproximación)</Capability>
+  <Capability Min="66" Max="66">Letra f (aproximación)</Capability>
+  <Capability Min="67" Max="67">Letra g (aproximación)</Capability>
+  <Capability Min="68" Max="68">Letra h (aproximación)</Capability>
+  <Capability Min="69" Max="69">Letra i (aproximación)</Capability>
+  <Capability Min="70" Max="70">Letra j (aproximación)</Capability>
+  <Capability Min="71" Max="71">Letra k (aproximación)</Capability>
+  <Capability Min="72" Max="72">Letra l (aproximación)</Capability>
+  <Capability Min="73" Max="73">Letra m (aproximación)</Capability>
+  <Capability Min="74" Max="74">Letra n (aproximación)</Capability>
+  <Capability Min="75" Max="75">Letra o (aproximación)</Capability>
+  <Capability Min="76" Max="76">Letra p (aproximación)</Capability>
+  <Capability Min="77" Max="77">Letra q (aproximación)</Capability>
+  <Capability Min="78" Max="78">Letra r (aproximación)</Capability>
+  <Capability Min="79" Max="79">Letra s (aproximación)</Capability>
+  <Capability Min="80" Max="80">Letra t (aproximación)</Capability>
+  <Capability Min="81" Max="81">Letra u (aproximación)</Capability>
+  <Capability Min="82" Max="82">Letra v (aproximación)</Capability>
+  <Capability Min="83" Max="83">Letra w (aproximación)</Capability>
+  <Capability Min="84" Max="84">Letra x (aproximación)</Capability>
+  <Capability Min="85" Max="85">Letra y (aproximación)</Capability>
+  <Capability Min="86" Max="86">Letra z (aproximación)</Capability>
+  <Capability Min="87" Max="255">Sin asignar (apagado)</Capability>
  </Channel>
  <Channel Name="Centenas">
   <Group Byte="0">Effect</Group>
@@ -26,6 +79,59 @@
   <Capability Min="11" Max="20">Dígitos 0–9 con punto decimal (valor - 11)</Capability>
   <Capability Min="21" Max="27">Segmentos individuales A–G</Capability>
   <Capability Min="28" Max="34">Segmentos individuales A–G con punto decimal</Capability>
+  <Capability Min="35" Max="35">Letra A (aproximación)</Capability>
+  <Capability Min="36" Max="36">Letra B (aproximación)</Capability>
+  <Capability Min="37" Max="37">Letra C (aproximación)</Capability>
+  <Capability Min="38" Max="38">Letra D (aproximación)</Capability>
+  <Capability Min="39" Max="39">Letra E (aproximación)</Capability>
+  <Capability Min="40" Max="40">Letra F (aproximación)</Capability>
+  <Capability Min="41" Max="41">Letra G (aproximación)</Capability>
+  <Capability Min="42" Max="42">Letra H (aproximación)</Capability>
+  <Capability Min="43" Max="43">Letra I (aproximación)</Capability>
+  <Capability Min="44" Max="44">Letra J (aproximación)</Capability>
+  <Capability Min="45" Max="45">Letra K (aproximación)</Capability>
+  <Capability Min="46" Max="46">Letra L (aproximación)</Capability>
+  <Capability Min="47" Max="47">Letra M (aproximación)</Capability>
+  <Capability Min="48" Max="48">Letra N (aproximación)</Capability>
+  <Capability Min="49" Max="49">Letra O (aproximación)</Capability>
+  <Capability Min="50" Max="50">Letra P (aproximación)</Capability>
+  <Capability Min="51" Max="51">Letra Q (aproximación)</Capability>
+  <Capability Min="52" Max="52">Letra R (aproximación)</Capability>
+  <Capability Min="53" Max="53">Letra S (aproximación)</Capability>
+  <Capability Min="54" Max="54">Letra T (aproximación)</Capability>
+  <Capability Min="55" Max="55">Letra U (aproximación)</Capability>
+  <Capability Min="56" Max="56">Letra V (aproximación)</Capability>
+  <Capability Min="57" Max="57">Letra W (aproximación)</Capability>
+  <Capability Min="58" Max="58">Letra X (aproximación)</Capability>
+  <Capability Min="59" Max="59">Letra Y (aproximación)</Capability>
+  <Capability Min="60" Max="60">Letra Z (aproximación)</Capability>
+  <Capability Min="61" Max="61">Letra a (aproximación)</Capability>
+  <Capability Min="62" Max="62">Letra b (aproximación)</Capability>
+  <Capability Min="63" Max="63">Letra c (aproximación)</Capability>
+  <Capability Min="64" Max="64">Letra d (aproximación)</Capability>
+  <Capability Min="65" Max="65">Letra e (aproximación)</Capability>
+  <Capability Min="66" Max="66">Letra f (aproximación)</Capability>
+  <Capability Min="67" Max="67">Letra g (aproximación)</Capability>
+  <Capability Min="68" Max="68">Letra h (aproximación)</Capability>
+  <Capability Min="69" Max="69">Letra i (aproximación)</Capability>
+  <Capability Min="70" Max="70">Letra j (aproximación)</Capability>
+  <Capability Min="71" Max="71">Letra k (aproximación)</Capability>
+  <Capability Min="72" Max="72">Letra l (aproximación)</Capability>
+  <Capability Min="73" Max="73">Letra m (aproximación)</Capability>
+  <Capability Min="74" Max="74">Letra n (aproximación)</Capability>
+  <Capability Min="75" Max="75">Letra o (aproximación)</Capability>
+  <Capability Min="76" Max="76">Letra p (aproximación)</Capability>
+  <Capability Min="77" Max="77">Letra q (aproximación)</Capability>
+  <Capability Min="78" Max="78">Letra r (aproximación)</Capability>
+  <Capability Min="79" Max="79">Letra s (aproximación)</Capability>
+  <Capability Min="80" Max="80">Letra t (aproximación)</Capability>
+  <Capability Min="81" Max="81">Letra u (aproximación)</Capability>
+  <Capability Min="82" Max="82">Letra v (aproximación)</Capability>
+  <Capability Min="83" Max="83">Letra w (aproximación)</Capability>
+  <Capability Min="84" Max="84">Letra x (aproximación)</Capability>
+  <Capability Min="85" Max="85">Letra y (aproximación)</Capability>
+  <Capability Min="86" Max="86">Letra z (aproximación)</Capability>
+  <Capability Min="87" Max="255">Sin asignar (apagado)</Capability>
  </Channel>
  <Channel Name="Decenas">
   <Group Byte="0">Effect</Group>
@@ -35,6 +141,59 @@
   <Capability Min="11" Max="20">Dígitos 0–9 con punto decimal (valor - 11)</Capability>
   <Capability Min="21" Max="27">Segmentos individuales A–G</Capability>
   <Capability Min="28" Max="34">Segmentos individuales A–G con punto decimal</Capability>
+  <Capability Min="35" Max="35">Letra A (aproximación)</Capability>
+  <Capability Min="36" Max="36">Letra B (aproximación)</Capability>
+  <Capability Min="37" Max="37">Letra C (aproximación)</Capability>
+  <Capability Min="38" Max="38">Letra D (aproximación)</Capability>
+  <Capability Min="39" Max="39">Letra E (aproximación)</Capability>
+  <Capability Min="40" Max="40">Letra F (aproximación)</Capability>
+  <Capability Min="41" Max="41">Letra G (aproximación)</Capability>
+  <Capability Min="42" Max="42">Letra H (aproximación)</Capability>
+  <Capability Min="43" Max="43">Letra I (aproximación)</Capability>
+  <Capability Min="44" Max="44">Letra J (aproximación)</Capability>
+  <Capability Min="45" Max="45">Letra K (aproximación)</Capability>
+  <Capability Min="46" Max="46">Letra L (aproximación)</Capability>
+  <Capability Min="47" Max="47">Letra M (aproximación)</Capability>
+  <Capability Min="48" Max="48">Letra N (aproximación)</Capability>
+  <Capability Min="49" Max="49">Letra O (aproximación)</Capability>
+  <Capability Min="50" Max="50">Letra P (aproximación)</Capability>
+  <Capability Min="51" Max="51">Letra Q (aproximación)</Capability>
+  <Capability Min="52" Max="52">Letra R (aproximación)</Capability>
+  <Capability Min="53" Max="53">Letra S (aproximación)</Capability>
+  <Capability Min="54" Max="54">Letra T (aproximación)</Capability>
+  <Capability Min="55" Max="55">Letra U (aproximación)</Capability>
+  <Capability Min="56" Max="56">Letra V (aproximación)</Capability>
+  <Capability Min="57" Max="57">Letra W (aproximación)</Capability>
+  <Capability Min="58" Max="58">Letra X (aproximación)</Capability>
+  <Capability Min="59" Max="59">Letra Y (aproximación)</Capability>
+  <Capability Min="60" Max="60">Letra Z (aproximación)</Capability>
+  <Capability Min="61" Max="61">Letra a (aproximación)</Capability>
+  <Capability Min="62" Max="62">Letra b (aproximación)</Capability>
+  <Capability Min="63" Max="63">Letra c (aproximación)</Capability>
+  <Capability Min="64" Max="64">Letra d (aproximación)</Capability>
+  <Capability Min="65" Max="65">Letra e (aproximación)</Capability>
+  <Capability Min="66" Max="66">Letra f (aproximación)</Capability>
+  <Capability Min="67" Max="67">Letra g (aproximación)</Capability>
+  <Capability Min="68" Max="68">Letra h (aproximación)</Capability>
+  <Capability Min="69" Max="69">Letra i (aproximación)</Capability>
+  <Capability Min="70" Max="70">Letra j (aproximación)</Capability>
+  <Capability Min="71" Max="71">Letra k (aproximación)</Capability>
+  <Capability Min="72" Max="72">Letra l (aproximación)</Capability>
+  <Capability Min="73" Max="73">Letra m (aproximación)</Capability>
+  <Capability Min="74" Max="74">Letra n (aproximación)</Capability>
+  <Capability Min="75" Max="75">Letra o (aproximación)</Capability>
+  <Capability Min="76" Max="76">Letra p (aproximación)</Capability>
+  <Capability Min="77" Max="77">Letra q (aproximación)</Capability>
+  <Capability Min="78" Max="78">Letra r (aproximación)</Capability>
+  <Capability Min="79" Max="79">Letra s (aproximación)</Capability>
+  <Capability Min="80" Max="80">Letra t (aproximación)</Capability>
+  <Capability Min="81" Max="81">Letra u (aproximación)</Capability>
+  <Capability Min="82" Max="82">Letra v (aproximación)</Capability>
+  <Capability Min="83" Max="83">Letra w (aproximación)</Capability>
+  <Capability Min="84" Max="84">Letra x (aproximación)</Capability>
+  <Capability Min="85" Max="85">Letra y (aproximación)</Capability>
+  <Capability Min="86" Max="86">Letra z (aproximación)</Capability>
+  <Capability Min="87" Max="255">Sin asignar (apagado)</Capability>
  </Channel>
  <Channel Name="Unidades">
   <Group Byte="0">Effect</Group>
@@ -44,6 +203,59 @@
   <Capability Min="11" Max="20">Dígitos 0–9 con punto decimal (valor - 11)</Capability>
   <Capability Min="21" Max="27">Segmentos individuales A–G</Capability>
   <Capability Min="28" Max="34">Segmentos individuales A–G con punto decimal</Capability>
+  <Capability Min="35" Max="35">Letra A (aproximación)</Capability>
+  <Capability Min="36" Max="36">Letra B (aproximación)</Capability>
+  <Capability Min="37" Max="37">Letra C (aproximación)</Capability>
+  <Capability Min="38" Max="38">Letra D (aproximación)</Capability>
+  <Capability Min="39" Max="39">Letra E (aproximación)</Capability>
+  <Capability Min="40" Max="40">Letra F (aproximación)</Capability>
+  <Capability Min="41" Max="41">Letra G (aproximación)</Capability>
+  <Capability Min="42" Max="42">Letra H (aproximación)</Capability>
+  <Capability Min="43" Max="43">Letra I (aproximación)</Capability>
+  <Capability Min="44" Max="44">Letra J (aproximación)</Capability>
+  <Capability Min="45" Max="45">Letra K (aproximación)</Capability>
+  <Capability Min="46" Max="46">Letra L (aproximación)</Capability>
+  <Capability Min="47" Max="47">Letra M (aproximación)</Capability>
+  <Capability Min="48" Max="48">Letra N (aproximación)</Capability>
+  <Capability Min="49" Max="49">Letra O (aproximación)</Capability>
+  <Capability Min="50" Max="50">Letra P (aproximación)</Capability>
+  <Capability Min="51" Max="51">Letra Q (aproximación)</Capability>
+  <Capability Min="52" Max="52">Letra R (aproximación)</Capability>
+  <Capability Min="53" Max="53">Letra S (aproximación)</Capability>
+  <Capability Min="54" Max="54">Letra T (aproximación)</Capability>
+  <Capability Min="55" Max="55">Letra U (aproximación)</Capability>
+  <Capability Min="56" Max="56">Letra V (aproximación)</Capability>
+  <Capability Min="57" Max="57">Letra W (aproximación)</Capability>
+  <Capability Min="58" Max="58">Letra X (aproximación)</Capability>
+  <Capability Min="59" Max="59">Letra Y (aproximación)</Capability>
+  <Capability Min="60" Max="60">Letra Z (aproximación)</Capability>
+  <Capability Min="61" Max="61">Letra a (aproximación)</Capability>
+  <Capability Min="62" Max="62">Letra b (aproximación)</Capability>
+  <Capability Min="63" Max="63">Letra c (aproximación)</Capability>
+  <Capability Min="64" Max="64">Letra d (aproximación)</Capability>
+  <Capability Min="65" Max="65">Letra e (aproximación)</Capability>
+  <Capability Min="66" Max="66">Letra f (aproximación)</Capability>
+  <Capability Min="67" Max="67">Letra g (aproximación)</Capability>
+  <Capability Min="68" Max="68">Letra h (aproximación)</Capability>
+  <Capability Min="69" Max="69">Letra i (aproximación)</Capability>
+  <Capability Min="70" Max="70">Letra j (aproximación)</Capability>
+  <Capability Min="71" Max="71">Letra k (aproximación)</Capability>
+  <Capability Min="72" Max="72">Letra l (aproximación)</Capability>
+  <Capability Min="73" Max="73">Letra m (aproximación)</Capability>
+  <Capability Min="74" Max="74">Letra n (aproximación)</Capability>
+  <Capability Min="75" Max="75">Letra o (aproximación)</Capability>
+  <Capability Min="76" Max="76">Letra p (aproximación)</Capability>
+  <Capability Min="77" Max="77">Letra q (aproximación)</Capability>
+  <Capability Min="78" Max="78">Letra r (aproximación)</Capability>
+  <Capability Min="79" Max="79">Letra s (aproximación)</Capability>
+  <Capability Min="80" Max="80">Letra t (aproximación)</Capability>
+  <Capability Min="81" Max="81">Letra u (aproximación)</Capability>
+  <Capability Min="82" Max="82">Letra v (aproximación)</Capability>
+  <Capability Min="83" Max="83">Letra w (aproximación)</Capability>
+  <Capability Min="84" Max="84">Letra x (aproximación)</Capability>
+  <Capability Min="85" Max="85">Letra y (aproximación)</Capability>
+  <Capability Min="86" Max="86">Letra z (aproximación)</Capability>
+  <Capability Min="87" Max="255">Sin asignar (apagado)</Capability>
  </Channel>
  <Channel Name="Barra LED R" Preset="IntensityRed"/>
  <Channel Name="Barra LED G" Preset="IntensityGreen"/>
@@ -152,7 +364,7 @@
   <Capability Min="234" Max="244">Alternancia de segmentos (lento → rápido)</Capability>
   <Capability Min="245" Max="255">Aparición y desvanecimiento (lento → rápido)</Capability>
  </Channel>
- <Mode Name="v0.0.7">
+ <Mode Name="v0.0.9">
   <Channel Number="0" ActsOn="0">Millares</Channel>
   <Channel Number="1" ActsOn="1">Centenas</Channel>
   <Channel Number="2" ActsOn="2">Decenas</Channel>

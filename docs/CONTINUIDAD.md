@@ -1,10 +1,20 @@
 # Continuidad del proyecto
 
-Actualizado: 26 de octubre de 2026.
+Actualizado: 27 de octubre de 2026.
+
+## Cola KITT, velocidades y referencias v0.0.9
+
+Se conserva en `docs/datasheets/` una copia de las fichas CL5611AH (XLITX) y ELS-50101A/B (Etnal), enlazadas desde [las notas de circuito](REFERENCIAS_VISUALIZADORES.md), con patillajes, resistencias, polarización y condensadores propuestos.
+
+KITT utiliza cabeza al 100 %, un LED delantero al 60 % y nueve LED traseros del 90 al 10 %; cabeza y cola suman diez posiciones. La cola se invierte con la dirección y se recorta en los extremos. Los ciclos generales se aceleran a 3000–500 ms y el estrobo a 250–100 ms. Se aplica a Barra y Tira sin cambiar rangos de modo ni canales. Firmware, fixture y workspace usan v0.0.9; carga y validación física de esta revisión pendientes.
+
+## Letras de los visualizadores v0.0.8
+
+Se añaden A–Z en valores DMX 35–60 y a–z en 61–86 de los cuatro canales de dígito. Se conserva la codificación 0–34 y todos los rangos de efectos LED de v0.0.7; los valores 87–255 apagan el visualizador. Las letras son aproximaciones y algunas comparten segmentos. Véase [mapa de letras](LETRAS_VISUALIZADORES.md). La revisión v0.0.8 añadió estos códigos; siguen vigentes en v0.0.9. Su validación física sigue pendiente.
 
 ## Efectos LED v0.0.7
 
-Se han implementado las 24 animaciones de Barra y Tira y el progreso manual de 38 pasos de Barra. Firmware, fixture y espacio de trabajo usan v0.0.7, con los mismos 19 canales. Véase [mapa de efectos](EFECTOS_LED.md). El 26 de octubre de 2026 se cargó v0.0.6 por USB y el usuario comprobó RGB y 38 píxeles mediante progreso manual. La revisión v0.0.7 adapta el recuento y los rangos, se ha cargado y verificado por USB y su fixture se ha instalado en QLC+. Reiniciar QLC+ y abrir el espacio de trabajo actualizado para refrescar la personalidad y sus etiquetas. La validación de las demás animaciones sigue pendiente; las menciones de v0.0.5 siguientes describen la validación anterior.
+Se han implementado las 24 animaciones de Barra y Tira y el progreso manual de 38 pasos de Barra. La revisión v0.0.7 fijó los 38 píxeles de Barra y sus rangos, con los mismos 19 canales. Véase [mapa de efectos](EFECTOS_LED.md). El 26 de octubre de 2026 se cargó v0.0.6 por USB y el usuario comprobó RGB y 38 píxeles mediante progreso manual. La revisión v0.0.7 adapta el recuento y los rangos, se ha cargado y verificado por USB y su fixture se ha instalado en QLC+. Reiniciar QLC+ y abrir el espacio de trabajo actualizado para refrescar la personalidad y sus etiquetas. La validación de las demás animaciones sigue pendiente; las menciones de v0.0.5 siguientes describen la validación anterior.
 
 ## Próximo paso acordado
 
@@ -28,11 +38,11 @@ Este entregable queda acordado para el cierre del diseño; documentar el montaje
 
 ## Visualizadores y pruebas por etapas
 
-Los visualizadores previstos para el montaje son **50101AS**, rojos, de **5 pulgadas**, un dígito, ocho segmentos, **10 pines** y **cátodo común**; su llegada sigue pendiente. Falta la ficha técnica del fabricante para fijar patillaje, tensión y corriente por segmento.
+Los visualizadores previstos para el montaje son **50101AS**, rojos, de **5 pulgadas**, un dígito, ocho segmentos, **10 pines** y **cátodo común**; su llegada sigue pendiente. Se ha localizado la referencia Etnal ELS-50101AS, pero el fabricante de las unidades adquiridas no está confirmado; verificar sus características antes del montaje.
 
-El usuario ha pedido componentes para las pruebas y un visualizador pequeño **5101AS de 0,50 pulgadas**. Primero se comprobarán su patillaje, los segmentos, el punto decimal y el control desde Arduino. Confirmar los componentes recibidos antes de concretar el montaje de prueba; no dar por comprada toda la lista sugerida.
+El usuario selecciona ahora **CL5611AH de 0,56 pulgadas** como visualizador pequeño de pruebas, sustituyendo la elección inicial 5101AS. Se han localizado fichas de XLITX y Etnal y se han comparado sus diagramas. Los patillajes de referencia difieren en los pines 1, 2 y 3; el grande también necesita mucha más tensión de segmento. Véanse [referencias, valores y patillajes](REFERENCIAS_VISUALIZADORES.md). Confirmar los componentes recibidos antes de concretar el montaje de prueba; no dar por comprada toda la lista sugerida.
 
-La etapa con **74HC595 y TBD62783APG** es la candidata para probar el control de los segmentos. Cuando lleguen los 50101AS grandes, medir por separado patillaje, tensión y corriente de cada tipo de segmento y del punto decimal, y ajustar alimentación, resistencias y límites de la etapa de salida. Las medidas y resistencias del 5101AS no se trasladan automáticamente al 50101AS. La lógica de dígitos y la personalidad DMX pueden conservarse.
+La etapa con **74HC595 y TBD62783APG** es la candidata para probar el control de los segmentos. Cuando lleguen los 50101AS grandes, medir por separado patillaje, tensión y corriente de cada tipo de segmento y del punto decimal, y ajustar alimentación, resistencias y límites de la etapa de salida. Las medidas, resistencias y conexiones físicas del CL5611AH no se trasladan automáticamente al 50101AS. La lógica de dígitos y la personalidad DMX pueden conservarse.
 
 La propuesta anterior con TPIC6B595 conectados directamente a los segmentos requiere ánodo común y no es compatible con estos visualizadores. Rediseñar la etapa de números antes del montaje y revisar su control en el firmware; la personalidad DMX puede conservarse. Véase [cableado propuesto](CABLEADO_PROPUESTO.md).
 
@@ -51,9 +61,9 @@ Los pilotos son indicadores LED de panel **AD16-22DS de 22 mm, variante de 12 V*
 
 El piloto azul adicional de Cara B es un indicador de estado: encendido con DMX OK y apagado con SIN DMX, independiente de las intensidades DMX. No pertenece a los siete pilotos DMX. Se ha implementado su salida en pin 9; falta completar y validar el montaje. Identificar la hace parpadear junto con el resto.
 
-El espacio de trabajo debe usar el fixture **Salto Temporal / ST-01**, modo `v0.0.7`, no un fixture genérico. El maestro visible en la consola es de tipo Grand Master y no tiene un canal de dispositivo asignado.
+El espacio de trabajo debe usar el fixture **Salto Temporal / ST-01**, modo `v0.0.9`, no un fixture genérico. El maestro visible en la consola es de tipo Grand Master y no tiene un canal de dispositivo asignado.
 
-La personalidad vigente es `Control v0.0.7`: en los canales de dígito, 0 apaga todos los segmentos y el punto decimal, 1–9 muestran 1–9 y 10 muestra 0. Los valores 11–20 muestran 0–9 con punto decimal, 21–27 los segmentos A–G y 28–34 esos segmentos con punto decimal. Esta codificación sustituye la de v0.0.1; actualizar los valores de escenas externas antes de usarlas. El dispositivo ocupa 19 canales, sin regulador maestro propio. QLC+ escala o limita los canales de intensidad; los dígitos y modos no deben escalarse. Para un apagado total que incluya los dígitos, usar blackout de todos los canales. La dirección base válida es 1–494. Las escenas de versiones anteriores deben desplazarse un canal al eliminar el antiguo maestro. Se ha implementado una salida de cuatro dígitos mediante TPIC6B595 encadenados; instalación y validación físicas pendientes, según el cableado propuesto.
+La personalidad vigente es `Control v0.0.9`: en los canales de dígito, 0 apaga todos los segmentos y el punto decimal, 1–9 muestran 1–9 y 10 muestra 0. Los valores 11–20 muestran 0–9 con punto decimal, 21–27 los segmentos A–G y 28–34 esos segmentos con punto decimal. Esta codificación sustituye la de v0.0.1; actualizar los valores de escenas externas antes de usarlas. El dispositivo ocupa 19 canales, sin regulador maestro propio. QLC+ escala o limita los canales de intensidad; los dígitos y modos no deben escalarse. Para un apagado total que incluya los dígitos, usar blackout de todos los canales. La dirección base válida es 1–494. Las escenas de versiones anteriores deben desplazarse un canal al eliminar el antiguo maestro. Se ha implementado una salida de cuatro dígitos mediante TPIC6B595 encadenados; instalación y validación físicas pendientes, según el cableado propuesto.
 
 ## Estado de RDM
 
@@ -89,6 +99,10 @@ Documentación y comentarios en español; conservar el nombre README.md en la ra
 
 ## Versión compartida
 
-Por petición del usuario, firmware reportado y personalidad de QLC+ se alinean ahora en **0.0.7**. La revisión añade efectos a los selectores RGB y conserva los 19 canales y la codificación de los dígitos. Los textos y el identificador numérico RDM se generan desde `arduino/controlador/version.h`; al publicar una versión, actualizar también el modo de QLC+, la instancia del espacio de trabajo y la documentación. No incrementar el parche por cada edición.
+Por petición del usuario, firmware reportado y personalidad de QLC+ se alinean ahora en **0.0.9**. La revisión conserva las letras, los 19 canales y los rangos de modo, y cambia la cola KITT y las velocidades de los efectos. Los textos y el identificador numérico RDM se generan desde `arduino/controlador/version.h`; al publicar una versión, actualizar también el modo de QLC+, la instancia del espacio de trabajo y la documentación. No incrementar el parche por cada edición.
 
 La herramienta de pruebas obtiene el UID del controlador mediante la API de su transporte. El Arduino responde al UID fuente de cada solicitud; no lleva un controlador de destino fijado. Tras las pruebas RDM se comprobó también DMX a unos 39–40 paquetes/s y apagado por ausencia de señal.
+
+### Autocomprobación al iniciar
+
+El controlador realiza dos destellos de todas las salidas durante el primer segundo después de inicializar el hardware, reutilizando el patrón de identificación RDM sin modificar IDENTIFY_DEVICE. La recepción DMX y las respuestas RDM continúan durante la prueba; al finalizar se aplica el DMX vigente o se apagan las salidas sin señal válida. Validado mediante simulación integrada y compilación para Mega; pendiente de cargar y comprobar físicamente.

@@ -16,6 +16,9 @@ c++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined \
 c++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined \
   "$raiz/pruebas/efectos.cpp" -o "$carpeta/efectos"
 "$carpeta/efectos"
+c++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined \
+  "$raiz/pruebas/digitos.cpp" -o "$carpeta/digitos"
+"$carpeta/digitos"
 PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 "$raiz/pruebas/firmware_rdm.py"
 c++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined \
   -I"$raiz/pruebas/simulacion" "$raiz/pruebas/traza_rdm.cpp" -o "$carpeta/traza"

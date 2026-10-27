@@ -1,5 +1,6 @@
 #pragma once
 #include "salidas.h"
+#include "digitos.h"
 #include "efectos.h"
 // Conservar la recepción UART; las tiras requieren una prueba física de temporización.
 #define FASTLED_ALLOW_INTERRUPTS 1
@@ -16,16 +17,6 @@ constexpr uint8_t BRILLO_RGB_MAXIMO = 64;
 static_assert(PIXELES_BARRA == Efectos::PASOS_BARRA, "Actualizar mapa DMX de progreso al cambiar la barra");
 CRGB pixelesBarra[PIXELES_BARRA], pixelesTira[PIXELES_TIRA];
 
-inline uint8_t mascaraDigito(uint8_t valor) {
-  const uint8_t numeros[] = {0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f};
-  if (!valor) return 0;
-  if (valor<=9) return numeros[valor];
-  if (valor==10) return numeros[0];
-  if (valor<=20) return numeros[valor-11] | 0x80;
-  if (valor<=27) return uint8_t(1)<<(valor-21);
-  if (valor<=34) return (uint8_t(1)<<(valor-28)) | 0x80;
-  return 0;
-}
 void iniciarSalidasHardware() {
   for (uint8_t pin : PINES_PILOTOS) { digitalWrite(pin,LOW); pinMode(pin,OUTPUT); }
   digitalWrite(PIN_ESTADO,LOW); pinMode(PIN_ESTADO,OUTPUT);

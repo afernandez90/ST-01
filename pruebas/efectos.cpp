@@ -17,8 +17,8 @@ int main() {
         assert(m.paso<m.pasos && m.pasos>=(barra ? 9 : 10) && m.pasos<=(barra ? 10 : 11));
         const auto lento=periodo({m.efecto,0,m.pasos});
         const auto rapido=periodo({m.efecto,uint8_t(m.pasos-1),m.pasos});
-        assert(lento==(m.efecto==5 ? 500 : 6000));
-        assert(rapido==(m.efecto==5 ? 100 : 1000));
+        assert(lento==(m.efecto==5 ? 250 : 3000));
+        assert(rapido==(m.efecto==5 ? 100 : 500));
         assert(periodo(m)<=lento && periodo(m)>=rapido);
       }
       // Incluye longitudes mínimas, pares, impares y las dos tiras previstas.
@@ -47,12 +47,35 @@ int main() {
   assert(kitt.efecto==10 && kitt.paso==0);
   for(unsigned i=0;i<38;++i) {
     assert(intensidad(kitt,i,38,0)==(i==0 ? 255 : i==1 ? 153 : 0));
-    assert(intensidad(kitt,i,38,3000)==(i==37 ? 255 : i==36 ? 153 : 0));
+    assert(intensidad(kitt,i,38,1500)==(i==37 ? 255 : i==36 ? 153 : 0));
   }
   for(uint32_t t=0;t<6000;t+=25) {
     unsigned cabeza=0;
     for(unsigned i=0;i<38;++i)cabeza+=intensidad(kitt,i,38,t)==255;
     assert(cabeza==1);
+  }
+  // Cola de 90 a 10 % detrás de la cabeza y un solo vecino al 60 % delante.
+  // A un cuarto y tres cuartos de ciclo, la cabeza ocupa el píxel 18.
+  for(unsigned d=1;d<=9;++d) {
+    const unsigned esperado=(100-10*d)*255/100;
+    assert(intensidad(kitt,18-d,38,750)==esperado);
+    assert(intensidad(kitt,18+d,38,2250)==esperado);
+  }
+  assert(intensidad(kitt,18,38,750)==255);
+  assert(intensidad(kitt,19,38,750)==153);
+  assert(intensidad(kitt,20,38,750)==0);
+  assert(intensidad(kitt,8,38,750)==0);
+  assert(intensidad(kitt,18,38,2250)==255);
+  assert(intensidad(kitt,17,38,2250)==153);
+  assert(intensidad(kitt,16,38,2250)==0);
+  assert(intensidad(kitt,28,38,2250)==0);
+  // Rebotar conserva una sola cabeza; no hay luz que envuelva al otro extremo.
+  for(uint16_t n:{1,2,3,38,300}) {
+    for(uint32_t t=0;t<3000;t+=25) {
+      unsigned cabezas=0;
+      for(uint16_t i=0;i<n;++i)cabezas+=intensidad(kitt,i,n,t)==255;
+      assert(cabezas==1);
+    }
   }
   // Cada animación cambia con el tiempo y llega a emitir luz.
   for(uint8_t efecto=2;efecto<26;++efecto) {
