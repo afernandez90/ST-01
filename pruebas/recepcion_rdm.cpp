@@ -116,16 +116,16 @@ int main() {
   for(auto pixel:pixelesTira)assert(pixel.r==40 && pixel.g==80 && pixel.b==120);
   trama[7]=111; // KITT lento, comienza en el primer píxel.
   reloj=2650;aplicarSalidasHardware(calcularSalidas(trama,true,false,reloj));
-  assert(pixelesBarra[0].r==200 && pixelesBarra[1].r==120);
+  assert(pixelesBarra[0].r==200 && pixelesBarra[1].r==0);
   assert(pixelesBarra[2].r==0 && pixelesBarra[37].r==0);
   trama[4]=100; // Cambiar RGB conserva el reloj del barrido.
   reloj=3400;aplicarSalidasHardware(calcularSalidas(trama,true,false,reloj));
   assert(pixelesBarra[0].r==0);
   assert(pixelesBarra[18].r==100);
-  assert(pixelesBarra[17].r==uint16_t(100)*229/255);
-  assert(pixelesBarra[19].r==60);
-  assert(pixelesBarra[9].r==uint16_t(100)*25/255);
-  assert(pixelesBarra[8].r==0);
+  assert(pixelesBarra[17].r==uint16_t(100)*25/255);
+  assert(pixelesBarra[19].r==0);
+  assert(pixelesBarra[9].r==uint16_t(100)*5/255);
+  assert(pixelesBarra[8].r==uint16_t(100)*2/255);
   reloj=4200;aplicarSalidasHardware(calcularSalidas(trama,false,false,reloj));
   for(auto pixel:pixelesBarra)assert(pixel.r==0 && pixel.g==0 && pixel.b==0);
   for(auto pixel:pixelesTira)assert(pixel.r==0 && pixel.g==0 && pixel.b==0);
@@ -137,5 +137,20 @@ int main() {
   reloj+=50;aplicarSalidasHardware(calcularSalidas(letras,true,false,reloj));
   const uint8_t patrones[]={0x77,0x39,0x5f,0x58};
   for(unsigned i=0;i<4;++i)assert(desplazados[(cuantosDesplazados-1-i)%1024]==patrones[i]);
+  // Estrobo restaurado a 10 Hz: capturar luz/oscuridad con refresco de 50 ms.
+  uint8_t flash[CANALES_ST01]={};flash[4]=flash[15]=200;
+  for(unsigned modo=0;modo<256;++modo) {
+    if(Efectos::decodificar(modo,true).efecto==5)flash[7]=modo;
+    if(Efectos::decodificar(modo,false).efecto==5)flash[18]=modo;
+  }
+  const unsigned enviosAntes=FastLED.envios;
+  for(unsigned paso=0;paso<20;++paso) {
+    reloj=5000+paso*50;
+    aplicarSalidasHardware(calcularSalidas(flash,true,false,reloj));
+    const unsigned esperado=paso%2==0 ? 200 : 0;
+    for(auto pixel:pixelesBarra)assert(pixel.r==esperado);
+    for(auto pixel:pixelesTira)assert(pixel.r==esperado);
+  }
+  assert(FastLED.envios==enviosAntes+20);
   std::cout<<"UART: break, datos, retorno RX, direccion, EEPROM, LCD, identificar y perdida DMX correctos.\n";
 }

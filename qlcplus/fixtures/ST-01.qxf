@@ -9,6 +9,7 @@
  <Manufacturer>Salto Temporal</Manufacturer>
  <Model>ST-01</Model>
  <Type>Other</Type>
+ <!-- Dígitos y modos: Effect/LTP; el maestro solo regula los canales Intensity. -->
  <Channel Name="Millares">
   <Group Byte="0">Effect</Group>
   <Capability Min="0" Max="0">Apagado (todos los segmentos y punto decimal)</Capability>

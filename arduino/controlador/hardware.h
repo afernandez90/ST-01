@@ -49,7 +49,7 @@ void aplicarSalidasHardware(const EstadoSalidas &estado) {
     memcpy(anteriores,estado.canales,4);
   }
   static unsigned long ultimoEnvio=0;
-  // Repintar para recuperar posibles perturbaciones durante las respuestas RDM.
+  // Refresco de 20 Hz; no transmitir durante las respuestas RDM.
   if (millis()-ultimoEnvio>=50 && faseRdm==FaseRdm::Reposo) {
     ultimoEnvio=millis();
     static Efectos::Reloj relojBarra, relojTira;

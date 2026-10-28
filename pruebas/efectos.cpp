@@ -20,6 +20,13 @@ int main() {
         assert(lento==(m.efecto==5 ? 250 : 3000));
         assert(rapido==(m.efecto==5 ? 100 : 500));
         assert(periodo(m)<=lento && periodo(m)>=rapido);
+        if(m.efecto==5) {
+          const unsigned previo=250-150*m.paso/(m.pasos-1);
+          assert(periodo(m)==previo);
+          assert(intensidad(m,0,38,0)==255);
+          assert(intensidad(m,0,38,periodo(m)-1)==0);
+          assert(intensidad(m,0,38,periodo(m))==255);
+        }
       }
       // Incluye longitudes mínimas, pares, impares y las dos tiras previstas.
       for(uint16_t n:{1,2,3,38,299,300}) {
@@ -46,29 +53,35 @@ int main() {
   const Modo kitt=decodificar(111,true);
   assert(kitt.efecto==10 && kitt.paso==0);
   for(unsigned i=0;i<38;++i) {
-    assert(intensidad(kitt,i,38,0)==(i==0 ? 255 : i==1 ? 153 : 0));
-    assert(intensidad(kitt,i,38,1500)==(i==37 ? 255 : i==36 ? 153 : 0));
+    assert(intensidad(kitt,i,38,0)==(i==0 ? 255 : 0));
+    assert(intensidad(kitt,i,38,1500)==(i==37 ? 255 : 0));
   }
   for(uint32_t t=0;t<6000;t+=25) {
     unsigned cabeza=0;
     for(unsigned i=0;i<38;++i)cabeza+=intensidad(kitt,i,38,t)==255;
     assert(cabeza==1);
   }
-  // Cola de 90 a 10 % detrás de la cabeza y un solo vecino al 60 % delante.
-  // A un cuarto y tres cuartos de ciclo, la cabeza ocupa el píxel 18.
-  for(unsigned d=1;d<=9;++d) {
-    const unsigned esperado=(100-10*d)*255/100;
-    assert(intensidad(kitt,18-d,38,750)==esperado);
-    assert(intensidad(kitt,18+d,38,2250)==esperado);
+  // Cabeza al 100 % y cola de diez píxeles al 10, 9, …, 1 %.
+  // En la tira de 300, ambos sentidos tienen la cabeza en el píxel 149.
+  for(unsigned d=1;d<=10;++d) {
+    const unsigned esperado=(11-d)*255/100;
+    assert(esperado>0 && esperado<intensidad(kitt,150-d,300,750));
+    assert(intensidad(kitt,149-d,300,750)==esperado);
+    assert(intensidad(kitt,149+d,300,2250)==esperado);
+    assert(intensidad(kitt,149+d,300,750)==0);
+    assert(intensidad(kitt,149-d,300,2250)==0);
   }
-  assert(intensidad(kitt,18,38,750)==255);
-  assert(intensidad(kitt,19,38,750)==153);
-  assert(intensidad(kitt,20,38,750)==0);
-  assert(intensidad(kitt,8,38,750)==0);
-  assert(intensidad(kitt,18,38,2250)==255);
-  assert(intensidad(kitt,17,38,2250)==153);
-  assert(intensidad(kitt,16,38,2250)==0);
-  assert(intensidad(kitt,28,38,2250)==0);
+  assert(intensidad(kitt,149,300,750)==255);
+  assert(intensidad(kitt,149,300,2250)==255);
+  assert(intensidad(kitt,138,300,750)==0);
+  assert(intensidad(kitt,160,300,2250)==0);
+  // En la barra, la cola se recorta sin envolver al extremo opuesto.
+  assert(intensidad(kitt,0,38,750)==0);
+  assert(intensidad(kitt,19,38,750)==0);
+  assert(intensidad(kitt,37,38,750)==0);
+  assert(intensidad(kitt,36,38,2250)==0);
+  assert(intensidad(kitt,17,38,2250)==0);
+  assert(intensidad(kitt,0,38,2250)==0);
   // Rebotar conserva una sola cabeza; no hay luz que envuelva al otro extremo.
   for(uint16_t n:{1,2,3,38,300}) {
     for(uint32_t t=0;t<3000;t+=25) {

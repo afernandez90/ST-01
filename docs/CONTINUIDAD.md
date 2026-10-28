@@ -6,7 +6,7 @@ Actualizado: 27 de octubre de 2026.
 
 Se conserva en `docs/datasheets/` una copia de las fichas CL5611AH (XLITX) y ELS-50101A/B (Etnal), enlazadas desde [las notas de circuito](REFERENCIAS_VISUALIZADORES.md), con patillajes, resistencias, polarización y condensadores propuestos.
 
-KITT utiliza cabeza al 100 %, un LED delantero al 60 % y nueve LED traseros del 90 al 10 %; cabeza y cola suman diez posiciones. La cola se invierte con la dirección y se recorta en los extremos. Los ciclos generales se aceleran a 3000–500 ms y el estrobo a 250–100 ms. Se aplica a Barra y Tira sin cambiar rangos de modo ni canales. Firmware, fixture y workspace usan v0.0.9; carga y validación física de esta revisión pendientes.
+KITT utiliza cabeza al 100 %, sin LED delantero, y diez LED traseros al 10, 9, …, 1 %; cabeza y cola suman once posiciones. La cola se invierte con la dirección y se recorta en los extremos. Los ciclos generales se aceleran a 3000–500 ms y el estrobo a 250–100 ms. Se aplica a Barra y Tira sin cambiar rangos de modo ni canales. Firmware, fixture y workspace usan v0.0.9; carga y validación física de esta revisión pendientes.
 
 ## Letras de los visualizadores v0.0.8
 
@@ -140,3 +140,31 @@ El usuario pidió conservar también una tarea USB de respaldo: **USB: cargar co
 ### Firmware actual cargado por RDM
 
 Por petición del usuario se compiló y cargó la última revisión **0.0.9 exclusivamente por RDM**, ejecutando `herramientas/cargar_rdm.sh`, el mismo lanzador de la tarea VS Code. Paquete de 32 398 bytes; validación/commit/reinicio correctos. Consulta RDM posterior confirma versión/modelo/personalidad 0.0.9, 19 canales, dirección 1, etiqueta ST-01, descubrimiento/silencio y FTC disponible. Incluye letras, KITT con cola larga, velocidades aumentadas y autocomprobación de dos destellos al arrancar; la comprobación visual de las salidas conectadas corresponde al usuario. Registro local `carga-v0.0.9-rdm.log` e informe `rdm-v0.0.9.json`. El estado actual sustituye las notas anteriores que indicaban 0.0.7 instalada o 0.0.9 pendiente de cargar.
+
+Ajuste KITT del 28 de octubre de 2026: eliminado el LED delantero al 60 % y ampliado el desvanecimiento a veinte posiciones (cabeza 100 % y 19 detrás al 95–5 %, pasos de 5 %). Compartido por Barra y Tira, sin cambiar canales, modos ni velocidades.
+
+Pruebas completas y compilación del ajuste KITT superadas. Paquete actual de 32 386 bytes, CRC FTC 9394. Carga RDM pendiente: la interfaz devuelve `Resource busy`; cerrar la aplicación que la ocupa antes de repetir `herramientas/cargar_rdm.sh`. El controlador conserva por ahora el KITT anterior.
+
+El usuario pidió probar una curva exponencial inversa en la cola KITT: f(d)=0,05+0,95·(exp(3)−exp(3·d/19))/(exp(3)−1), d=0…19, tabla de enteros precalculada sin coma flotante en el Mega. Conserva veinte posiciones y frente oscuro. La pendiente aumenta hacia el final; es un ajuste visual experimental, sin afirmar calibración perceptual. Sustituye el ajuste lineal anterior, que aún no se había cargado por estar ocupada la interfaz RDM.
+
+Curva exponencial inversa: suite completa y compilación correctas (paquete 32 380 bytes, CRC FTC BDA9). La interfaz sigue ocupada (`Resource busy`), por lo que la actualización RDM permanece pendiente y el controlador conserva la cola anterior. Registro `build/controlador/carga-kitt-exponencial-20261028.log`.
+
+Tras cerrar la aplicación que ocupaba la interfaz, la curva KITT exponencial inversa se cargó correctamente por RDM: 32 380 bytes, CRC FTC BDA9, validación/commit y reinicio completados; versión reportada 0.0.9. El controlador ya incorpora frente oscuro y cola extendida de veinte posiciones con la nueva curva; pendiente valoración visual del usuario.
+
+KITT: curvatura exponencial inversa aumentada de k=3 a k=6 por petición del usuario. Mantiene veinte posiciones y frente oscuro; tabla limitada a 255−d para asegurar una única cabeza y descenso estricto con resolución de 8 bits. Suite completa superada y carga RDM finalizada con validación/commit/reinicio; versión 0.0.9 confirmada. Registro `build/controlador/carga-kitt-k6-20261028.log`.
+
+KITT ajustado nuevamente por petición del usuario: cabeza 100 % y diez píxeles traseros al 10, 9, …, 1 %, sin luz por delante. Sustituye las curvas exponenciales experimentales y conserva el escalado RGB, velocidades y rangos DMX.
+
+La cola tenue KITT (100 % de cabeza, 10–1 % detrás) supera la suite completa y se ha cargado correctamente por RDM con validación/commit/reinicio y versión 0.0.9 confirmada. Registro `build/controlador/carga-kitt-cola-tenue-20261028.log`.
+
+Estrobo: duplicada la velocidad de cada modo en Barra y Tira (periodos previos divididos entre dos, 125–50 ms / 8–20 Hz). Refresco permitido cada 10 ms cuando cualquiera de las tiras usa estrobo, conservando 50 ms para el resto y evitando transmitir durante respuesta RDM. Pruebas de todos los modos y del refresco integrado para confirmar que se ven fases encendidas/apagadas a 20 Hz.
+
+Estrobo acelerado: suite completa y compilación superadas; paquete 32 560 bytes, CRC FTC 2E23. Carga RDM pendiente por `Resource busy` en la interfaz. Cerrar QLC+ u otra aplicación que la ocupe y repetir el lanzador RDM. Registro `build/controlador/carga-estrobo-20261028.log`.
+
+QLC+ maestro: el workspace guardado había pasado a Generic/Generic/19 Channel, y la definición instalada seguía en v0.0.7. Se restaura la referencia Salto Temporal/ST-01/v0.0.9 sin modificar el diseño de consola guardado por el usuario y se actualiza la definición instalada. Canales 1–4, 8 y 19 son Effect/LTP; los 13 canales RGB/pilotos son Intensity. Reabrir workspace con la definición actualizada para aplicar en QLC+. Copia previa del workspace conservada en `build/qlcplus/`.
+
+Tras liberar QLC+, la carga RDM del estrobo acelerado finalizó correctamente: validación/commit/reinicio completados, versión 0.0.9 confirmada. El controlador ya incorpora estrobo de 8–20 Hz y refresco acelerado durante ese efecto, además de KITT con cabeza al 100 % y cola 10–1 %. Registro `build/controlador/carga-estrobo-20261028.log`.
+
+El usuario observó estrobo irregular a 8–20 Hz y pidió restaurarlo. Se recuperan los periodos originales de 250–100 ms (4–10 Hz) en todos los modos de Barra/Tira y el refresco uniforme de 50 ms; se retira el refresco especial de 10 ms. KITT y la corrección de canales de QLC+ no cambian.
+
+Restauración del estrobo completada: suite completa superada y carga RDM validada con commit/reinicio y versión 0.0.9 confirmada. Estado actual del controlador: estrobo 4–10 Hz, refresco 50 ms, KITT con cabeza 100 % y cola 10–1 %. Registro `build/controlador/restaurar-estrobo-20261028.log`.

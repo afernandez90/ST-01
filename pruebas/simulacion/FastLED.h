@@ -11,7 +11,8 @@ inline void fill_solid(CRGB *p,int n,CRGB c){for(int i=0;i<n;++i)p[i]=c;}
 struct TirasSimuladas {
   template<class T,uint8_t P,int O> void addLeds(CRGB*,int){}
   void setBrightness(uint8_t){}
-  void show(){}
+  unsigned envios=0;
+  void show(){++envios;}
   void clear(bool){}
 };
 inline TirasSimuladas FastLED;

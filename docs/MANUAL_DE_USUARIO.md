@@ -65,6 +65,8 @@ qlcplus/SaltoTemporal.qxw
 
 Importe `ST-01.qxf` en la biblioteca de fixtures de su instalación de QLC+, reinicie QLC+ y abra `SaltoTemporal.qxw`.
 
+La instancia debe utilizar **Salto Temporal / ST-01 / v0.0.9**, no **Generic / 19 Channel**. La definición asigna los canales 1–4 (dígitos), 8 (modo Barra) y 19 (modo Tira) al grupo **Effect/LTP**, fuera del maestro de intensidad. Solo RGB y pilotos pertenecen a Intensity. Mantenga el Grand Master configurado para canales de intensidad; si se elige explícitamente actuar sobre todos los canales, también escalará dígitos y modos. Si aparece el problema tras actualizar, reinstale la definición y vuelva a abrir el workspace.
+
 El proyecto sitúa ST-01 en el Universo 1, dirección 1. Configure la salida de ese universo para la interfaz o red DMX que utilice. El firmware recibe DMX512 sin depender de la marca o modelo del emisor. Cambie la dirección de la instancia desde el gestor de equipos si el diseño DMX requiere otra dirección.
 
 La Consola Virtual tiene dos páginas:
