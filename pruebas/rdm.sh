@@ -23,3 +23,8 @@ PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 "$raiz/pruebas/firmware_rdm.py"
 c++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined \
   -I"$raiz/pruebas/simulacion" "$raiz/pruebas/traza_rdm.cpp" -o "$carpeta/traza"
 "$carpeta/traza"
+
+c++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined \
+  "$raiz/pruebas/usb_arranque.cpp" -o "$carpeta/usb_arranque"
+"$carpeta/usb_arranque"
+PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 "$raiz/pruebas/eeprom_isp.py"

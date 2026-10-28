@@ -2,7 +2,7 @@
 
 El sketch `arduino/controlador/controlador.ino` incorpora un respondedor RDM experimental. Conserva la personalidad `Control v0.0.9` de 19 canales, la dirección base 1–494, los botones, el LCD y la salida de prueba del piloto naranja B en el LED L.
 
-Estado: compilado y cargado en Mega2560; [RDM básico validado físicamente](PRUEBAS_RDM.md) con un controlador RDM y el adaptador RS-485 del prototipo. También se conservan las pruebas de tramas y UART simuladas. No constituye una implementación certificada de E1.20. El nuevo cargador FTC sigue pendiente de instalación por ISP.
+Estado: compilado y cargado en Mega2560; [RDM básico validado físicamente](PRUEBAS_RDM.md) con un controlador RDM y el adaptador RS-485 del prototipo. También se conservan las pruebas de tramas y UART simuladas. No constituye una implementación certificada de E1.20. El cargador FTC ya está instalado; [actualización real y recuperación tras interrupción de enlace validadas](PRUEBAS_FTC.md).
 
 ## Conexión de retorno
 
@@ -41,7 +41,7 @@ Identificar sustituye temporalmente todas las salidas: los cuatro números muest
 
 Un cambio remoto de dirección se aplica antes del siguiente paquete DMX, reemplaza la dirección pendiente de los botones y genera un aviso USB. La EEPROM conserva la estructura existente en 0–3; la marca y etiqueta RDM utilizan 32–64. Las escrituras y mensajes USB se ejecutan fuera de las interrupciones, después de preparar la respuesta. Un corte de alimentación inmediato puede interrumpir la persistencia. La dirección activa no cambia al editar botones hasta pulsar Guardar.
 
-Se comprueban código de inicio, subcódigo, longitud, PDL, destino y suma antes de aplicar comandos. Se contestan errores de parámetro, formato, rango, clase de comando y subdispositivo. Las difusiones generales y del fabricante aplican SET sin respuesta; GET por difusión se ignora. No se implementan sensores ni control de intensidades por RDM. Se ha añadido la ruta [FTC de actualización de firmware](ACTUALIZACION_RDM.md), anunciada solo al detectar el cargador compatible. Su instalación inicial por ISP y la validación física siguen pendientes.
+Se comprueban código de inicio, subcódigo, longitud, PDL, destino y suma antes de aplicar comandos. Se contestan errores de parámetro, formato, rango, clase de comando y subdispositivo. Las difusiones generales y del fabricante aplican SET sin respuesta; GET por difusión se ignora. No se implementan sensores ni control de intensidades por RDM. Se ha añadido la ruta [FTC de actualización de firmware](ACTUALIZACION_RDM.md), anunciada solo al detectar el cargador compatible. La instalación ISP y la actualización física están validadas; recuperación tras corte eléctrico también validada; controladores externos siguen pendientes.
 
 ## Verificación
 

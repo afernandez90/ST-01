@@ -269,7 +269,7 @@ def main():
     sub = parser.add_subparsers(dest='accion', required=True)
     pack = sub.add_parser('empaquetar', help='Crear un paquete ST01 desde un HEX de aplicación')
     pack.add_argument('hex'); pack.add_argument('salida')
-    upload = sub.add_parser('cargar', help='Actualizar mediante un ENTTEC Pro con firmware RDM')
+    upload = sub.add_parser('cargar', help='Actualizar el controlador mediante RDM/FTC con un transporte serie compatible')
     upload.add_argument('archivo'); upload.add_argument('--uid', default='7ff0:66601337')
     upload.add_argument('--puerto')
     args = parser.parse_args()

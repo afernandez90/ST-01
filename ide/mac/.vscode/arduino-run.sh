@@ -10,7 +10,7 @@ puerto=${ST01_PORT:-}
 
 case "$accion" in
   list) exec "$cli" board list ;;
-  compile|upload|monitor) ;;
+  compile|upload|upload-usb|monitor) ;;
   *) echo "Acción desconocida: $accion" >&2; exit 1 ;;
 esac
 if [ -n "${ST01_SKETCH_DIR:-}" ]; then
@@ -30,6 +30,17 @@ fi
 if [ ! -f "$carpeta/$prueba.ino" ]; then
   echo "Abre un archivo .ino de un sketch Arduino antes de ejecutar esta tarea." >&2
   exit 1
+fi
+# RDM es la ruta habitual; USB solo mediante la tarea de respaldo explícita.
+forzarUsb=false
+if [ "$accion" = upload-usb ]; then
+  accion=upload
+  forzarUsb=true
+fi
+if [ "$accion" = upload ] && [ "$prueba" = controlador ] && [ "$forzarUsb" = false ]; then
+  export ST01_ARDUINO_CLI="$cli"
+  export ST01_PYTHON=/usr/bin/python3
+  exec /bin/sh "$raiz/herramientas/cargar_rdm.sh"
 fi
 if [ "$accion" = upload ] || [ "$accion" = monitor ]; then
   if [ -z "$puerto" ]; then

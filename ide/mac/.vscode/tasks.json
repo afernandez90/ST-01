@@ -25,6 +25,54 @@
       }
     },
     {
+      "label": "RDM: compilar y cargar controlador",
+      "type": "process",
+      "command": "/bin/sh",
+      "args": [
+        "${workspaceFolder}/herramientas/cargar_rdm.sh"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "ST01_ARDUINO_CLI": "/opt/homebrew/bin/arduino-cli",
+          "ST01_PYTHON": "/usr/bin/python3"
+        }
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "USB: cargar controlador (respaldo)",
+      "type": "process",
+      "command": "/bin/sh",
+      "args": [
+        "${workspaceFolder}/.vscode/arduino-run.sh"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "ST01_ACTION": "upload-usb",
+          "ST01_SKETCH": "controlador"
+        }
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
       "label": "Arduino: compilar sketch activo",
       "type": "process",
       "command": "/bin/sh",
@@ -59,7 +107,7 @@
       ]
     },
     {
-      "label": "Arduino: cargar sketch activo y monitor USB",
+      "label": "Arduino: cargar sketch activo (controlador por RDM)",
       "type": "process",
       "command": "/bin/sh",
       "args": [

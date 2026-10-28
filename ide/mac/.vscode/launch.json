@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Arduino: ejecutar controlador (cargar y monitor USB)",
+      "name": "Arduino: ejecutar controlador (cargar por RDM)",
       "type": "node-terminal",
       "request": "launch",
       "command": "/bin/sh \"${workspaceFolder}/.vscode/arduino-run.sh\"",
@@ -32,7 +32,7 @@
       }
     },
     {
-      "name": "Arduino: cargar prueba y monitor USB",
+      "name": "Arduino: cargar sketch (controlador RDM; pruebas USB)",
       "type": "node-terminal",
       "request": "launch",
       "command": "/bin/sh \"${workspaceFolder}/.vscode/arduino-run.sh\"",

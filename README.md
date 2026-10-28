@@ -49,8 +49,8 @@ Si la dirección base es **B**, los canales utilizados van de **B** a **B + 18**
 | `docs/` | Documentación de usuario, diseño, validación y continuidad. |
 | `ide/` | Configuraciones de desarrollo organizadas por plataforma, con instrucciones de uso en cada carpeta. |
 
-Para preparar el entorno y compilar, consulte el [firmware principal](arduino/controlador/LEEME.md) y el [manual del cargador](arduino/arranque_rdm/LEEME.md). La suite sin placa se ejecuta desde la raíz con `sh pruebas/rdm.sh`; requiere un shell compatible, compilador C++ con sanitizadores y Python 3.
+Para preparar el entorno y compilar, consulte el [firmware principal](arduino/controlador/LEEME.md) y el [manual del cargador](arduino/arranque_rdm/LEEME.md). Las actualizaciones habituales del controlador se realizan por RDM con `sh herramientas/cargar_rdm.sh` o la tarea de VS Code **RDM: compilar y cargar controlador**. La suite sin placa se ejecuta desde la raíz con `sh pruebas/rdm.sh`; requiere un shell compatible, compilador C++ con sanitizadores y Python 3.
 
-El [cableado propuesto](docs/CABLEADO_PROPUESTO.md), las [pruebas físicas RDM](docs/PRUEBAS_RDM.md), la [depuración RDM](docs/DEPURACION_RDM.md) y la [continuidad del proyecto](docs/CONTINUIDAD.md) recogen las decisiones y tareas pendientes. DMX y RDM básico se han probado físicamente; el montaje completo de salidas y la instalación inicial del cargador FTC siguen pendientes de validación.
+El [cableado propuesto](docs/CABLEADO_PROPUESTO.md), las [pruebas físicas RDM](docs/PRUEBAS_RDM.md), la [depuración RDM](docs/DEPURACION_RDM.md) y la [continuidad del proyecto](docs/CONTINUIDAD.md) recogen las decisiones y tareas pendientes. DMX, RDM básico, carga USB y [actualización FTC con recuperación tras corte eléctrico](docs/PRUEBAS_FTC.md) se han probado físicamente. El montaje completo de salidas sigue pendiente de validación.
 
 Al cambiar la personalidad, mantener alineados firmware, fixture, espacio de trabajo y documentación. La versión del firmware se define en `arduino/controlador/version.h`.

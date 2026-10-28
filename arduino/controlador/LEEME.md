@@ -8,7 +8,7 @@
 arduino-cli compile --fqbn arduino:avr:mega:cpu=atmega2560 --build-path build/controlador arduino/controlador
 ```
 
-Instale las bibliotecas `hd44780@1.3.2` y `FastLED@3.9.20` con Arduino CLI. La carpeta y el sketch comparten el nombre `controlador`, como requiere Arduino. Para cargar o abrir el monitor, seleccione el puerto detectado por Arduino CLI o utilice las tareas de desarrollo configuradas para su entorno.
+Instale las bibliotecas `hd44780@1.3.2` y `FastLED@3.9.20` con Arduino CLI. La carpeta y el sketch comparten el nombre `controlador`, como requiere Arduino. Para actualizar el controlador, ejecutar `sh herramientas/cargar_rdm.sh` o la tarea **RDM: compilar y cargar controlador** de VS Code. Todas las actualizaciones habituales se realizan por RDM. El puerto USB del Mega solo es necesario para el monitor de diagnóstico o recuperación extraordinaria.
 
 La reorganización no cambia la personalidad ni el comportamiento del firmware. Las salidas físicas y el cargador FTC conservan su estado de validación documentado en [continuidad](../../docs/CONTINUIDAD.md). No cambie los desplazamientos sin actualizar la personalidad, el fixture y la documentación.
 
@@ -55,7 +55,7 @@ No utilizar `Serial1` en esta prueba: la recepción y las respuestas RDM utiliza
 
 ## Respondedor RDM
 
-La prueba incorpora descubrimiento RDM, información del equipo, dirección remota (1–494), etiqueta persistente e identificación con parpadeo de todos los pilotos, números, tiras, LED L e iluminación del LCD. Mantiene los 19 canales, los botones y el comportamiento LNB habitual al desactivar la identificación. El sketch se ha cargado y se ha [comprobado físicamente el retorno RDM básico](../../docs/PRUEBAS_RDM.md); las salidas finales y el cargador FTC continúan pendientes de validación. Consulte [conexionado, comandos y validación RDM](../../docs/RDM.md).
+La prueba incorpora descubrimiento RDM, información del equipo, dirección remota (1–494), etiqueta persistente e identificación con parpadeo de todos los pilotos, números, tiras, LED L e iluminación del LCD. Mantiene los 19 canales, los botones y el comportamiento LNB habitual al desactivar la identificación. El sketch se ha cargado y se ha [comprobado físicamente el retorno RDM básico](../../docs/PRUEBAS_RDM.md); las salidas finales continúan pendientes de validación y el cargador FTC ya tiene [pruebas físicas de actualización](../../docs/PRUEBAS_FTC.md). Consulte [conexionado, comandos y validación RDM](../../docs/RDM.md).
 
 ## Diagnóstico USB de recepción DMX
 

@@ -15,4 +15,5 @@ if [ "${ST01_RS485_MANUAL:-0}" = 1 ]; then modo=-DST01_RS485_MANUAL; fi
   "$raiz/arduino/arranque_rdm/arranque.cpp" -o "$salida/arranque.elf"
 "$herramientas/avr-size" "$salida/arranque.elf"
 "$herramientas/avr-objcopy" -O ihex -R .eeprom "$salida/arranque.elf" "$salida/arranque.hex"
-/usr/bin/python3 "$raiz/herramientas/verificar_arranque.py" "$salida/arranque.hex"
+"$herramientas/avr-objdump" -d "$salida/arranque.elf" > "$salida/arranque.desensamblado.txt"
+/usr/bin/python3 "$raiz/herramientas/verificar_arranque.py" "$salida/arranque.hex" "$salida/arranque.desensamblado.txt"

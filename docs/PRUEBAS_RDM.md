@@ -19,7 +19,7 @@ Identidad final comprobada: **7FF0:66601337**. El campo de dispositivo se interp
 | FTC con cargador original | No se anuncia, como corresponde |
 | Regresión DMX | LNB a 128 y después 0; recepción de unos 39–40 paquetes/s; apagado por pérdida de señal confirmado al detener el envío |
 
-La comprobación de IDENTIFY valida el intercambio RDM y el estado que acepta el firmware. No verifica visualmente todas las luces: todavía hay que completar/probar los pilotos, tiras y controladores de números del montaje elegido. La medición eléctrica de los tiempos, las pruebas con otras interfaces y la actualización real mediante FTC siguen pendientes.
+La comprobación de IDENTIFY valida el intercambio RDM y el estado que acepta el firmware. No verifica visualmente todas las luces: todavía hay que completar/probar los pilotos, tiras y controladores de números del montaje elegido. La medición eléctrica de los tiempos y las pruebas con otras interfaces siguen pendientes. La actualización real mediante FTC y la recuperación tras corte eléctrico se validaron posteriormente: véanse [pruebas FTC](PRUEBAS_FTC.md).
 
 ## Corrección del controlador de pruebas
 
