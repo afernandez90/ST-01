@@ -249,7 +249,7 @@ void setup() {
   char uidTexto[14];
   snprintf(uidTexto,sizeof(uidTexto),"%04X:%08lX",ST01_UID_FABRICANTE,
            static_cast<unsigned long>(ST01_UID_DISPOSITIVO));
-  Serial.print(F("[RDM] Prototipo UID "));Serial.print(uidTexto);
+  Serial.print(F("[RDM] UID "));Serial.print(uidTexto);
   Serial.println(F(". Respuestas por TX1, pin 18."));
   Serial.println(DIRECCION_RS485_AUTOMATICA ? F("[RDM] Direccion RS-485 automatica; verificar retorno del adaptador.")
                                          : F("[RDM] DE y /RE controlados por pin 27."));

@@ -4,11 +4,11 @@
 #include "version.h"
 #include "identidad.h"
 
-// Respondedor del prototipo: sin dependencias de Arduino ni escrituras en EEPROM.
+// Respondedor ST-01: sin dependencias de Arduino ni escrituras en EEPROM.
 // El identificador 7FF0 está reservado para experimentación, no para distribución.
 class RespondedorRdm {
  public:
-  const char *etiquetaVersion = ST01_VERSION " RDM prototipo";
+  const char *etiquetaVersion = ST01_VERSION " RDM";
   uint16_t (*gestorFtc)(uint16_t,bool,const uint8_t*,uint8_t,uint8_t*,uint8_t&) = nullptr;
   uint8_t uid[6] = ST01_UID_BYTES;
   volatile uint16_t direccion = 1;

@@ -152,5 +152,19 @@ int main() {
     for(auto pixel:pixelesTira)assert(pixel.r==esperado);
   }
   assert(FastLED.envios==enviosAntes+20);
+  // Trama DMX real simulada -> byte de cada registro: A–G y DP sin mezclas.
+  for(unsigned digito=0;digito<4;++digito) {
+    for(unsigned segmento=0;segmento<8;++segmento) {
+      uint8_t prueba[CANALES_ST01]={};
+      prueba[digito]=segmento==7 ? 87 : 21+segmento;
+      recibir(0,_BV(FE1));recibir(0);
+      for(uint16_t canal=1;canal<=512;++canal)
+        recibir(canal>=494 ? prueba[canal-494] : 0);
+      ++reloj;loop();
+      for(unsigned registro=0;registro<4;++registro)
+        assert(desplazados[(cuantosDesplazados-1-registro)%1024]==
+               (registro==digito ? (1u<<segmento) : 0));
+    }
+  }
   std::cout<<"UART: break, datos, retorno RX, direccion, EEPROM, LCD, identificar y perdida DMX correctos.\n";
 }

@@ -1,4 +1,4 @@
-# Efectos LED — Control v0.0.9
+# Efectos LED — Control v1.0.0
 
 Los desplazamientos 8 (Barra) y 19 (Tira) eligen el efecto y su velocidad. Los canales RGB conservan el color y la intensidad máxima: ningún efecto añade blanco ni cambia el tono. RGB = 0 apaga cualquier efecto. La ocupación sigue siendo de 19 canales; dirección base 1–494.
 
@@ -39,26 +39,18 @@ El barrido de ida y vuelta utiliza una cabeza al 100 % y diez píxeles por detr�
 
 ## Velocidades y tiempos
 
-La revisión v0.0.9 duplica la velocidad general: los ciclos pasan de 6000–1000 ms a 3000–500 ms. El estrobo utiliza ciclos de 250–100 ms (4–10 Hz), con refresco de 50 ms. La prueba a 8–20 Hz produjo una apariencia irregular en el montaje y se revirtió.
+Los ciclos generales duran 3000–500 ms. El estrobo utiliza ciclos de 250–100 ms (4–10 Hz), con refresco de 50 ms.
 
 Dentro de cada clase, el mínimo es la velocidad más lenta y el máximo la más rápida. Los valores intermedios interpolan linealmente la duración: `3000 − (2500 × paso / (pasos − 1))` ms, con división entera. Cada clase tiene 9–10 velocidades en la Barra y 10–11 en la Tira. El estrobo usa `250 − (150 × paso / (pasos − 1))` ms (4–10 Hz), con división entera. Parpadeo y estrobo tienen ciclo de trabajo del 50 %.
 
-El modo se reinicia al cambiar su valor; cambiar solo RGB conserva la fase. Cada tira mantiene su propio reloj. El inicio es el extremo de entrada de datos, no una orientación física ya verificada. Los efectos se calculan sin bloqueos ni memoria adicional por píxel. El refresco sigue siendo 20 Hz; la velocidad aparente depende del número real de píxeles y de la transmisión.
+El modo se reinicia al cambiar su valor; cambiar solo RGB conserva la fase. Cada tira mantiene su propio reloj. El inicio corresponde al extremo de entrada de datos. El refresco sigue siendo 20 Hz; la velocidad aparente depende del número real de píxeles y de la transmisión.
 
 ## Comportamiento de las animaciones
 
 Respiración usa una curva suave de subida y bajada. Latido doble produce dos pulsos, el segundo más tenue, seguidos de oscuridad. Las corredoras usan un tramo de aproximadamente el 10 %; los cometas añaden una cola decreciente de aproximadamente el 30 %. El llenado automático recorre de vacío a lleno y vuelve a vacío. Expansión y contracción desplazan frentes simétricos; dos luces que se cruzan recorre ambos sentidos a la vez. Los trenes alternan tramos encendidos y huecos; las ondas modulan suavemente el brillo por posición.
 
-Chispas produce puntos breves con caída de brillo; llama interpola intensidades por zonas; relámpagos alterna ráfagas y ciclos oscuros; fallo eléctrico interrumpe zonas de forma irregular. Acumulación acelera los pulsos y termina con toda la tira encendida. Explosión emite un frente desde el centro con desvanecimiento posterior. Alternancia intercambia zonas pares e impares. Aparición y desvanecimiento usa zonas con fases pseudoaleatorias. La aleatoriedad es determinista para que las pruebas sean reproducibles.
+Chispas produce puntos breves con caída de brillo; llama interpola intensidades por zonas; relámpagos alterna ráfagas y ciclos oscuros; fallo eléctrico interrumpe zonas de forma irregular. Acumulación acelera los pulsos y termina con toda la tira encendida. Explosión emite un frente desde el centro con desvanecimiento posterior. Alternancia intercambia zonas pares e impares. Aparición y desvanecimiento usa zonas con fases pseudoaleatorias.
 
-## Compatibilidad y validación
+## Uso con la consola
 
-v0.0.7 conserva modo 0, RGB y todos los desplazamientos de canal de v0.0.6. El progreso pasa de 60 a 38 pasos y las animaciones de Barra se redistribuyen por los valores 39–255. Actualizar las escenas con modos de Barra 39–255 según esta tabla; los modos de Tira mantienen sus rangos. El valor guardado del selector de Barra en el espacio de trabajo incluido se ha convertido al mismo efecto y a la velocidad disponible más cercana. QLC+ debe usar el fixture y el espacio de trabajo actualizados; los selectores de modo no deben escalarse con el maestro. Identificar fuerza RGB fijo blanco intermitente y la pérdida de DMX apaga todas las salidas, también durante una animación.
-
-Las pruebas automatizadas cubren asignación, progreso, barrido, límites y simulación de salidas. Se han comprobado RGB y el recuento de 38 píxeles de Barra. Falta validar el conjunto de animaciones, la Tira y su recuento, y la convivencia con DMX/RDM.
-
-El 26 de octubre de 2026 se cargó y verificó v0.0.7 por USB y se actualizó el fixture instalado. Reiniciar QLC+ y abrir el espacio de trabajo actualizado para refrescar la personalidad y las etiquetas de efectos.
-
-La revisión v0.0.8 añade letras a los canales de dígitos; los rangos de efectos de Barra y Tira de v0.0.7 se conservan íntegros.
-
-La revisión v0.0.9 amplía la cola KITT y acelera los efectos. No modifica los valores de selección, los canales DMX ni los códigos de letras. El cambio se aplica a Barra y Tira. Las escenas conservan su clase y paso, pero reproducen la nueva velocidad.
+Utilizar el fixture v1.0.0. Los canales RGB responden al maestro de intensidad; los selectores de modo no deben escalarse. Identificación fuerza blanco intermitente y la pérdida de DMX apaga las salidas. Los porcentajes de los efectos multiplican el RGB recibido.

@@ -104,7 +104,7 @@ class PruebasFirmware(unittest.TestCase):
                     self.confirmado = clase == 0x30
                     return bytes(7) + struct.pack('>H', f.crc16(archivo)) + f.uid('7ff0:66601337')
                 caso.assertTrue(self.confirmado)
-                return b'0.0.5 RDM prototipo'
+                return b'1.0.0 RDM'
 
         transporte = Transporte()
         with patch.object(f.time, 'sleep'), contextlib.redirect_stdout(io.StringIO()):

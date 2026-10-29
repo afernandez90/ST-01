@@ -11,7 +11,7 @@ constexpr uint8_t PIN_ESTADO = 9;
 constexpr uint8_t PIN_BARRA = 10, PIN_TIRA = 11;
 constexpr uint8_t PIN_DIGITOS_DATOS = 51, PIN_DIGITOS_RELOJ = 52;
 constexpr uint8_t PIN_DIGITOS_LATCH = 49, PIN_DIGITOS_HABILITAR = 48;
-// Barra: 38 píxeles comprobados. Tira: cantidad provisional; contar grupos direccionables.
+// Configuración v1.0.0: Barra 38 píxeles; Tira 300 grupos direccionables.
 constexpr uint16_t PIXELES_BARRA = 38, PIXELES_TIRA = 300;
 constexpr uint8_t BRILLO_RGB_MAXIMO = 64;
 static_assert(PIXELES_BARRA == Efectos::PASOS_BARRA, "Actualizar mapa DMX de progreso al cambiar la barra");
@@ -20,7 +20,7 @@ CRGB pixelesBarra[PIXELES_BARRA], pixelesTira[PIXELES_TIRA];
 void iniciarSalidasHardware() {
   for (uint8_t pin : PINES_PILOTOS) { digitalWrite(pin,LOW); pinMode(pin,OUTPUT); }
   digitalWrite(PIN_ESTADO,LOW); pinMode(PIN_ESTADO,OUTPUT);
-  // /G en HIGH mantiene apagados los TPIC6B595 mientras se inicializan.
+  // /OE en HIGH mantiene deshabilitados los SN74HC595N durante el inicio.
   digitalWrite(PIN_DIGITOS_HABILITAR,HIGH); pinMode(PIN_DIGITOS_HABILITAR,OUTPUT);
   const uint8_t pinesDigitos[] = {PIN_DIGITOS_DATOS,PIN_DIGITOS_RELOJ,PIN_DIGITOS_LATCH};
   for (uint8_t pin : pinesDigitos) {

@@ -15,8 +15,15 @@
   <Capability Min="0" Max="0">Apagado (todos los segmentos y punto decimal)</Capability>
   <Capability Min="1" Max="9">Dígitos 1–9</Capability>
   <Capability Min="10" Max="10">Dígito 0</Capability>
-  <Capability Min="11" Max="20">Dígitos 0–9 con punto decimal (valor - 11)</Capability>
-  <Capability Min="21" Max="27">Segmentos individuales A–G</Capability>
+  <Capability Min="11" Max="19">Dígitos 1–9 con punto decimal (valor - 10)</Capability>
+  <Capability Min="20" Max="20">Dígito 0 con punto decimal</Capability>
+  <Capability Min="21" Max="21">Solo segmento A</Capability>
+  <Capability Min="22" Max="22">Solo segmento B</Capability>
+  <Capability Min="23" Max="23">Solo segmento C</Capability>
+  <Capability Min="24" Max="24">Solo segmento D</Capability>
+  <Capability Min="25" Max="25">Solo segmento E</Capability>
+  <Capability Min="26" Max="26">Solo segmento F</Capability>
+  <Capability Min="27" Max="27">Solo segmento G</Capability>
   <Capability Min="28" Max="34">Segmentos individuales A–G con punto decimal</Capability>
   <Capability Min="35" Max="35">Letra A (aproximación)</Capability>
   <Capability Min="36" Max="36">Letra B (aproximación)</Capability>
@@ -70,15 +77,23 @@
   <Capability Min="84" Max="84">Letra x (aproximación)</Capability>
   <Capability Min="85" Max="85">Letra y (aproximación)</Capability>
   <Capability Min="86" Max="86">Letra z (aproximación)</Capability>
-  <Capability Min="87" Max="255">Sin asignar (apagado)</Capability>
+  <Capability Min="87" Max="87">Solo punto decimal</Capability>
+  <Capability Min="88" Max="255">Sin asignar (apagado)</Capability>
  </Channel>
  <Channel Name="Centenas">
   <Group Byte="0">Effect</Group>
   <Capability Min="0" Max="0">Apagado (todos los segmentos y punto decimal)</Capability>
   <Capability Min="1" Max="9">Dígitos 1–9</Capability>
   <Capability Min="10" Max="10">Dígito 0</Capability>
-  <Capability Min="11" Max="20">Dígitos 0–9 con punto decimal (valor - 11)</Capability>
-  <Capability Min="21" Max="27">Segmentos individuales A–G</Capability>
+  <Capability Min="11" Max="19">Dígitos 1–9 con punto decimal (valor - 10)</Capability>
+  <Capability Min="20" Max="20">Dígito 0 con punto decimal</Capability>
+  <Capability Min="21" Max="21">Solo segmento A</Capability>
+  <Capability Min="22" Max="22">Solo segmento B</Capability>
+  <Capability Min="23" Max="23">Solo segmento C</Capability>
+  <Capability Min="24" Max="24">Solo segmento D</Capability>
+  <Capability Min="25" Max="25">Solo segmento E</Capability>
+  <Capability Min="26" Max="26">Solo segmento F</Capability>
+  <Capability Min="27" Max="27">Solo segmento G</Capability>
   <Capability Min="28" Max="34">Segmentos individuales A–G con punto decimal</Capability>
   <Capability Min="35" Max="35">Letra A (aproximación)</Capability>
   <Capability Min="36" Max="36">Letra B (aproximación)</Capability>
@@ -132,15 +147,23 @@
   <Capability Min="84" Max="84">Letra x (aproximación)</Capability>
   <Capability Min="85" Max="85">Letra y (aproximación)</Capability>
   <Capability Min="86" Max="86">Letra z (aproximación)</Capability>
-  <Capability Min="87" Max="255">Sin asignar (apagado)</Capability>
+  <Capability Min="87" Max="87">Solo punto decimal</Capability>
+  <Capability Min="88" Max="255">Sin asignar (apagado)</Capability>
  </Channel>
  <Channel Name="Decenas">
   <Group Byte="0">Effect</Group>
   <Capability Min="0" Max="0">Apagado (todos los segmentos y punto decimal)</Capability>
   <Capability Min="1" Max="9">Dígitos 1–9</Capability>
   <Capability Min="10" Max="10">Dígito 0</Capability>
-  <Capability Min="11" Max="20">Dígitos 0–9 con punto decimal (valor - 11)</Capability>
-  <Capability Min="21" Max="27">Segmentos individuales A–G</Capability>
+  <Capability Min="11" Max="19">Dígitos 1–9 con punto decimal (valor - 10)</Capability>
+  <Capability Min="20" Max="20">Dígito 0 con punto decimal</Capability>
+  <Capability Min="21" Max="21">Solo segmento A</Capability>
+  <Capability Min="22" Max="22">Solo segmento B</Capability>
+  <Capability Min="23" Max="23">Solo segmento C</Capability>
+  <Capability Min="24" Max="24">Solo segmento D</Capability>
+  <Capability Min="25" Max="25">Solo segmento E</Capability>
+  <Capability Min="26" Max="26">Solo segmento F</Capability>
+  <Capability Min="27" Max="27">Solo segmento G</Capability>
   <Capability Min="28" Max="34">Segmentos individuales A–G con punto decimal</Capability>
   <Capability Min="35" Max="35">Letra A (aproximación)</Capability>
   <Capability Min="36" Max="36">Letra B (aproximación)</Capability>
@@ -194,15 +217,23 @@
   <Capability Min="84" Max="84">Letra x (aproximación)</Capability>
   <Capability Min="85" Max="85">Letra y (aproximación)</Capability>
   <Capability Min="86" Max="86">Letra z (aproximación)</Capability>
-  <Capability Min="87" Max="255">Sin asignar (apagado)</Capability>
+  <Capability Min="87" Max="87">Solo punto decimal</Capability>
+  <Capability Min="88" Max="255">Sin asignar (apagado)</Capability>
  </Channel>
  <Channel Name="Unidades">
   <Group Byte="0">Effect</Group>
   <Capability Min="0" Max="0">Apagado (todos los segmentos y punto decimal)</Capability>
   <Capability Min="1" Max="9">Dígitos 1–9</Capability>
   <Capability Min="10" Max="10">Dígito 0</Capability>
-  <Capability Min="11" Max="20">Dígitos 0–9 con punto decimal (valor - 11)</Capability>
-  <Capability Min="21" Max="27">Segmentos individuales A–G</Capability>
+  <Capability Min="11" Max="19">Dígitos 1–9 con punto decimal (valor - 10)</Capability>
+  <Capability Min="20" Max="20">Dígito 0 con punto decimal</Capability>
+  <Capability Min="21" Max="21">Solo segmento A</Capability>
+  <Capability Min="22" Max="22">Solo segmento B</Capability>
+  <Capability Min="23" Max="23">Solo segmento C</Capability>
+  <Capability Min="24" Max="24">Solo segmento D</Capability>
+  <Capability Min="25" Max="25">Solo segmento E</Capability>
+  <Capability Min="26" Max="26">Solo segmento F</Capability>
+  <Capability Min="27" Max="27">Solo segmento G</Capability>
   <Capability Min="28" Max="34">Segmentos individuales A–G con punto decimal</Capability>
   <Capability Min="35" Max="35">Letra A (aproximación)</Capability>
   <Capability Min="36" Max="36">Letra B (aproximación)</Capability>
@@ -256,7 +287,8 @@
   <Capability Min="84" Max="84">Letra x (aproximación)</Capability>
   <Capability Min="85" Max="85">Letra y (aproximación)</Capability>
   <Capability Min="86" Max="86">Letra z (aproximación)</Capability>
-  <Capability Min="87" Max="255">Sin asignar (apagado)</Capability>
+  <Capability Min="87" Max="87">Solo punto decimal</Capability>
+  <Capability Min="88" Max="255">Sin asignar (apagado)</Capability>
  </Channel>
  <Channel Name="Barra LED R" Preset="IntensityRed"/>
  <Channel Name="Barra LED G" Preset="IntensityGreen"/>
@@ -365,7 +397,7 @@
   <Capability Min="234" Max="244">Alternancia de segmentos (lento → rápido)</Capability>
   <Capability Min="245" Max="255">Aparición y desvanecimiento (lento → rápido)</Capability>
  </Channel>
- <Mode Name="v0.0.9">
+ <Mode Name="v1.0.0">
   <Channel Number="0" ActsOn="0">Millares</Channel>
   <Channel Number="1" ActsOn="1">Centenas</Channel>
   <Channel Number="2" ActsOn="2">Decenas</Channel>

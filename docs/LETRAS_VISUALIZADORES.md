@@ -1,10 +1,11 @@
-# Letras de los visualizadores — Control v0.0.9
+# Letras de los visualizadores — Control v1.0.0
 
-Cada uno de los cuatro canales de dígito puede seleccionar letras. La ocupación sigue siendo de 19 canales y se conservan los valores 0–34 y los modos LED de v0.0.7.
+Cada uno de los cuatro canales de dígito puede seleccionar letras. La personalidad Control v1.0.0 ocupa 19 canales.
 
 - **35–60:** A–Z, en orden alfabético.
 - **61–86:** a–z, en orden alfabético.
-- **87–255:** sin asignar; visualizador apagado.
+- **87:** solo punto decimal.
+- **88–255:** sin asignar; visualizador apagado.
 
 Las letras no encienden el punto decimal. Siete segmentos no pueden representar todas las letras fielmente: B y D usan formas parecidas a b y d; K, M, N, R, V, W y X son especialmente aproximadas. Algunas mayúsculas, minúsculas y cifras comparten patrón. El código DMX distingue las 52 letras aunque el glifo visible pueda coincidir. Para texto inequívoco se necesitarían visualizadores de más segmentos o una matriz.
 
@@ -50,5 +51,3 @@ Los nombres A–G de segmento siguen el dibujo; el punto decimal es independient
 | Z | 60 | ABDEG | z | 86 | ABDEG |
 
 Por ejemplo, para mostrar `AbCd`, enviar 35, 62, 37 y 64 a los cuatro canales de dígito. El valor 0 sigue apagando todos los segmentos.
-
-La tabla de máscaras se implementa en `arduino/controlador/digitos.h`, con bits 0–6 para A–G y bit 7 para DP. La simulación comprueba la codificación y el envío a las cuatro salidas; la lectura visual y el circuito de los visualizadores de cátodo común siguen pendientes de validación física.

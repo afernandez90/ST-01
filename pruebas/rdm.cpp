@@ -46,8 +46,11 @@ int main() {
   assert(enviar(peticion(0x20, 0x60)));
   validarRespuesta(0x20, 0x60);
   assert(equipo.salida[23] == 19);
+  assert(equipo.salida[30]==0 && equipo.salida[31]==1 && equipo.salida[32]==0 && equipo.salida[33]==0);
   assert(RespondedorRdm::leer16(equipo.salida + 34) == 19);
   assert(RespondedorRdm::leer16(equipo.salida + 38) == 1);
+  assert(enviar(peticion(0x20, 0xc0)));
+  assert(equipo.salida[23]==9 && !memcmp(equipo.salida+24,"1.0.0 RDM",9));
   for (auto pid : {0x50, 0x80, 0x81, 0x82, 0xc0, 0xe0, 0xf0, 0x1000}) {
     assert(enviar(peticion(0x20, pid)));
     validarRespuesta(0x20, pid);

@@ -15,8 +15,8 @@ inline EstadoSalidas calcularSalidas(const uint8_t *dmx, bool activo,
   if (identificar) {
     const bool encendido = (ahora / 250) % 2;
     if (encendido) {
-      // 19 representa el 8 con punto: todos los segmentos encendidos.
-      for (uint8_t i = 0; i < 4; ++i) estado.canales[i] = 19;
+      // 18 representa el 8 con punto: todos los segmentos encendidos.
+      for (uint8_t i = 0; i < 4; ++i) estado.canales[i] = 18;
       for (uint8_t i = 4; i < CANALES_ST01; ++i) estado.canales[i] = 255;
       estado.canales[7] = estado.canales[18] = 0;  // RGB fijo en ambas tiras.
     }

@@ -16,10 +16,12 @@ inline uint8_t mascaraDigito(uint8_t valor) {
   if (!valor) return 0;
   if (valor<=9) return numeros[valor];
   if (valor==10) return numeros[0];
-  if (valor<=20) return numeros[valor-11] | 0x80;
+  if (valor<=19) return numeros[valor-10] | 0x80;
+  if (valor==20) return numeros[0] | 0x80;
   if (valor<=27) return uint8_t(1)<<(valor-21);
   if (valor<=34) return (uint8_t(1)<<(valor-28)) | 0x80;
   if (valor<=60) return mayusculas[valor-35];
   if (valor<=86) return minusculas[valor-61];
+  if (valor==87) return 0x80; // Solo punto decimal.
   return 0;
 }

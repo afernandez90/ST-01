@@ -1,8 +1,8 @@
-# Controlador DMX ST-01
+# Controlador DMX ST-01 — v1.0.0
 
 ST-01 es un controlador DMX512 personalizado basado en Arduino Mega 2560, con gestión remota mediante RDM. Recibe las señales independientemente de la marca o modelo del emisor DMX.
 
-## Personalidad DMX: Control v0.0.9
+## Personalidad DMX: Control v1.0.0
 
 ST-01 ocupa 19 canales consecutivos. La tabla usa desplazamientos que empiezan en uno; los índices internos del fixture de QLC+ empiezan en cero.
 
@@ -29,6 +29,8 @@ Si la dirección base es **B**, los canales utilizados van de **B** a **B + 18**
 ## Documentación de usuario
 
 - [Manual de usuario](docs/MANUAL_DE_USUARIO.md): conexión, dirección DMX, controles locales y uso con QLC+.
+- [Cableado](docs/CABLEADO.md): conexiones del controlador, fuentes e interfaces.
+- [Visualizadores](docs/VISUALIZADORES.md): circuito completo para CL5611AH y 50101AS.
 - [Mapa de canales](docs/MAPA_DE_CANALES_DMX.md): valores y codificación de cada función.
 - [Efectos LED](docs/EFECTOS_LED.md): clases, rangos de modo, velocidades y progreso manual.
 - [Gestión RDM](docs/RDM.md): identificación, dirección, etiqueta y parámetros remotos.
@@ -45,12 +47,12 @@ Si la dirección base es **B**, los canales utilizados van de **B** a **B + 18**
 | `pruebas/` | Pruebas automatizadas y simulación de Arduino para ejecutarlas sin placa. |
 | `qlcplus/fixtures/ST-01.qxf` | Definición del fixture y sus capacidades DMX. |
 | `qlcplus/SaltoTemporal.qxw` | Espacio de trabajo y Consola Virtual; configurar la salida del universo según el equipo disponible. |
-| `qlcplus/models/` | Maqueta 3D provisional, materiales, vista previa y generador. |
-| `docs/` | Documentación de usuario, diseño, validación y continuidad. |
+| `qlcplus/models/` | Modelo 3D, materiales, vista previa y generador. |
+| `docs/` | Manuales, especificación de canales, cableado y fichas técnicas. |
 | `ide/` | Configuraciones de desarrollo organizadas por plataforma, con instrucciones de uso en cada carpeta. |
 
 Para preparar el entorno y compilar, consulte el [firmware principal](arduino/controlador/LEEME.md) y el [manual del cargador](arduino/arranque_rdm/LEEME.md). Las actualizaciones habituales del controlador se realizan por RDM con `sh herramientas/cargar_rdm.sh` o la tarea de VS Code **RDM: compilar y cargar controlador**. La suite sin placa se ejecuta desde la raíz con `sh pruebas/rdm.sh`; requiere un shell compatible, compilador C++ con sanitizadores y Python 3.
 
-El [cableado propuesto](docs/CABLEADO_PROPUESTO.md), las [pruebas físicas RDM](docs/PRUEBAS_RDM.md), la [depuración RDM](docs/DEPURACION_RDM.md) y la [continuidad del proyecto](docs/CONTINUIDAD.md) recogen las decisiones y tareas pendientes. DMX, RDM básico, carga USB y [actualización FTC con recuperación tras corte eléctrico](docs/PRUEBAS_FTC.md) se han probado físicamente. El montaje completo de salidas sigue pendiente de validación.
+El [cableado](docs/CABLEADO.md) y la [guía de visualizadores](docs/VISUALIZADORES.md) describen las conexiones, componentes y puesta en servicio de ambas variantes.
 
 Al cambiar la personalidad, mantener alineados firmware, fixture, espacio de trabajo y documentación. La versión del firmware se define en `arduino/controlador/version.h`.

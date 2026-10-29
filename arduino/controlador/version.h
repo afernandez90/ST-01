@@ -1,8 +1,8 @@
 #pragma once
 // Versión compartida por los textos y el identificador numérico RDM.
-#define ST01_VERSION_MAYOR 0
+#define ST01_VERSION_MAYOR 1
 #define ST01_VERSION_MENOR 0
-#define ST01_VERSION_PARCHE 9
+#define ST01_VERSION_PARCHE 0
 #define ST01_CADENA_INTERNA(x) #x
 #define ST01_CADENA(x) ST01_CADENA_INTERNA(x)
 #define ST01_VERSION ST01_CADENA(ST01_VERSION_MAYOR) "." ST01_CADENA(ST01_VERSION_MENOR) "." ST01_CADENA(ST01_VERSION_PARCHE)

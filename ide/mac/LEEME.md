@@ -27,6 +27,6 @@ Las modificaciones en la copia activa no actualizan automáticamente estas plant
 
 La ruta habitual de actualización es RDM. Cierre QLC+ u otra aplicación que ocupe la interfaz y ejecute `Tasks: Run Task` → **RDM: compilar y cargar controlador**. No hace falta conectar el USB del Mega. El lanzador común está en `herramientas/cargar_rdm.sh`; las tareas fijan las rutas de Arduino CLI y Python de esta plataforma.
 
-Con una única interfaz compatible se detecta el puerto automáticamente. Si necesita elegirlo, configure `ST01_RDM_PORT` en el entorno de VS Code o en `options.env` de la tarea local. `ST01_RDM_UID` permite elegir otro UID; por defecto se utiliza el prototipo `7ff0:66601337`. No versionar nombres de puerto personales. La copia activa y la plantilla compartida deben mantener la misma ruta RDM.
+Con una única interfaz compatible se detecta el puerto automáticamente. Si necesita elegirlo, configure `ST01_RDM_PORT` en el entorno de VS Code o en `options.env` de la tarea local. `ST01_RDM_UID` permite elegir otro UID; por defecto se utiliza la unidad `7ff0:66601337`. No versionar nombres de puerto personales. La copia activa y la plantilla compartida deben mantener la misma ruta RDM.
 
 Como respaldo explícito existe la tarea **USB: cargar controlador (respaldo)**: compila, carga por el USB del Mega y abre el monitor serie. Requiere conectar el Mega por USB y cerrar cualquier monitor que ocupe su puerto. La ruta predeterminada y F5 continúan utilizando RDM.
